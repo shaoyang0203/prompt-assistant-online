@@ -32,14 +32,18 @@ v1.0.0/
 - 只有明确硬要求彼此冲突时才提问，且一次只问一个问题。
 - 交付排版按模型类别固定：在线模型把宽高比写在 Prompt 末尾；开源模型把宽高比与尺寸写在代码块外，代码块内只有提示词。
 
-## 特别鸣谢 / Special Thanks
+## 核心贡献与特别鸣谢 / Core Contribution & Acknowledgements
 
-### Gaven
+### Gaven — DPCRS 核心框架
 
-特别感谢 **Gaven** 对本项目的持续帮助。
+特别感谢 **Gaven**。
 
-Gaven 在「提示词助手 Online」的设计、测试与迭代过程中提供了大量有价值的建议和反馈，其中部分思路对项目最终的设计方向产生了重要影响。
+「提示词助手 Online」所使用的 **DPCRS 视觉设计框架，其核心元素由 Gaven 提供**。
 
-没有这些交流与帮助，本项目不会以现在的形态完成。
+DPCRS 构成了本项目视觉设计体系的重要基础，并在此基础上参与后续的提示词扩写、视觉决策与风格设计流程。
 
-Special thanks to **Gaven** for his continued help, feedback, and contributions throughout the design, testing, and iteration of Prompt Assistant Online.
+感谢 Gaven 对这一核心方法的提供与分享。
+
+> **DPCRS core elements contributed by Gaven.**
+
+The core elements of the **DPCRS visual design framework** used by Prompt Assistant Online were contributed by **Gaven**. DPCRS serves as an important foundation of the project's visual design system.
