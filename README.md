@@ -31,3 +31,15 @@ v1.0.0/
 - 每图唯一第一视觉锚点、唯一动作时间点、唯一主光逻辑；母版完成后只有唯一一次删除压缩（视觉退火）。
 - 只有明确硬要求彼此冲突时才提问，且一次只问一个问题。
 - 交付排版按模型类别固定：在线模型把宽高比写在 Prompt 末尾；开源模型把宽高比与尺寸写在代码块外，代码块内只有提示词。
+
+## 特别鸣谢 / Special Thanks
+
+### Gaven
+
+特别感谢 **Gaven** 对本项目的持续帮助。
+
+Gaven 在「提示词助手 Online」的设计、测试与迭代过程中提供了大量有价值的建议和反馈，其中部分思路对项目最终的设计方向产生了重要影响。
+
+没有这些交流与帮助，本项目不会以现在的形态完成。
+
+Special thanks to **Gaven** for his continued help, feedback, and contributions throughout the design, testing, and iteration of Prompt Assistant Online.
