@@ -1,26 +1,36 @@
-# 提示词助手 Online v1.0.0（正式运行版技能包）
+# 提示词助手 Online v1.1.0（正式运行版技能包）
 
 把普通中文画面需求编译成文生图模型可执行的最终 Prompt。核心方法：先形成一份与模型无关的**统一视觉母版**（构图、动作、光色、材质、成像），再由目标模型的 Adapter 转成对应表达；扩写强度按用户输入的决策成熟度自动调节，最终 Prompt 由视觉退火压缩一次。
+
+v1.1.0 相对 v1.0.0 只新增一条路由：**Qwen Image 2.1 文生图（T2I）专用交付协议**。画面设计仍全部由原体系完成，Qwen 路由只把退火后的母版编译为英文观察式长描述和单行严格 JSON。本版本**不包含 Qwen 图像编辑（Edit）能力**。
 
 ## 目录
 
 ```
-v1.0.0/
-├── SKILL.md                          核心：硬规则 + 扩写调速器 + 画面设计流程 + 视觉退火 + 最终自检
+v1.1.0/
+├── SKILL.md                          核心：硬规则 + 扩写调速器 + 画面设计流程 + 视觉退火 + Qwen T2I 路由 + 最终自检
 ├── README.md                         本文件
 ├── 发布说明.md                        版本与待验证事项（非运行时指令）
 └── references/
     ├── 视觉语言索引.md                D/P/C/R/S 索引 + 导演·摄影师出处
     ├── 抽象转可见.md                  电影感/高级感/性感/生动的转换参考
-    ├── Adapter与交付.md                各模型 Adapter + 尺寸与交付排版 + LoRA 边界
+    ├── Adapter与交付.md                各模型 Adapter + 尺寸与交付排版 + LoRA 边界 + Qwen T2I 章节
+    ├── Qwen-Image-2.1-T2I.md          Qwen Image 2.1 文生图编译规则（仅 Qwen 路由触发后读取）
     └── 题材候选池与风格决策.md          题材→代码候选检索 + 风格坍缩防线
 ```
 
 ## 用法
 
-- **本地 Claude/CLI 技能**：把整个 `v1.0.0/` 目录放进技能目录即可，`SKILL.md` 为入口，参考文件按需读取。
-- **在线大模型一键导入**：至少粘贴 `SKILL.md`（含全部硬规则与自检，可独立运行）；需要完整风格索引与模型适配时，按任务追加 `references/` 中的对应文件。深度思考模型建议一次性贴齐 SKILL.md + Adapter与交付.md。
-- **人工审查**：读同目录外的单文件 `../提示词助手online v1.0.0.md`，内容与本技能包语义等价，仅指针形式不同。
+- **本地 Claude/CLI 技能**：把整个 `v1.1.0/` 目录放进技能目录即可，`SKILL.md` 为入口，参考文件按需读取。
+- **在线大模型一键导入**：至少粘贴 `SKILL.md`（含全部硬规则、Qwen 路由与自检，可独立运行）；需要完整风格索引与模型适配时，按任务追加 `references/` 中的对应文件；Qwen Image 2.1 出词需追加 `Adapter与交付.md` + `Qwen-Image-2.1-T2I.md`。深度思考模型建议一次性贴齐 SKILL.md + Adapter与交付.md。
+- **人工审查**：读同目录外的单文件 `../提示词助手online v1.1.0.md`，内容与本技能包语义等价，仅指针形式不同。
+
+## Qwen Image 2.1 T2I 路由速览
+
+- 触发：用户明确指向 Qwen Image 2.1 / Qwen Image / 通义万相 Image 2.1（或上下文可可靠确定为 Qwen 图像生成模型的“Qwen”简称）的**文生图**任务；依赖原图的编辑类请求不入路由，只简短说明当前 Qwen 路由仅覆盖文生图。
+- 分工：画什么由原 Skill（母版 + 退火）决定；如何整理成英文描述和 JSON 由 Qwen Adapter 决定，Adapter 不重新设计画面。
+- 交付：唯一输出是单行双字段严格 JSON `{"rewritten_prompt":"…","wh_ratio":"W:H"}`，无代码块、无 JSON 外文字、无 `ratio_follow`；比例只存在于 `wh_ratio`，`rewritten_prompt` 全英文、观察者视角、约 20 句 400–500 词。
+- 覆盖范围：仅覆盖在线模型的代码块交付排版；用户硬要求、正向可见事实、视觉退火、单一动作时间点等全局规则全部继续优先。
 
 ## 硬规则速览（完整表述见 SKILL.md）
 
@@ -30,20 +40,4 @@ v1.0.0/
 - 用户决定得越多，AI 新增决策越少；用户决定得越少，AI 承担的视觉设计责任越大。扩写强度由 AI 内部判断，不作为供用户选择的模式。
 - 每图唯一第一视觉锚点、唯一动作时间点、唯一主光逻辑；母版完成后只有唯一一次删除压缩（视觉退火）。
 - 只有明确硬要求彼此冲突时才提问，且一次只问一个问题。
-- 交付排版按模型类别固定：在线模型把宽高比写在 Prompt 末尾；开源模型把宽高比与尺寸写在代码块外，代码块内只有提示词。
-
-## 核心贡献与特别鸣谢 / Core Contribution & Acknowledgements
-
-### Gaven — DPCRS 核心框架
-
-特别感谢 **Gaven**。
-
-「提示词助手 Online」所使用的 **DPCRS 视觉设计框架，其核心元素由 Gaven 提供**。
-
-DPCRS 构成了本项目视觉设计体系的重要基础，并在此基础上参与后续的提示词扩写、视觉决策与风格设计流程。
-
-感谢 Gaven 对这一核心方法的提供与分享。
-
-> **DPCRS core elements contributed by Gaven.**
-
-The core elements of the **DPCRS visual design framework** used by Prompt Assistant Online were contributed by **Gaven**. DPCRS serves as an important foundation of the project's visual design system.
+- 交付排版按模型类别固定：在线模型把宽高比写在 Prompt 末尾；开源模型把宽高比与尺寸写在代码块外，代码块内只有提示词；Qwen Image 2.1 文生图例外——只输出单行双字段严格 JSON。
