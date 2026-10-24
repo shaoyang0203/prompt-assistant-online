@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "source_skill": {
+      "const": "prompt-assistant-online-v1-2-0-harness"
+    },
+    "source_version": {
+      "type": "string",
+      "pattern": "^1\\.2\\.\\d+-harness$"
+    },
+    "data_version": {
+      "const": 1
+    },
+    "export_time": {
+      "type": "string"
+    },
+    "categories": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "kind": {
+      "enum": [
+        "harness",
+        "full"
+      ]
+    },
+    "counts": {
+      "type": "object",
+      "properties": {
+        "learned_overrides": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "candidates": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "experiments": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "evolution_log": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "feedback": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "learned_overrides",
+        "candidates",
+        "experiments",
+        "evolution_log",
+        "feedback"
+      ],
+      "additionalProperties": false
+    },
+    "sha256": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{64}$"
+      }
+    }
+  },
+  "required": [
+    "source_skill",
+    "source_version",
+    "data_version",
+    "export_time",
+    "categories",
+    "kind",
+    "counts",
+    "sha256"
+  ],
+  "additionalProperties": false
+}

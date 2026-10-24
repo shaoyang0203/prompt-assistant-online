@@ -1,0 +1,18 @@
+{
+  "source_version": "1.2.0-VIP",
+  "files": {
+    "references/Adapter与交付.md": "f6355b1dff47ee60fdb09865a3b9e59e7083ab0db0961fe88de23d420412750c",
+    "references/Qwen-Image-2.1-T2I.md": "71499a2a2b34182419eb0da9673c44f0e8f749d52c75c9866c7aa7caddca0734",
+    "references/VIP偏好学习.md": "4a6401d4608c62fa9cac25b37463f1a602c1eb270d131b3d26b901b3047763ab",
+    "references/视觉设计系统/00-总纲.md": "8aefa8f83b4016b39b879f98abd07fc2c7e194ad989f1b5bd047b8ea2a0d3d69",
+    "references/视觉设计系统/01-人物身份与情境.md": "b0900cc4dfc780b1a338afd32dff7c91fc5b20d8446418a52fe24bb7e256043d",
+    "references/视觉设计系统/02-主题与画面构思.md": "6d4d904716c9e0dcbbf8bab853fe97037fe1640b7f9470d421c0e0e79351099c",
+    "references/视觉设计系统/03-动作与环境互动.md": "9d7d0131df7fdd29fa40811ed2397fd0e1757983786a64fcee2f0ad7ee911ce7",
+    "references/视觉设计系统/04-构图与空间.md": "af25732caae1d6b3d094875b1ab703093545baa8ae99acf0b23c9c3451d843aa",
+    "references/视觉设计系统/05-光线色彩与材质.md": "6760048195fea177024c3bb18cbb56a1a4c6a29d58030d2c1ae2ee8e23b445c0",
+    "references/视觉设计系统/06-审美与视觉语言.md": "e68ac77f11d14310329a18f1e1a5e11d20c2f3cd2447216886c385bab365dc6d",
+    "references/视觉设计系统/07-约束与质量检查.md": "3e6048e135c0aec27b71621d8c999c9b24828c12901c31522657e66b5908e935",
+    "SKILL.md": "31de98d74813e76a79d426e3e60c387d2e3708db744f38061f131a3dcacfadeb",
+    "用户偏好.md": "38c6ab11bd953e72c930679c1877fe493593c4c26ae576ff5f60d7cb058e8af5"
+  }
+}

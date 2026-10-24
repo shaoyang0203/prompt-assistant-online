@@ -1,0 +1,298 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "data_version": {
+      "const": 1
+    },
+    "settings": {
+      "type": "object",
+      "properties": {
+        "learning": {
+          "type": "boolean"
+        },
+        "apply": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "learning",
+        "apply"
+      ],
+      "additionalProperties": false
+    },
+    "feedback": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "prompt_id": {
+            "type": "string"
+          },
+          "rating": {
+            "enum": [
+              "特别喜欢",
+              "喜欢",
+              "一般",
+              "厌恶"
+            ]
+          },
+          "target": {
+            "type": "string"
+          },
+          "features": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "polarity": {
+            "enum": [
+              "正向",
+              "负向",
+              "中性"
+            ]
+          },
+          "weight": {
+            "enum": [
+              "弱",
+              "中",
+              "强"
+            ]
+          },
+          "context": {
+            "type": "string"
+          },
+          "model": {
+            "type": "string"
+          },
+          "model_version": {
+            "type": "string"
+          },
+          "raw": {
+            "type": "string"
+          },
+          "inference": {
+            "type": "string"
+          },
+          "inferred": {
+            "type": "boolean"
+          },
+          "time": {
+            "type": "string"
+          },
+          "confirmed": {
+            "type": "boolean"
+          },
+          "hard": {
+            "type": "boolean"
+          },
+          "prompt": {
+            "type": "string"
+          },
+          "image_evidence": {
+            "type": "string"
+          },
+          "scene": {
+            "type": "string"
+          },
+          "classification": {
+            "enum": [
+              "personal",
+              "design",
+              "model"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "prompt_id",
+          "rating",
+          "target",
+          "features",
+          "polarity",
+          "weight",
+          "context",
+          "model",
+          "model_version",
+          "raw",
+          "inference",
+          "inferred",
+          "time",
+          "confirmed",
+          "hard",
+          "prompt",
+          "image_evidence",
+          "scene",
+          "classification"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "preferences": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          },
+          "context": {
+            "type": "string"
+          },
+          "model": {
+            "type": "string"
+          },
+          "model_version": {
+            "type": "string"
+          },
+          "source": {
+            "enum": [
+              "用户明确",
+              "Agent 推断"
+            ]
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "status": {
+            "enum": [
+              "active",
+              "disabled",
+              "conflict"
+            ]
+          },
+          "hard": {
+            "type": "boolean"
+          },
+          "time": {
+            "type": "string"
+          },
+          "weight": {
+            "enum": [
+              "弱",
+              "中",
+              "强"
+            ]
+          },
+          "polarity": {
+            "enum": [
+              "正向",
+              "负向",
+              "中性"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "content",
+          "context",
+          "model",
+          "model_version",
+          "source",
+          "evidence",
+          "status",
+          "hard",
+          "time",
+          "weight",
+          "polarity"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "constraints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          },
+          "context": {
+            "type": "string"
+          },
+          "model": {
+            "type": "string"
+          },
+          "model_version": {
+            "type": "string"
+          },
+          "source": {
+            "enum": [
+              "用户明确",
+              "Agent 推断"
+            ]
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "status": {
+            "enum": [
+              "active",
+              "disabled",
+              "conflict"
+            ]
+          },
+          "hard": {
+            "type": "boolean"
+          },
+          "time": {
+            "type": "string"
+          },
+          "weight": {
+            "enum": [
+              "弱",
+              "中",
+              "强"
+            ]
+          },
+          "polarity": {
+            "enum": [
+              "正向",
+              "负向",
+              "中性"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "content",
+          "context",
+          "model",
+          "model_version",
+          "source",
+          "evidence",
+          "status",
+          "hard",
+          "time",
+          "weight",
+          "polarity"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "data_version",
+    "settings",
+    "feedback",
+    "preferences",
+    "constraints"
+  ],
+  "additionalProperties": false
+}

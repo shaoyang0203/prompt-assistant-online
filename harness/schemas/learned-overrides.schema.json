@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "candidate_id": {
+        "type": "string"
+      },
+      "rule": {
+        "type": "string"
+      },
+      "context": {
+        "type": "string"
+      },
+      "model": {
+        "type": "string"
+      },
+      "model_version": {
+        "type": "string"
+      },
+      "experiment_id": {
+        "type": "string"
+      },
+      "validation_level": {
+        "enum": [
+          "text",
+          "image"
+        ]
+      },
+      "status": {
+        "enum": [
+          "active",
+          "disabled",
+          "imported_pending"
+        ]
+      },
+      "time": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "id",
+      "candidate_id",
+      "rule",
+      "context",
+      "model",
+      "model_version",
+      "experiment_id",
+      "validation_level",
+      "status",
+      "time"
+    ],
+    "additionalProperties": false
+  }
+}

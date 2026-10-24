@@ -1,0 +1,11 @@
+{
+  "config_version": 1,
+  "data_version": 1,
+  "enabled": false,
+  "min_feedback": 3,
+  "min_scenes": 2,
+  "min_test_pairs": 2,
+  "max_regression": 0,
+  "authorized_overrides": false,
+  "last_successful_check": null
+}
