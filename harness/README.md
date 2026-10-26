@@ -97,3 +97,8 @@ manifest 含来源、版本、格式、时间、类别、计数和 SHA256。只�
 忘记/清空会清除相关证据、全部派生规则/候选/实验/日志、旧 generations 与本目录管理的备份，保留用户未删除的基础偏好；执行前说明这一范围。外部导出包不自动寻找或删除。回滚经验仅禁用指定经验并保留历史，和隐私删除不同。
 
 结构检查运行 `python scripts/validate_harness.py`；自动测试运行 `python scripts/run_tests.py`；发行打包运行 `python scripts/build_release.py --output <外部路径.zip>`。
+
+
+## 1.22 合并版
+
+当前版本身份为 `1.22`，技能名为 `prompt-assistant-online-v1-22-harness`。接受 1.2.0-harness、1.2.1-harness 和 1.22 各自匹配技能名的数据包；数据格式仍为 1。实验记录的写后核验按唯一 ID 对齐，其他内容和日志顺序仍严格检查。旧数据可继续使用，不需要清空或转换。

@@ -6,7 +6,7 @@ from pathlib import Path
 import tempfile
 import zipfile
 
-from harness_core import PACKAGE, SKILL, atomic, encoded
+from harness_core import PACKAGE, SKILL, VERSION, atomic, encoded
 from validate_harness import validate_package
 
 
@@ -26,7 +26,7 @@ def build(output):
     if output.is_relative_to((PACKAGE.parent / "V1.2.0-VIP").resolve()):
         raise ValueError("发行包不得写入 VIP 基线")
     files = {p.relative_to(PACKAGE).as_posix(): p.read_bytes() for p in PACKAGE.rglob("*") if p.is_file()}
-    manifest = {"skill": SKILL, "version": "1.2.0-harness", "files":
+    manifest = {"skill": SKILL, "version": VERSION, "files":
                 {n: hashlib.sha256(v).hexdigest() for n, v in sorted(files.items())}}
     with tempfile.TemporaryDirectory() as temp:
         path = Path(temp) / "release.zip"

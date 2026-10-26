@@ -17,6 +17,8 @@ def validate_package(root=PACKAGE, source=None):
                 "scripts/export_harness.py", "scripts/import_harness.py", "tests/test_harness.py",
                 "harness/schemas/user-preferences.schema.json", "harness/schemas/learned-overrides.schema.json",
                 "harness/schemas/migration-manifest.schema.json")
+    required += ("references/design-contract.md", "tests/design-cases.json",
+                 "harness/design-protocol-integrity.json")
     for name in required:
         if not (root / name).is_file():
             errors.append("缺少文件: " + name)
@@ -45,10 +47,45 @@ def validate_package(root=PACKAGE, source=None):
     if not re.match(r"---\nname: [a-z0-9-]{1,64}\ndescription: [^\n]+\n---", skill):
         errors.append("Skill frontmatter 无效")
     baseline = read_json(root / "harness/source-baseline.json")
+    revision_path = root / "harness/design-protocol-integrity.json"
+    revision = read_json(revision_path) if revision_path.is_file() else {}
+    revision_files = {"SKILL.md", "references/Adapter与交付.md",
+                      "references/视觉设计系统/06-审美与视觉语言.md",
+                      "references/视觉设计系统/07-约束与质量检查.md",
+                      "references/design-contract.md", "tests/design-cases.json"}
+    if set(revision.get("files", {})) != revision_files:
+        errors.append("设计协议修订清单不完整")
+    for name in revision_files:
+        path = root / name
+        if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest() != revision.get("files", {}).get(name):
+            errors.append("设计协议文件与本次修订清单不符: " + name)
+
+    def design_revision(text, name):
+        # Apply the recorded, reviewable edits to the previously preserved VIP body.
+        patch = revision.get("legacy_edits", {}).get(name, {})
+        if hashlib.sha256(text.encode("utf-8")).hexdigest() != patch.get("base_sha256"):
+            errors.append("设计修订的来源正文不符: " + name)
+            return text
+        for edit in patch.get("edits", []):
+            if not edit["old"] or text.count(edit["old"]) != 1:
+                errors.append("设计修订无法唯一定位: " + name)
+                return text
+            text = text.replace(edit["old"], edit["new"], 1)
+        return text
     preserved = [n for n in baseline["files"] if n.startswith("references/视觉设计系统/") and not n.endswith("07-约束与质量检查.md")]
+    additions = revision.get("knowledge_additions", {})
+    if set(additions) != {"references/视觉设计系统/06-审美与视觉语言.md"}:
+        errors.append("视觉知识新增条目清单不完整")
     # Newlines are normalized by the integration; compare original bytes for untouched resources.
     for name in preserved:
-        if hashlib.sha256((root / name).read_bytes()).hexdigest() != baseline["files"][name]:
+        raw = (root / name).read_bytes()
+        if name in additions:
+            insertion = additions[name].encode("utf-8")
+            if not insertion or raw.count(insertion) != 1:
+                errors.append("视觉知识新增条目无法唯一定位: " + name)
+            else:
+                raw = raw.replace(insertion, b"", 1)
+        if hashlib.sha256(raw).hexdigest() != baseline["files"][name]:
             errors.append("受保护的视觉/Adapter 文件发生变化: " + name)
     if source is not None:
         source = Path(source)
@@ -64,14 +101,16 @@ def validate_package(root=PACKAGE, source=None):
                                     "- `用户偏好.md`：保留的空白 VIP 模板，运行时不写入；个人数据位于外部 Harness 目录。")
         expected = expected.replace("非首次回复且用户明确要求生成时，只交付代码块，不重复开场；",
                                     "非首次回复且用户明确要求生成时，先显示实际状态，再交付代码块，不重复开场；")
+        expected = design_revision(expected, "SKILL.md").replace("正在调用提示词助手 V1.2 Harness", "正在调用提示词助手 V1.22 Harness")
         if skill[skill.index("## 产品定位"):] != expected:
-            errors.append("核心正文超出预期的 Harness 接入改动")
+            errors.append("核心正文超出已记录的 Harness 与设计修订")
         adapter = (source / "references/Adapter与交付.md").read_text(encoding="utf-8")
         expected_adapter = adapter.replace("正在调用提示词助手 V1.2.0 VIP", "正在调用提示词助手 V1.2 Harness")
         expected_adapter = expected_adapter.replace("只输出代码块，不重复开场", "先输出实时状态标记，再输出代码块，不重复开场")
         expected_adapter = expected_adapter.replace("# Adapter 与交付", "# Adapter 与交付\n\nHarness 元信息遵循 SKILL.md：每轮先显示实际状态，首次另有开场与启用说明，均位于代码块外。以下交付条款只规定 Prompt 本身。", 1)
+        expected_adapter = design_revision(expected_adapter, "references/Adapter与交付.md").replace("正在调用提示词助手 V1.2 Harness", "正在调用提示词助手 V1.22 Harness")
         if (root / "references/Adapter与交付.md").read_text(encoding="utf-8") != expected_adapter:
-            errors.append("Adapter 发生超出开场与状态元信息的改动")
+            errors.append("Adapter 发生超出已记录的设计接入改动")
     forbidden = {"CURRENT", "user_preferences.json", "learned_overrides.json", "candidates.json",
                  "evolution_log.jsonl", ".writer.lock"}
     for path in root.rglob("*"):

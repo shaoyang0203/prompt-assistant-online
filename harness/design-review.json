@@ -1,0 +1,131 @@
+{
+  "date": "2026-10-25",
+  "method": "同一编辑 Agent 阅读修订后技能，针对设计回归任务编写实际文本产物并自审；不是独立模型盲测，不是 Grok Bot 宿主测试，不是实际出图测试。参考产物用于复核设计合同是否可执行，不作为唯一标准答案。",
+  "output_scope": "仅记录创意方案或 Prompt 正文；不模拟宿主首次开场或持久化状态。母版摘要记录设计结果，不记录推理过程。",
+  "cases": [
+    {
+      "id": "D01",
+      "output": "方向一：她站在立起的画布前，抬起的画笔停在画面边缘，工作台上的混色痕迹与画布形成呼应，重点看创作中的手和画面。方向二：她坐在工作室地板上整理几张习作，观看位置降低，散开的纸张围绕人物展开，重点是人和作品占据空间的方式。方向三：她退到工作室另一侧端详大画布，人物在宽阔空间里占比较小，窗、画布与她形成三个明确的位置，重点是观看作品的距离感。你更想往哪个方向走？",
+      "review": "三种方向分别用创作、整理、观看建立不同画面关系；仍在探讨，未输出最终 Prompt。"
+    },
+    {
+      "id": "D02",
+      "master_summary": "保留成年中国女性、旧书店、看书；选择平视腰上侧面、脸与书页为重心、靠窗书架、侧窗主光和深棕纵深。",
+      "output": "Photographic portrait of a beautiful young adult Chinese woman with delicate features, wearing a loose oatmeal knit cardigan, reading an open book in an old bookstore. Eye-level waist-up side view, her figure placed in the right third, her gaze lowered to the pages held at waist height. A tall window on the left casts soft side light across her cheek and the cream paper. Dark walnut shelves recede behind her, their book spines still distinguishable. The softly lit face and pages form a connected focal area against the deeper brown shelves; the matte knit and worn cloth book cover contrast with the gently luminous paper. Fine skin texture, restrained highlights, warm-neutral colors. Aspect ratio 3:2.",
+      "review": "成品出现素材未决定的观看位置、人物与书和窗口的关系、书架纵深及主光落点；不是 cinematic 标签替代设计。"
+    },
+    {
+      "id": "D03",
+      "master_summary": "保留全部衣着、短发、右手折叠地图、左手下垂和左向视线；新增平视全身、右侧人物与左侧入口通道、树荫边缘漫射天光、白蓝绿主次。",
+      "output": "Full-length eye-level photograph of a beautiful young adult Chinese woman with delicate features and short hair at a botanical garden entrance. She wears a white cotton shirt, a deep navy long skirt and white flat shoes. Her right hand holds a folded map beside her hip, her left arm hangs relaxed, and her eyes look toward the left. She stands in the right third of the frame; the entrance path opens on the left and recedes between layered green planting. Broad daylight from the open left side softly illuminates her face and shirt, while the greenery immediately behind her remains a deeper green. The matte cotton shirt carries broad soft folds, and the heavier skirt falls in long vertical pleats. Her shoes and the entrance paving remain visible. Aspect ratio 3:2.",
+      "review": "长输入被识别为衣着动作较完整，而构图光色仍开放；新增关系保留原动作，未擅增人物与事件。"
+    },
+    {
+      "id": "D04",
+      "master_summary": "修鞋男子坐在工作台前，鞋底与手为重心；侧前腰上视角，工作灯照手与皮革，工具墙退后。",
+      "output": "adult Chinese shoemaker in a brown canvas apron, seated at a wooden bench, waist-up three-quarter view, left hand bracing a leather shoe on the bench, right hand pressing its sole with a small roller, task lamp lighting the hands and worn leather, darker tool wall behind, warm wood and charcoal tones --ar 3:2",
+      "review": "短词仍有手部接触、观看位置和明暗分工；比例采用用户指定格式。"
+    },
+    {
+      "id": "D05",
+      "master_summary": "温室中查看盆栽叶片；人物靠右，通道左后延伸，漫射顶光与深绿叶片分离。",
+      "output": "平视中景，一位五官精致的年轻成年中国女园丁穿浅卡其工作衬衫，站在温室右侧的育苗台旁，右手托起一片盆栽叶子观察。左侧通道沿盆架延伸至后方；温室顶棚的漫射天光照亮她的脸和手，身后的深绿叶片形成较暗层次。棉布衣料呈柔和哑光，叶面有细窄亮边。建议宽高比：3:2。",
+      "review": "简单表达仍保留人物植物接触、空间与光线结果；不再把简单主题直接送给探索模式。"
+    },
+    {
+      "id": "D06",
+      "master_summary": "保留男性雨天街头与明快色块；选择黄色雨衣配蓝色店面，不强制红伞，近处人物与大片色面组织。",
+      "output": "Eye-level waist-up photograph of an adult Chinese man in a bright yellow raincoat on a rainy street. He stands to the left of a broad cobalt-blue storefront panel, one hand holding the raincoat collar near his chest. Raindrops bead on the yellow fabric, and a narrow strip of wet pavement reflects the blue and yellow areas along the lower edge. Soft overcast daylight produces broad highlights across the raincoat folds and clear facial structure. The yellow figure occupies the left third, balanced by the larger blue surface on the right; a small warm-orange door handle forms a restrained accent. Aspect ratio 3:2.",
+      "review": "建议红伞未被强制继承；色块落实到衣物与店面，湿表面来自明确雨天而非风格套用。"
+    },
+    {
+      "id": "D07",
+      "master_summary": "纯迁移：完整继承用户指定画面，设计新增为空。",
+      "output": "adult Chinese man wearing a gray linen shirt, seated on a wooden chair, both hands resting on his knees, eye-level centered half-length portrait, solid pale blue background, broad soft light from the front left, shirt folds as the main detail focus --ar 4:5",
+      "review": "未为制造新增设计而改动完整原画面；画面恢复与格式编译是合法的保真任务。"
+    },
+    {
+      "id": "D08",
+      "master_summary": "明确仅翻译，不启动新增视觉设计。",
+      "output": "An adult man wearing a red coat stands in front of a gray wall.",
+      "review": "不补默认民族、主光、构图或画幅，不把保真翻译误判为设计失败。"
+    },
+    {
+      "id": "D09",
+      "master_summary": "两张保持女摄影师、深绿外套、黑相机；分别选择侧面拍摄与平视查看照片，空间组织不同。",
+      "outputs": [
+        "Full-length side-view photograph of a beautiful young adult Chinese woman photographer in a deep green coat on a firm sandy shoreline, holding a black camera at eye level. She stands in the left third facing the open sea to the right, her feet set apart and elbows drawn close to her torso. The shoreline curves from the lower left toward the distant horizon; low side sunlight catches her cheek and the upper edge of the coat, while the fabric remains matte against pale blue water. Aspect ratio 3:2.",
+        "Eye-level waist-up photograph of a beautiful young adult Chinese woman photographer in a deep green coat beside the sea, looking down at the rear screen of a black camera held in both hands near her chest. Her face and the camera form a compact central grouping; a narrow band of pale water crosses behind her shoulders beneath a broad overcast sky. Diffuse daylight preserves the coat's dark green folds and the camera's fine hard edges, with soft highlights on her fingers. Aspect ratio 4:5."
+      ],
+      "review": "分别用拍摄姿态与查看屏幕、全身侧面与腰上正面、曲线纵深与横向分层形成区别；未只替换情绪形容词。"
+    },
+    {
+      "id": "D10",
+      "master_summary": "只替换外套为米白；全身正面、右侧位置、左后方站台线、顶灯与蓝灰背景全部继承。",
+      "output": "An adult Chinese woman wearing an ivory coat stands on a subway platform. Frontal full-length view, the woman positioned on the right side of the frame, platform lines extending toward the back left. Overhead station lights provide the main illumination against a deep blue-gray background. Aspect ratio 3:2.",
+      "review": "局部修改未借机改场景和光线；成品简短是因为已有关系完整，而不是跳过设计。"
+    },
+    {
+      "id": "D11",
+      "master_summary": "平面剪纸：单腿支撑、另一腿侧伸、双臂弧线、暖红主体与象牙底、切边层叠。",
+      "output": "Flat paper-cut illustration of a young adult Chinese woman dancer in a flowing vermilion costume. Her weight rests on one straight leg, the other leg extends to the left, and both arms form a broad upward arc. The figure sits slightly right of center, with ivory open space surrounding the extended leg and hands. Layered crimson and coral paper shapes define the costume folds; crisp cut edges and small overlapping paper shadows distinguish the layers against the ivory ground. A few dark-red curved shapes echo the costume's sweep near the lower edge. Aspect ratio 4:5.",
+      "review": "构图、姿态、色块与纸边共同完成设计；未为字段齐全添加摄影镜头和皮肤毛孔。"
+    },
+    {
+      "id": "D12",
+      "master_summary": "指定内容已基本完整：头肩正面居中、灰底白衬衫、均匀柔光；仅落实平视和肩线。",
+      "output": "Static identification-style head-and-shoulders portrait of an adult Chinese man wearing a white shirt, facing straight toward the camera at eye level. Centered composition, level shoulders, plain gray background and even soft illumination across the face. The collar and upper shoulders remain clearly visible. Aspect ratio 4:5.",
+      "review": "没有把从头设计误解为必须加戏；保留居中静态，补充只服务头肩范围。"
+    },
+    {
+      "id": "D13",
+      "output": "这次准备用哪个生图模型？也可以选择通用版。",
+      "review": "缺少目标时停在模型选择，未先设计。"
+    },
+    {
+      "id": "D14",
+      "output": "这次准备用哪个生图模型？也可以选择通用版。",
+      "review": "明确直接生成仍需先解决目标缺省。"
+    },
+    {
+      "id": "D15",
+      "master_summary": "沿用已选 MJ；人物在左侧窗边查看咖啡杯，吧台退向右后方，侧窗光照脸和杯沿。",
+      "output": "adult Chinese man in a charcoal cotton shirt, seated at a cafe window, waist-up side view, left-third placement, looking down at a white coffee cup resting between his hands on the table, side window light across his cheek and the cup rim, wooden counter receding to the back right, warm wood against cool gray fabric --ar 4:5",
+      "review": "模型从本对话明确选择继承；未重问，画面关系完整。"
+    },
+    {
+      "id": "D16",
+      "master_summary": "通用交付已明确；视线高度腰上构图，人物居右、杯靠近下沿、吧台横向层次、顶灯柔亮面部。",
+      "output": "Eye-level waist-up photograph of an adult Chinese man wearing a navy knit sweater, seated at a cafe counter on the right side of the frame. His forearms rest on the counter beside a white coffee cup near the lower edge. He looks toward the open space on the left. Broad overhead cafe lighting softly illuminates his face and hands; dark wooden shelves form a lower-contrast horizontal layer behind him. The matte sweater contrasts with the cup's narrow glazed highlight. Aspect ratio 3:2.",
+      "review": "通用版无需选模型，仍有空间、用光与材质安排。"
+    }
+  ],
+  "negative_control_review": [
+    {
+      "id": "N01",
+      "decision": "不接受",
+      "evidence": "主题翻译加质量词，构图和主光关系仍未决定"
+    },
+    {
+      "id": "N02",
+      "decision": "不接受",
+      "evidence": "字段和六步标记齐全，但没有可见关系，不能以表格替代设计"
+    },
+    {
+      "id": "N03",
+      "decision": "不接受",
+      "evidence": "MJ 参数正确不等于设计完成；手部任务、空间及主光缺失"
+    },
+    {
+      "id": "N04",
+      "decision": "不接受",
+      "evidence": "新增很多画面事实，但越过仅改外套颜色的授权，破坏保真"
+    }
+  ],
+  "remaining_validation": [
+    "Grok Bot 使用真实安装版本的独立盲测",
+    "长对话与压缩上下文下的重复执行",
+    "在选定模型和固定生成条件下实际出图比较"
+  ],
+  "conclusion": "这些同一 Agent 编写和自审的文本产物展示了合同可以怎样落实及其例外，不构成对任意模型遵循率或图像质量的证明。"
+}

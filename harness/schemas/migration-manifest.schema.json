@@ -3,11 +3,18 @@
   "type": "object",
   "properties": {
     "source_skill": {
-      "const": "prompt-assistant-online-v1-2-0-harness"
+      "enum": [
+        "prompt-assistant-online-v1-2-0-harness",
+        "prompt-assistant-online-v1-2-1-harness",
+        "prompt-assistant-online-v1-22-harness"
+      ]
     },
     "source_version": {
-      "type": "string",
-      "pattern": "^1\\.2\\.\\d+-harness$"
+      "enum": [
+        "1.2.0-harness",
+        "1.2.1-harness",
+        "1.22"
+      ]
     },
     "data_version": {
       "const": 1

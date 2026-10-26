@@ -9,6 +9,7 @@ from __future__ import annotations
 import copy
 import hashlib
 import json
+import math
 import os
 from pathlib import Path
 import re
@@ -19,8 +20,8 @@ from uuid import uuid4
 import zipfile
 from contextlib import contextmanager
 
-VERSION = "1.2.0-harness"
-SKILL = "prompt-assistant-online-v1-2-0-harness"
+VERSION = "1.22"
+SKILL = "prompt-assistant-online-v1-22-harness"
 PACKAGE = Path(__file__).resolve().parents[1]
 FORMAT = 1
 RATINGS = ("特别喜欢", "喜欢", "一般", "厌恶")
@@ -92,7 +93,8 @@ def validate_config(config):
         require(type(config[key]) is bool, "配置布尔字段错误: " + key)
     for key in ("min_feedback", "min_scenes", "min_test_pairs"):
         require(type(config[key]) is int and config[key] >= 2, "优化门槛无效: " + key)
-    require(type(config["max_regression"]) in (int, float) and config["max_regression"] >= 0,
+    require(type(config["max_regression"]) in (int, float) and
+            math.isfinite(config["max_regression"]) and config["max_regression"] >= 0,
             "回归容忍参数无效")
     require(config["last_successful_check"] is None or
             isinstance(config["last_successful_check"], str), "检测时间无效")
@@ -225,7 +227,9 @@ class Store:
     def load(self):
         pointer = self.root / "CURRENT"
         if not pointer.exists():
-            require(not (self.root / "generations").exists(), "检测到未完成初始化，需检查 generations 后恢复")
+            generations = self.root / "generations"
+            require(not generations.exists() or (generations.is_dir() and not any(generations.iterdir())),
+                    "检测到未完成初始化，需检查 generations 后恢复")
             return blank()
         name = pointer.read_text(encoding="utf-8").strip()
         require(re.fullmatch(r"[0-9a-f]{32}", name), "CURRENT 指针损坏")
@@ -332,7 +336,7 @@ class Store:
                 first = session not in data["sessions"]
                 data["sessions"][session] = {"started": now(), "asked": True}
             self.change(action)
-        lines = (["正在调用提示词助手 V1.2 Harness"] if first else [])
+        lines = (["正在调用提示词助手 V1.22 Harness"] if first else [])
         lines.append("[递归优化 --" + status["status"] + "]")
         if first:
             lines.append("递归优化会收集反馈，经对照与跨题材验证后更新独立经验；个人偏好与核心设计分离。")
@@ -359,6 +363,8 @@ class Store:
                    "cross_model", "prompt", "image_evidence", "scene", "classification", "polarity"}
         require(set(input_data) <= allowed, "未知反馈字段")
         q = input_data
+        for flag in ("confirmed", "permanent", "hard_confirmed", "long_term", "cross_model"):
+            require(flag not in q or type(q[flag]) is bool, "反馈标记必须为布尔值: " + flag)
         require(q.get("rating") in RATINGS and q.get("prompt_id") and q.get("raw"), "缺少评价、方案 ID 或原话")
         features = q.get("features", [])
         require(isinstance(features, list), "特点应为数组")
@@ -404,7 +410,7 @@ class Store:
         prefs = data["user_preferences"]
         def matches(record):
             return (record["status"] == "active" and record["context"] in (context, "*") and
-                    record["model"] in (model, "*") and record["model_version"] in (model_version, "*", "未知"))
+                    record["model"] in (model, "*") and record["model_version"] in (model_version, "*"))
         constraints = [p for p in prefs["constraints"] if matches(p)]
         ordinary = [p for p in prefs["preferences"] if matches(p) and p["content"] not in current_features]
         return {"preferences": ordinary if prefs["settings"]["apply"] else [],
@@ -625,7 +631,13 @@ def load_archive(path):
                     re.fullmatch(r"experiments/[a-zA-Z0-9_-]{1,100}\.json", name), "包包含不允许的路径或代码: " + name)
         m = json.loads(z.read("manifest.json"))
         require(set(m) == {"source_skill", "source_version", "data_version", "export_time", "categories", "kind", "counts", "sha256"}, "清单字段无效")
-        require(m["source_skill"] == SKILL and re.fullmatch(r"1\.2\.\d+-harness", m["source_version"]), "来源版本不支持，需显式迁移适配器")
+        supported_sources = {"1.2.0-harness": "prompt-assistant-online-v1-2-0-harness",
+                             "1.2.1-harness": "prompt-assistant-online-v1-2-1-harness",
+                             VERSION: SKILL}
+        require(isinstance(m["source_version"], str) and
+                m["source_version"] in supported_sources and
+                m["source_skill"] == supported_sources[m["source_version"]],
+                "来源版本不支持，需显式迁移适配器")
         require(m["data_version"] == FORMAT and m["kind"] in ("harness", "full"), "数据版本或包类型不支持")
         expected = {"learned_overrides.json", "candidates.json", "evolution_log.jsonl"}
         require(expected <= set(names) and (m["kind"] != "full" or "user_preferences.json" in names), "缺少必需数据")
@@ -656,6 +668,21 @@ def load_archive(path):
     return data, m
 
 
+def verify_imported_data(expected, actual):
+    """Compare experiment files by unique ID, preserving all content checks.
+
+    Their list order is not persisted: load() orders files by filename, while
+    import merges append new records. Other arrays (especially logs) stay ordered.
+    Validate before indexing so duplicate IDs cannot be silently discarded.
+    """
+    validate_records(expected)
+    validate_records(actual)
+    expected_by_id = {record["id"]: record for record in expected["experiments"]}
+    actual_by_id = {record["id"]: record for record in actual["experiments"]}
+    require({**expected, "experiments": expected_by_id} ==
+            {**actual, "experiments": actual_by_id}, "导入后数据核验失败")
+
+
 def import_data(store, path):
     path = Path(path)
     if path.suffix.lower() == ".json":
@@ -673,9 +700,14 @@ def import_data(store, path):
         current = store.load()
         backup = store.root / ("backup-" + uid() + ".zip")
         export_data(store, backup)
+        old_feedback = {r["id"]: r for r in current["user_preferences"]["feedback"]}
+        feedback_conflicts = {r["id"] for r in incoming["user_preferences"]["feedback"]
+                              if r["id"] in old_feedback and r != old_feedback[r["id"]]}
         old_candidates = {r["id"]: r for r in current["candidates"]}
         candidate_conflicts = {r["id"] for r in incoming["candidates"] if r["id"] in old_candidates
                               and any(old_candidates[r["id"]][k] != r[k] for k in r if k != "status")}
+        candidate_conflicts |= {r["id"] for r in incoming["candidates"]
+                                if set(r["evidence"]) & feedback_conflicts}
         old_experiments = {r["id"]: r for r in current["experiments"]}
         experiment_conflicts = {r["id"] for r in incoming["experiments"] if r["id"] in old_experiments
                                 and r != old_experiments[r["id"]]}
@@ -687,11 +719,13 @@ def import_data(store, path):
             added[key] = 0
             for original in source:
                 record = copy.deepcopy(original)
-                dependency_conflict = ((key == "experiments" and record["id"] in experiment_conflicts) or
+                dependency_conflict = ((key in ("preferences", "constraints", "candidates") and
+                                        bool(set(record["evidence"]) & feedback_conflicts)) or
+                    (key == "experiments" and record["id"] in experiment_conflicts) or
                     (key == "learned_overrides" and (record["candidate_id"] in candidate_conflicts or
                                                     record["experiment_id"] in experiment_conflicts)))
                 if dependency_conflict:
-                    conflicts.append({"category": key, "id": record["id"], "reason": "依赖候选或实验内容冲突，跳过以保留本地证据链"})
+                    conflicts.append({"category": key, "id": record["id"], "reason": "依赖反馈、候选或实验内容冲突，跳过以保留本地证据链"})
                     continue
                 if key == "candidates" and record["status"] in ("candidate", "active"):
                     record["status"] = "imported_pending"
@@ -722,7 +756,7 @@ def import_data(store, path):
         log_event(current, "migration", "已备份", added, "导入数据；保留新版配置并关闭引擎", accepted=True)
         validate_records(current)
         store.save(current)
-        require(store.load() == current, "导入后数据核验失败")
+        verify_imported_data(current, store.load())
     status = store.probe()
     return {"added": added, "conflicts": conflicts, "backup": str(backup), "environment": status,
             "kind": kind, "notice": "历史文本仅为数据；下次首次调用重新询问启用"}

@@ -1,0 +1,146 @@
+[
+  {
+    "path": "发布说明.md",
+    "sha256": "abab4c14ca7ff0e59c40237fd3b31b70971894a5f2a606179d9b1ff888a56f2e"
+  },
+  {
+    "path": "交付报告.md",
+    "sha256": "62265665ce8a6bc1f3ef1f6f240cd92fccb5519a5be719227e996273706c8ce7"
+  },
+  {
+    "path": "用户偏好.md",
+    "sha256": "37e5e293c7549a55d26c95f3e4112af22b9909ae4010b905b1779564998a1af4"
+  },
+  {
+    "path": "README.md",
+    "sha256": "e18e83fa9c6bd1a4699fe7a88199de6097e99716f079ed6ee1a038821c4b8174"
+  },
+  {
+    "path": "SKILL.md",
+    "sha256": "0c9e38472a7cba6a1904b4d129ec67dd47637dac7652cd49e10b68aee4c85977"
+  },
+  {
+    "path": "harness/config.json",
+    "sha256": "89e5fc4de9c6736c017377a101eef88c38c297fde523cf6d90c0d095170b7e14"
+  },
+  {
+    "path": "harness/README.md",
+    "sha256": "479148349417124f1ada34a7ac71d2ef50d088db8a67f9b953b60d32db33389e"
+  },
+  {
+    "path": "harness/source-baseline.json",
+    "sha256": "f534d07135376b91b3e5030eb9ce76238b1cb9589719fc680d101e09d25ba252"
+  },
+  {
+    "path": "harness/test-results.json",
+    "sha256": "778cb321615c4d84c1adb5d948dbe6fd7087e9de9438c7a6e7eef1231467bf60"
+  },
+  {
+    "path": "harness/schemas/learned-overrides.schema.json",
+    "sha256": "3fe6edabe9fdbc9703cf7e3547785934ecc6f5800f0e1d422147ae8011110036"
+  },
+  {
+    "path": "harness/schemas/migration-manifest.schema.json",
+    "sha256": "055298e1ddf35663cf278bd96051f3aa2b0598ef59cf54311fa7a68c26136c76"
+  },
+  {
+    "path": "harness/schemas/user-preferences.schema.json",
+    "sha256": "b2f2c32a2b9d8b584ac7b5aa9e7fcdec16201a272c5e607bdfabe6e53d9a2e0a"
+  },
+  {
+    "path": "harness/templates/learned-overrides.template.json",
+    "sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f"
+  },
+  {
+    "path": "harness/templates/user-preferences.template.json",
+    "sha256": "7e38400a2bf3d748ca235ea25a7d59fc316121042e7a9231ce4b097bd223b6c9"
+  },
+  {
+    "path": "references/Adapter与交付.md",
+    "sha256": "9fb070dfd2ccc170b9900827efac5e813d12011ab1d1e337378a0fa3e91c116f"
+  },
+  {
+    "path": "references/harness-help.md",
+    "sha256": "978e09fd917176d10d9132551a8c0f63848b3056cea826d1a226bbfdfc4b86e1"
+  },
+  {
+    "path": "references/harness-protocol.md",
+    "sha256": "a83b7d707c46b5d89b4ea3373544e39b9dd2b8551578e42e2714c1797073047a"
+  },
+  {
+    "path": "references/Qwen-Image-2.1-T2I.md",
+    "sha256": "7068256f293525fe6745d0fcdb402716b2ea519207f0d3ece862eb95609908af"
+  },
+  {
+    "path": "references/VIP偏好学习.md",
+    "sha256": "3e79ef886206911b35ed10966a05d867dfc02699f3d18afd2ee550f004395b2a"
+  },
+  {
+    "path": "references/视觉设计系统/00-总纲.md",
+    "sha256": "8aefa8f83b4016b39b879f98abd07fc2c7e194ad989f1b5bd047b8ea2a0d3d69"
+  },
+  {
+    "path": "references/视觉设计系统/01-人物身份与情境.md",
+    "sha256": "b0900cc4dfc780b1a338afd32dff7c91fc5b20d8446418a52fe24bb7e256043d"
+  },
+  {
+    "path": "references/视觉设计系统/02-主题与画面构思.md",
+    "sha256": "6d4d904716c9e0dcbbf8bab853fe97037fe1640b7f9470d421c0e0e79351099c"
+  },
+  {
+    "path": "references/视觉设计系统/03-动作与环境互动.md",
+    "sha256": "9d7d0131df7fdd29fa40811ed2397fd0e1757983786a64fcee2f0ad7ee911ce7"
+  },
+  {
+    "path": "references/视觉设计系统/04-构图与空间.md",
+    "sha256": "af25732caae1d6b3d094875b1ab703093545baa8ae99acf0b23c9c3451d843aa"
+  },
+  {
+    "path": "references/视觉设计系统/05-光线色彩与材质.md",
+    "sha256": "6760048195fea177024c3bb18cbb56a1a4c6a29d58030d2c1ae2ee8e23b445c0"
+  },
+  {
+    "path": "references/视觉设计系统/06-审美与视觉语言.md",
+    "sha256": "e68ac77f11d14310329a18f1e1a5e11d20c2f3cd2447216886c385bab365dc6d"
+  },
+  {
+    "path": "references/视觉设计系统/07-约束与质量检查.md",
+    "sha256": "152083c3e8649f5e50ebe43d0152aeb7244ca44d8f19f99bc2d40d6b4d4b91ce"
+  },
+  {
+    "path": "scripts/build_release.py",
+    "sha256": "23641f7c84150f01fd7d97d0ace22f471a57ec5563d5df35e3a8a900d9b7e14f"
+  },
+  {
+    "path": "scripts/check_harness_environment.py",
+    "sha256": "a111e3ea467118040f53e1a3a3429b3ed2e94ce9f69278ae302db63a861d8145"
+  },
+  {
+    "path": "scripts/export_harness.py",
+    "sha256": "d1cf51baa9fa9a98497093bc1e65be55847eec0e99f5be6e6ff3b4c159eed7d0"
+  },
+  {
+    "path": "scripts/harness_core.py",
+    "sha256": "eb9fe8f363fa5481e7d89af16f58eb47e5b60089bb70d96420a6545f9ec6fe6f"
+  },
+  {
+    "path": "scripts/harness.py",
+    "sha256": "720f4c2a997ef1521c10b14417446cc5af2b9572a1a84c9b074777a19d08f210"
+  },
+  {
+    "path": "scripts/import_harness.py",
+    "sha256": "fd5a15755c347895f652e15734bf1842d39e12eb5d2cae07c960e29eaa6f25cb"
+  },
+  {
+    "path": "scripts/run_tests.py",
+    "sha256": "5b2973b16f9e5a92e15a246d9c49ff7609e1f44c30397e67a54a541b8c86bd6c"
+  },
+  {
+    "path": "scripts/validate_harness.py",
+    "sha256": "eb0f2c80d868e0c9c81ce6aae6efd13f7102dae79f2729c62dc5eb119aa8e341"
+  },
+  {
+    "path": "tests/test_harness.py",
+    "sha256": "9485498455cf839090cc2203bf26afb17bde4fcf1fa91572f3b746252021bd91"
+  }
+]

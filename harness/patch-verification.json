@@ -1,0 +1,28 @@
+{
+  "revision": "dancer-features-and-grok-ratio",
+  "original_120_unchanged": true,
+  "original_120_files": 36,
+  "vip_and_package_validation": {
+    "valid": true,
+    "errors": [],
+    "baseline_files": 13,
+    "protected_files": 7,
+    "source_verified": true
+  },
+  "skill_creator_validation": "PASS",
+  "automated_tests": 88,
+  "behavior_cases": 16,
+  "negative_controls": 4,
+  "behavior_review": "same-editor examples and self-review; Qoder and Grok Bot not independently retested",
+  "staged_archive_smoke": [
+    "package-validate",
+    "start",
+    "toggle",
+    "validate",
+    "toggle",
+    "export"
+  ],
+  "scope": "isolated temporary data; no image generation, installation, or publication",
+  "grok_ratio_source": "user-reported web UI behavior, 2026-10-25",
+  "dancer_scope": "character and costume only; scene not finalized; no new image evaluation"
+}
