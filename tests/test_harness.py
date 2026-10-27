@@ -137,7 +137,7 @@ class HarnessTests(unittest.TestCase):
 
     def test_B01_start_order_and_question(self):
         lines = self.store.start("chat-1")["text"].splitlines()
-        self.assertEqual(lines[0], "正在调用提示词助手 V1.22 Harness")
+        self.assertEqual(lines[0], "正在调用提示词助手 V1.3.0 Harness")
         self.assertEqual(lines[1], "[递归优化 --关]")
         self.assertIn("是否开启", lines[-1])
 
@@ -275,14 +275,20 @@ class HarnessTests(unittest.TestCase):
         self.store.manage("apply", value=False)
         self.assertEqual(self.store.applicable("户外人物", "Z-Image")["preferences"], [])
 
-    def test_D08_forget_scrubs_raw_text_snapshots_and_backups(self):
+    def test_D08_forget_scrubs_current_text_preserves_history_and_backups(self):
+        # 1.3 contract: forget edits the current view, never silently purges recovery data.
         result = self.feedback(features=["柔光"], long_term=True, raw="PRIVATE-SYNTHETIC-TEXT")
         pref = self.store.load()["user_preferences"]["preferences"][0]
+        before = {p: p.read_bytes() for p in (self.store.root / "generations").rglob("*") if p.is_file()}
+        backup = self.store.root / "backup-synthetic.zip"
+        export_data(self.store, backup)
+        raw_backup = backup.read_bytes()
         self.store.manage("forget", pref["id"], confirm=True)
         self.assertEqual(self.store.load()["user_preferences"]["feedback"], [])
-        for path in self.store.root.rglob("*"):
-            if path.is_file():
-                self.assertNotIn(b"PRIVATE-SYNTHETIC-TEXT", path.read_bytes())
+        self.assertNotIn("PRIVATE-SYNTHETIC-TEXT", json.dumps(self.store.load()))
+        self.assertEqual(raw_backup, backup.read_bytes())
+        for path, raw in before.items():
+            self.assertEqual(raw, path.read_bytes())
 
     def test_D09_version_specific_scope(self):
         self.feedback(features=["嘴部动作"], permanent=True, model_version="v1")

@@ -1,5 +1,7 @@
 """Alias: export_harness.py --data-dir DIR --kind full --output FILE."""
 import sys
+sys.dont_write_bytecode = True
+import sys
 from harness import main
 
 if __name__ == "__main__":

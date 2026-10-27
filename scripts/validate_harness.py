@@ -1,4 +1,6 @@
 """Validate package links, defaults, source preservation and executable syntax."""
+import sys
+sys.dont_write_bytecode = True
 import ast
 import hashlib
 import json
@@ -52,13 +54,35 @@ def validate_package(root=PACKAGE, source=None):
     revision_files = {"SKILL.md", "references/Adapter与交付.md",
                       "references/视觉设计系统/06-审美与视觉语言.md",
                       "references/视觉设计系统/07-约束与质量检查.md",
-                      "references/design-contract.md", "tests/design-cases.json"}
+                      "references/design-contract.md", "tests/design-cases.json",
+                      "references/Qwen-Image-2.1-T2I.md", "references/VIP偏好学习.md",
+                      "references/harness-help.md", "references/harness-protocol.md"}
     if set(revision.get("files", {})) != revision_files:
         errors.append("设计协议修订清单不完整")
     for name in revision_files:
         path = root / name
         if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest() != revision.get("files", {}).get(name):
             errors.append("设计协议文件与本次修订清单不符: " + name)
+
+    def before_release(text, name):
+        patch = revision.get("release_edits", {}).get(name, {})
+        for edit in reversed(patch.get("edits", [])):
+            if not edit["new"] or text.count(edit["new"]) != 1:
+                errors.append("发行修订无法唯一还原: " + name)
+                return text
+            text = text.replace(edit["new"], edit["old"], 1)
+        if hashlib.sha256(text.encode("utf-8")).hexdigest() != patch.get("base_sha256"):
+            errors.append("发行修订的 1.22 来源正文不符: " + name)
+        return text
+
+    release_files = {"SKILL.md", "references/Adapter与交付.md",
+                     "references/视觉设计系统/07-约束与质量检查.md",
+                     "references/Qwen-Image-2.1-T2I.md", "references/VIP偏好学习.md",
+                     "references/harness-help.md", "references/harness-protocol.md"}
+    if set(revision.get("release_edits", {})) != release_files:
+        errors.append("发行文档修订清单不完整")
+    prior = {name: before_release((root / name).read_text(encoding="utf-8"), name)
+             for name in release_files if (root / name).is_file()}
 
     def design_revision(text, name):
         # Apply the recorded, reviewable edits to the previously preserved VIP body.
@@ -102,21 +126,21 @@ def validate_package(root=PACKAGE, source=None):
         expected = expected.replace("非首次回复且用户明确要求生成时，只交付代码块，不重复开场；",
                                     "非首次回复且用户明确要求生成时，先显示实际状态，再交付代码块，不重复开场；")
         expected = design_revision(expected, "SKILL.md").replace("正在调用提示词助手 V1.2 Harness", "正在调用提示词助手 V1.22 Harness")
-        if skill[skill.index("## 产品定位"):] != expected:
+        if prior["SKILL.md"][prior["SKILL.md"].index("## 产品定位"):] != expected:
             errors.append("核心正文超出已记录的 Harness 与设计修订")
         adapter = (source / "references/Adapter与交付.md").read_text(encoding="utf-8")
         expected_adapter = adapter.replace("正在调用提示词助手 V1.2.0 VIP", "正在调用提示词助手 V1.2 Harness")
         expected_adapter = expected_adapter.replace("只输出代码块，不重复开场", "先输出实时状态标记，再输出代码块，不重复开场")
         expected_adapter = expected_adapter.replace("# Adapter 与交付", "# Adapter 与交付\n\nHarness 元信息遵循 SKILL.md：每轮先显示实际状态，首次另有开场与启用说明，均位于代码块外。以下交付条款只规定 Prompt 本身。", 1)
         expected_adapter = design_revision(expected_adapter, "references/Adapter与交付.md").replace("正在调用提示词助手 V1.2 Harness", "正在调用提示词助手 V1.22 Harness")
-        if (root / "references/Adapter与交付.md").read_text(encoding="utf-8") != expected_adapter:
+        if prior["references/Adapter与交付.md"] != expected_adapter:
             errors.append("Adapter 发生超出已记录的设计接入改动")
     forbidden = {"CURRENT", "user_preferences.json", "learned_overrides.json", "candidates.json",
-                 "evolution_log.jsonl", ".writer.lock"}
+                 "evolution_log.jsonl", ".writer.lock", "health.json"}
     for path in root.rglob("*"):
         if path.name in forbidden or "generations" in path.relative_to(root).parts:
             errors.append("发行目录含运行时个人数据: " + str(path.relative_to(root)))
-        if path.name == "__pycache__":
+        if path.name == "__pycache__" or path.suffix in (".pyc", ".pyo") or path.name.startswith((".probe-", "backup-")):
             errors.append("发行目录含 Python 缓存")
     return {"valid": not errors, "errors": errors, "baseline_files": len(baseline["files"]),
             "protected_files": len(preserved), "source_verified": source is not None}

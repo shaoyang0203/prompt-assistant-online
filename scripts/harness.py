@@ -1,4 +1,6 @@
 """Command line interface. JSON input files contain data, never executable code."""
+import sys
+sys.dont_write_bytecode = True
 import argparse
 import json
 from pathlib import Path
@@ -10,6 +12,9 @@ from harness_core import (Store, HarnessError, export_data, import_data, read_js
 
 
 def main(argv=None):
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(encoding="utf-8")
     parser = argparse.ArgumentParser(description="Prompt Assistant Online Harness")
     parser.add_argument("--data-dir", help="独立且持久的数据目录；不允许位于 Skill 内")
     sub = parser.add_subparsers(dest="command", required=True)

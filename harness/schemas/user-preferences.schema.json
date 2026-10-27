@@ -46,7 +46,8 @@
           "features": {
             "type": "array",
             "items": {
-              "type": "string"
+              "type": "string",
+              "pattern": "\\S"
             }
           },
           "polarity": {
@@ -141,7 +142,8 @@
             "type": "string"
           },
           "content": {
-            "type": "string"
+            "type": "string",
+            "pattern": "\\S"
           },
           "context": {
             "type": "string"
@@ -218,7 +220,8 @@
             "type": "string"
           },
           "content": {
-            "type": "string"
+            "type": "string",
+            "pattern": "\\S"
           },
           "context": {
             "type": "string"

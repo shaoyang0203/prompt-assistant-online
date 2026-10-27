@@ -1,4 +1,6 @@
 """Run isolated synthetic tests and write an auditable local report."""
+import sys
+sys.dont_write_bytecode = True
 import io
 import hashlib
 import json

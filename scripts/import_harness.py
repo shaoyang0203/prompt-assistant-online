@@ -1,5 +1,7 @@
 """Alias: import_harness.py --data-dir DIR --input FILE."""
 import sys
+sys.dont_write_bytecode = True
+import sys
 from harness import main
 
 if __name__ == "__main__":
