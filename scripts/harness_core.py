@@ -20,8 +20,8 @@ from uuid import uuid4
 import zipfile
 from contextlib import contextmanager
 
-VERSION = "1.22"
-SKILL = "prompt-assistant-online-v1-22-harness"
+VERSION = "1.3.0-harness"
+SKILL = "prompt-assistant-online-v1-3-0-harness"
 PACKAGE = Path(__file__).resolve().parents[1]
 FORMAT = 1
 RATINGS = ("特别喜欢", "喜欢", "一般", "厌恶")
@@ -130,9 +130,10 @@ def validate_records(data):
         require(f["rating"] in RATINGS and f["weight"] in ("弱", "中", "强"), "评价或权重无效")
         require(f["polarity"] in ("正向", "负向", "中性"), "反馈方向无效")
         require(all(type(f[k]) is bool for k in ("confirmed", "hard", "inferred")), "反馈标记无效")
-        require(isinstance(f["features"], list) and all(isinstance(x, str) for x in f["features"]), "特点无效")
+        require(isinstance(f["features"], list) and all(isinstance(x, str) and x.strip() for x in f["features"]), "特点无效")
         require(all(isinstance(f[k], str) for k in required - {"features", "confirmed", "hard", "inferred"}), "反馈字段类型无效")
         require(f["classification"] in ("personal", "design", "model"), "反馈分类无效")
+        require(not f["inferred"] or f["inference"].strip(), "推测内容不能为空白")
         require(not f["inferred"] or (f["weight"] == "弱" and not f["hard"]), "推断不得强权重或建立硬约束")
     for p in prefs["preferences"] + prefs["constraints"]:
         require(set(p) == {"id", "content", "context", "model", "model_version", "source",
@@ -141,12 +142,14 @@ def validate_records(data):
         require(p["status"] in ("active", "disabled", "conflict") and type(p["hard"]) is bool, "偏好状态无效")
         require(p["source"] in ("用户明确", "Agent 推断") and p["weight"] in ("弱", "中", "强"), "偏好来源无效")
         require(all(isinstance(p[k], str) for k in ("content", "context", "model", "model_version", "time")), "偏好文本字段无效")
+        require(p["content"].strip(), "偏好内容不能为空白")
         require(p["polarity"] in ("正向", "负向", "中性"), "偏好方向无效")
         require(p["source"] != "Agent 推断" or p["weight"] == "弱", "推断偏好只能弱权重")
         require(not p["hard"] or p["source"] == "用户明确", "硬约束必须用户明确")
     for c in data["candidates"]:
         require(set(c) == {"id", "rule", "context", "model", "model_version", "evidence", "goal",
                            "factor", "status", "fingerprint", "time"}, "候选字段无效")
+        require(all(isinstance(c[k], str) and c[k].strip() for k in ("rule", "goal", "factor", "context")), "候选内容不能为空白")
         require(c["status"] in ("candidate", "rejected", "active", "rolled_back", "imported_pending"), "候选状态无效")
         require(isinstance(c["evidence"], list), "候选证据无效")
         require(all(isinstance(c[k], str) for k in ("rule", "context", "model", "model_version", "goal", "factor", "fingerprint", "time")), "候选文本字段无效")
@@ -201,6 +204,39 @@ def log_event(data, obj, before, after, reason, source_ids=None, goal="", experi
         "rollback_reason": reason if rollback else ""})
 
 
+def preference_key(record):
+    return tuple(record[k] for k in ("content", "context", "model", "model_version"))
+
+
+def preference_conflicts(prefs):
+    records = [p for key in ("preferences", "constraints") for p in prefs[key]
+               if p["status"] != "disabled"]
+    groups = {}
+    for p in records:
+        groups.setdefault(preference_key(p), []).append(p)
+    for group in groups.values():
+        if {"正向", "负向"} <= {p["polarity"] for p in group}:
+            for p in group:
+                if p["polarity"] in ("正向", "负向"):
+                    p["status"] = "conflict"
+
+
+def add_preference(prefs, record, category):
+    for existing in prefs[category]:
+        if (existing["status"] != "disabled" and
+                preference_key(existing) == preference_key(record) and
+                all(existing[k] == record[k] for k in ("polarity", "source", "hard"))):
+            existing["evidence"] = list(dict.fromkeys(existing["evidence"] + record["evidence"]))
+            ranks = {"弱": 0, "中": 1, "强": 2}
+            if ranks[record["weight"]] > ranks[existing["weight"]]:
+                existing["weight"] = record["weight"]
+            if record["status"] == "conflict":
+                existing["status"] = "conflict"
+            return False
+    prefs[category].append(record)
+    return True
+
+
 class Store:
     def __init__(self, root=None):
         self.root = Path(root or os.environ.get("PROMPT_HARNESS_DATA_DIR") or
@@ -224,13 +260,51 @@ class Store:
         finally:
             path.unlink()
 
+    def _journal_path(self, generation=None):
+        pointer = self.root / "CURRENT"
+        generation = generation or (pointer.read_text(encoding="utf-8").strip() if pointer.exists() else "initial")
+        require(generation == "initial" or re.fullmatch(r"[0-9a-f]{32}", generation), "CURRENT 指针损坏")
+        return self.root / "audit" / (generation + ".json")
+
+    def _with_local_state(self, data, generation):
+        health = self.root / "health.json"
+        if health.exists():
+            value = read_json(health)
+            require(set(value) == {"last_successful_check"} and
+                    isinstance(value["last_successful_check"], str), "健康状态文件无效")
+            data["config"]["last_successful_check"] = value["last_successful_check"]
+        journal = self._journal_path(generation)
+        if journal.exists():
+            events = read_json(journal)
+            require(isinstance(events, list), "审计日志格式无效")
+            data["evolution_log"].extend(events)
+        validate_records(data)
+        return data
+
+    def _commit(self, data, original):
+        validate_records(data)
+        if data == original:
+            return False
+        if ({k: v for k, v in data.items() if k != "evolution_log"} ==
+                {k: v for k, v in original.items() if k != "evolution_log"} and
+                data["evolution_log"][:len(original["evolution_log"])] == original["evolution_log"]):
+            path = self._journal_path()
+            events = read_json(path) if path.exists() else []
+            events.extend(data["evolution_log"][len(original["evolution_log"]):])
+            path.parent.mkdir(exist_ok=True)
+            atomic(path, encoded(events))
+        else:
+            self.save(data)
+        return True
+
     def load(self):
+        self._repair_needed = False
         pointer = self.root / "CURRENT"
         if not pointer.exists():
             generations = self.root / "generations"
             require(not generations.exists() or (generations.is_dir() and not any(generations.iterdir())),
                     "检测到未完成初始化，需检查 generations 后恢复")
-            return blank()
+            return self._with_local_state(blank(), "initial")
         name = pointer.read_text(encoding="utf-8").strip()
         require(re.fullmatch(r"[0-9a-f]{32}", name), "CURRENT 指针损坏")
         folder = self.root / "generations" / name
@@ -248,11 +322,11 @@ class Store:
         config = result["config"]
         if config.pop("_repair_needed", False):
             result["config"] = config
+            self._repair_needed = True
             # Preserved corrupt generation remains available for recovery.
             log_event(result, "config", "损坏配置保留在旧 generation", config,
                       "修复为默认关闭；保留其他数据")
-        validate_records(result)
-        return result
+        return self._with_local_state(result, name)
 
     def save(self, data):
         validate_records(data)
@@ -266,7 +340,11 @@ class Store:
                 atomic(folder / "experiments" / (e["id"] + ".json"), encoded(e))
             atomic(folder / "evolution_log.jsonl", b"".join(encoded(e).replace(b"\n", b"") + b"\n"
                    for e in data["evolution_log"]))
-            atomic(self.root / "CURRENT", folder.name.encode("utf-8"))
+            # Verify the new pointer before publication; replace is the final commit point.
+            # A failed post-replace read must not turn a committed deletion into a reported failure.
+            pointer = folder / ".pointer"
+            atomic(pointer, folder.name.encode("utf-8"))
+            os.replace(pointer, self.root / "CURRENT")
         except BaseException:
             # Never remove a published generation if verification after replace failed.
             current = (self.root / "CURRENT").read_text() if (self.root / "CURRENT").exists() else ""
@@ -274,7 +352,7 @@ class Store:
                 shutil.rmtree(folder)
             raise
 
-    def change(self, action):
+    def change(self, action, audit_rejections=True):
         with self.lock():
             data = self.load()
             original = copy.deepcopy(data)
@@ -282,11 +360,13 @@ class Store:
                 result = action(data)
                 validate_records(data)
             except HarnessError as exc:
-                log_event(original, "rejected_operation", "未应用", "未应用", str(exc),
-                          accepted=False, effective=False)
-                self.save(original)
+                if audit_rejections:
+                    rejected = copy.deepcopy(original)
+                    log_event(rejected, "rejected_operation", "未应用", "未应用", str(exc),
+                              accepted=False, effective=False)
+                    self._commit(rejected, original)
                 raise
-            self.save(data)
+            self._commit(data, original)
             return result
 
     def probe(self, create=False, capability=True):
@@ -315,11 +395,15 @@ class Store:
                     reason += "; 临时文件清理失败: " + str(exc)
         if not reason:
             try:
-                self.change(lambda data: data["config"].update(last_successful_check=now()))
-                data = self.load()
-                require(data["config"]["last_successful_check"], "配置保存验证失败")
+                with self.lock():
+                    data = self.load()
+                    if not (self.root / "CURRENT").exists() or self._repair_needed:
+                        self.save(data)
+                    atomic(self.root / "health.json", encoded({"last_successful_check": now()}))
+                    data = self.load()
+                require(data["config"]["last_successful_check"], "健康状态保存验证失败")
                 return {"status": "开" if data["config"]["enabled"] else "关",
-                        "available": True, "reason": "已实际写入、同步、重读并清理；配置及完整数据快照保存成功",
+                        "available": True, "reason": "已实际写入、同步、重读并清理；业务数据校验通过，健康状态独立保存",
                         "data_dir": str(self.root)}
             except (OSError, ValueError, KeyError, TypeError) as exc:
                 reason = "无法可靠保存配置或数据: " + str(exc)
@@ -334,9 +418,10 @@ class Store:
             def action(data):
                 nonlocal first
                 first = session not in data["sessions"]
-                data["sessions"][session] = {"started": now(), "asked": True}
+                if first:
+                    data["sessions"][session] = {"started": now(), "asked": True}
             self.change(action)
-        lines = (["正在调用提示词助手 V1.22 Harness"] if first else [])
+        lines = (["正在调用提示词助手 V1.3.0 Harness"] if first else [])
         lines.append("[递归优化 --" + status["status"] + "]")
         if first:
             lines.append("递归优化会收集反馈，经对照与跨题材验证后更新独立经验；个人偏好与核心设计分离。")
@@ -352,7 +437,8 @@ class Store:
         def action(data):
             before = data["config"]["enabled"]
             data["config"]["enabled"] = enabled
-            log_event(data, "config.enabled", before, enabled, "用户明确切换递归优化")
+            if before != enabled:
+                log_event(data, "config.enabled", before, enabled, "用户明确切换递归优化")
         self.change(action)
         require(self.load()["config"]["enabled"] == enabled, "开关保存失败")
         return {"status": "开" if enabled else "关", "saved": True}
@@ -367,8 +453,9 @@ class Store:
             require(flag not in q or type(q[flag]) is bool, "反馈标记必须为布尔值: " + flag)
         require(q.get("rating") in RATINGS and q.get("prompt_id") and q.get("raw"), "缺少评价、方案 ID 或原话")
         features = q.get("features", [])
-        require(isinstance(features, list), "特点应为数组")
+        require(isinstance(features, list) and all(isinstance(x, str) and x.strip() for x in features), "特点应为非空白文本数组")
         inference = q.get("inference", "")
+        require(isinstance(inference, str) and (not inference or inference.strip()), "推测内容不能为空白")
         require(not inference or not features, "用户明确特点与 Agent 推断须分开记录")
         require(not q.get("long_term") or q.get("confirmed") or inference,
                 "长期明确偏好需要用户确认")
@@ -400,7 +487,8 @@ class Store:
                          "source": "Agent 推断" if inference else "用户明确", "evidence": [f["id"]],
                          "status": "active", "hard": hard, "time": now(), "weight": weight,
                          "polarity": polarity}
-                    prefs["constraints" if hard else "preferences"].append(p)
+                    add_preference(prefs, p, "constraints" if hard else "preferences")
+                preference_conflicts(prefs)
             log_event(data, "feedback", None, f["id"], "保存用户反馈；评价强度与具体特点分别记录", [f["id"]])
             return {"saved": True, "feedback": f, "clarify": not features and f["rating"] in ("特别喜欢", "厌恶")}
         return self.change(action)
@@ -408,6 +496,10 @@ class Store:
     def applicable(self, context, model, model_version="未知", current_features=()):
         data = self.load()
         prefs = data["user_preferences"]
+        preference_conflicts(prefs)
+        def in_scope(record):
+            return (record["context"] in (context, "*") and record["model"] in (model, "*")
+                    and record["model_version"] in (model_version, "*"))
         def matches(record):
             return (record["status"] == "active" and record["context"] in (context, "*") and
                     record["model"] in (model, "*") and record["model_version"] in (model_version, "*"))
@@ -415,7 +507,9 @@ class Store:
         ordinary = [p for p in prefs["preferences"] if matches(p) and p["content"] not in current_features]
         return {"preferences": ordinary if prefs["settings"]["apply"] else [],
                 "constraints": constraints,
-                "conflicts": [p for p in constraints if p["content"] in current_features],
+                "conflicts": [p for p in prefs["preferences"] + prefs["constraints"]
+                              if in_scope(p) and (p["status"] == "conflict" or
+                                  (p in constraints and p["content"] in current_features))],
                 "overrides": [r for r in data["learned_overrides"] if matches(r)]}
 
     def candidate(self, rule, evidence, goal, factor, context, model="*", model_version="*"):
@@ -490,7 +584,8 @@ class Store:
             before = copy.deepcopy(data["config"])
             data["config"].update(values)
             validate_config(data["config"])
-            log_event(data, "config.thresholds", before, data["config"], "用户配置优化和测试门槛")
+            if before != data["config"]:
+                log_event(data, "config.thresholds", before, data["config"], "用户配置优化和测试门槛")
             return copy.deepcopy(data["config"])
         return self.change(action)
 
@@ -508,57 +603,84 @@ class Store:
         return self.change(action)
 
     def manage(self, operation, record_id=None, value=None, confirm=False):
-        """VIP independent learning/apply switches and explicit correction/forget controls."""
+        """Manage current records atomically; history and backups are never purged here."""
+        if operation == "forget":
+            require(isinstance(record_id, str) and record_id.strip(), "forget 必须提供目标 ID")
         def action(data):
+            before = copy.deepcopy(data)
             prefs = data["user_preferences"]
             if operation in ("learning", "apply"):
                 require(type(value) is bool, "设置需要布尔值")
                 prefs["settings"][operation] = value
             elif operation == "authorize":
-                require(type(value) is bool and confirm, "可变经验写入授权需用户明确确认")
+                require(type(value) is bool and confirm is True, "可变经验写入授权需用户明确确认")
                 data["config"]["authorized_overrides"] = value
             elif operation in ("disable", "correct"):
                 p = next((p for p in prefs["preferences"] + prefs["constraints"] if p["id"] == record_id), None)
                 require(p, "偏好不存在")
-                require(not p["hard"] or confirm, "永久硬约束需用户明确确认后修改或撤销")
+                require(not p["hard"] or confirm is True, "永久硬约束需用户明确确认后修改或撤销")
                 if operation == "disable":
                     p["status"] = "disabled"
                 else:
                     require(isinstance(value, str) and value.strip(), "需修正内容")
                     p["content"] = value
                     p["source"] = "用户明确"
+                    preference_conflicts(prefs)
             elif operation in ("forget", "clear"):
-                require(confirm, "删除数据需明确用户请求")
+                require(confirm is True, "删除数据需明确用户请求")
                 if operation == "clear":
-                    ids = {p["id"] for p in prefs["feedback"]}
+                    for key in ("feedback", "preferences", "constraints"):
+                        prefs[key] = []
+                    for key in ("candidates", "experiments", "learned_overrides", "evolution_log"):
+                        data[key] = []
                 else:
-                    p = next((p for p in prefs["preferences"] + prefs["constraints"] if p["id"] == record_id), None)
-                    ids = set(p["evidence"]) if p else {record_id}
-                prefs["feedback"] = [f for f in prefs["feedback"] if f["id"] not in ids]
-                for key in ("preferences", "constraints"):
-                    prefs[key] = [p for p in prefs[key] if not set(p["evidence"]) & ids]
-                # Privacy deletion also removes derived artifacts, logs and snapshots that contain raw text.
-                data["candidates"] = []
-                data["experiments"] = []
-                data["learned_overrides"] = []
-                data["evolution_log"] = []
+                    records = prefs["preferences"] + prefs["constraints"]
+                    target = next((p for p in records if p["id"] == record_id), None)
+                    feedback = next((f for f in prefs["feedback"] if f["id"] == record_id), None)
+                    require(target is not None or feedback is not None, "目标 ID 不存在；未修改数据")
+                    # Shared feedback must remain available to other preference records.
+                    shared = {fid for p in records if p["id"] != record_id for fid in p["evidence"]}
+                    removed = {record_id}
+                    ids = (set(target["evidence"]) - shared) if target is not None else {record_id}
+                    removed.update(ids)
+                    prefs["feedback"] = [f for f in prefs["feedback"] if f["id"] not in ids]
+                    for key in ("preferences", "constraints"):
+                        kept = []
+                        for p in prefs[key]:
+                            if p["id"] == record_id:
+                                continue
+                            affected = bool(set(p["evidence"]) & ids)
+                            p["evidence"] = [fid for fid in p["evidence"] if fid not in ids]
+                            if affected and not p["evidence"]:
+                                removed.add(p["id"])
+                            else:
+                                kept.append(p)
+                        prefs[key] = kept
+                    candidate_ids = {c["id"] for c in data["candidates"] if set(c["evidence"]) & ids}
+                    experiment_ids = {e["id"] for e in data["experiments"] if e["candidate_id"] in candidate_ids}
+                    rule_ids = {r["id"] for r in data["learned_overrides"]
+                                if r["candidate_id"] in candidate_ids or r["experiment_id"] in experiment_ids}
+                    removed.update(candidate_ids | experiment_ids | rule_ids)
+                    for key in ("candidates", "experiments", "learned_overrides"):
+                        data[key] = [r for r in data[key] if r["id"] not in removed]
+                    def references_removed(value):
+                        if isinstance(value, str):
+                            return value in removed
+                        if isinstance(value, list):
+                            return any(references_removed(x) for x in value)
+                        if isinstance(value, dict):
+                            return any(references_removed(x) for x in value.values())
+                        return False
+                    data["evolution_log"] = [e for e in data["evolution_log"] if not references_removed(e)]
             else:
                 raise HarnessError("未知管理操作")
-            log_event(data, "preferences.settings" if operation in ("learning", "apply") else operation,
-                      "用户请求前", "用户请求后", "用户明确管理数据；删除内容不进入日志")
-        with self.lock():
-            data = self.load()
-            action(data)
-            self.save(data)
-            if operation in ("forget", "clear"):
-                current = (self.root / "CURRENT").read_text()
-                for folder in (self.root / "generations").iterdir():
-                    if folder.name != current:
-                        shutil.rmtree(folder)
-                # Backups contain private records too; explicit deletion purges managed backups.
-                for backup in self.root.glob("backup-*.zip"):
-                    backup.unlink()
-        return {"saved": True, "operation": operation}
+            changed = data != before
+            if changed:
+                log_event(data, "preferences.settings" if operation in ("learning", "apply") else operation,
+                          "用户请求前", "用户请求后", "用户明确管理当前数据；删除内容不进入日志")
+            return {"saved": changed, "operation": operation,
+                    "history_preserved": True} if operation in ("forget", "clear") else {"saved": changed, "operation": operation}
+        return self.change(action, audit_rejections=False)
 
 
 def clarify_unexpected(element, origin, options, selected=None, explicit=None):
@@ -633,6 +755,7 @@ def load_archive(path):
         require(set(m) == {"source_skill", "source_version", "data_version", "export_time", "categories", "kind", "counts", "sha256"}, "清单字段无效")
         supported_sources = {"1.2.0-harness": "prompt-assistant-online-v1-2-0-harness",
                              "1.2.1-harness": "prompt-assistant-online-v1-2-1-harness",
+                             "1.22": "prompt-assistant-online-v1-22-harness",
                              VERSION: SKILL}
         require(isinstance(m["source_version"], str) and
                 m["source_version"] in supported_sources and
@@ -698,6 +821,7 @@ def import_data(store, path):
     # Backup and merge under the same writer lock, preventing races.
     with store.lock():
         current = store.load()
+        original_state = copy.deepcopy(current)
         backup = store.root / ("backup-" + uid() + ".zip")
         export_data(store, backup)
         old_feedback = {r["id"]: r for r in current["user_preferences"]["feedback"]}
@@ -741,22 +865,32 @@ def import_data(store, path):
                     if existing[record["id"]] not in (record, original):
                         conflicts.append({"category": key, "id": record["id"], "reason": "同 ID 内容不同，保留本地"})
                     continue
-                if key in ("preferences", "constraints") and any(
-                    r["context"] == record["context"] and r["model"] == record["model"] and
-                    r["content"] == record["content"] and r["polarity"] != record["polarity"] for r in target):
-                    record["status"] = "conflict"
-                    conflicts.append({"category": key, "id": record["id"], "reason": "同范围偏好方向冲突，等待确认"})
-                target.append(record)
+                if key in ("preferences", "constraints"):
+                    if not add_preference(current["user_preferences"], record, key):
+                        continue
+                else:
+                    target.append(record)
                 existing[record["id"]] = record
                 added[key] += 1
         # Harness-only archives intentionally have no private feedback; their references stay historical.
-        current["config"]["enabled"] = False
-        current["config"]["authorized_overrides"] = False
-        current["sessions"] = {}
-        log_event(current, "migration", "已备份", added, "导入数据；保留新版配置并关闭引擎", accepted=True)
+        preference_conflicts(current["user_preferences"])
+        for key in ("preferences", "constraints"):
+            for record in current["user_preferences"][key]:
+                if record["status"] == "conflict":
+                    conflicts.append({"category": key, "id": record["id"], "reason": "同范围偏好方向冲突，等待确认"})
+        if kind != "preferences":
+            current["config"]["enabled"] = False
+            current["config"]["authorized_overrides"] = False
+            current["sessions"] = {}
+        log_event(current, "migration", "已备份", added,
+                  "仅导入偏好；保留本地设置和会话" if kind == "preferences" else "导入经验或完整包；保留本地门槛并关闭引擎和授权，重置会话",
+                  accepted=True)
         validate_records(current)
-        store.save(current)
+        store._commit(current, original_state)
         verify_imported_data(current, store.load())
-    status = store.probe()
+    status = ({"status": "开" if current["config"]["enabled"] else "关",
+               "available": None, "reason": "偏好导入未改动健康状态；需要时单独检测"}
+              if kind == "preferences" else store.probe())
     return {"added": added, "conflicts": conflicts, "backup": str(backup), "environment": status,
-            "kind": kind, "notice": "历史文本仅为数据；下次首次调用重新询问启用"}
+            "kind": kind, "notice": ("仅合并偏好；本地设置、授权、会话和健康状态保留" if kind == "preferences"
+                                      else "历史文本仅为数据；引擎和授权关闭，下次首次调用重新询问启用")}

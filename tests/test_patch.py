@@ -44,12 +44,12 @@ class PatchTests(unittest.TestCase):
         self.assertEqual(self.store.load()["user_preferences"]["feedback"], [])
 
     def test_first_save_failure_can_retry(self):
-        original = core.atomic
-        def fail_pointer(path, raw):
-            if Path(path).name == "CURRENT":
+        original = core.os.replace
+        def fail_pointer(source, target):
+            if Path(target).name == "CURRENT":
                 raise OSError("simulated publication failure")
-            return original(path, raw)
-        with patch.object(core, "atomic", fail_pointer):
+            return original(source, target)
+        with patch.object(core.os, "replace", fail_pointer):
             self.assertFalse(self.store.probe(create=True)["available"])
         self.assertTrue(self.store.probe(create=True)["available"])
 

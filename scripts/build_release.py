@@ -1,4 +1,6 @@
 """Build a verified installable ZIP with one named skill directory."""
+import sys
+sys.dont_write_bytecode = True
 import argparse
 import hashlib
 import json
