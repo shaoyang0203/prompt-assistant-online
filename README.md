@@ -8,7 +8,7 @@
 
 Harness 在 V1.2 VIP 的基础上，加入独立的反馈、偏好、优化实验、修改日志和迁移机制。你可以逐步积累自己的审美偏好，也可以在有证据、经过验证的前提下积累设计经验。
 
-本版为本地构建的 1.3.0-harness，尚未发布 GitHub · [发布说明](发布说明.md) · [Harness 使用说明](references/harness-help.md) · [数据格式与迁移](harness/README.md)
+本版 1.3.0-harness 已发布到 [GitHub Release](https://github.com/shaoyang0203/prompt-assistant-online/releases/tag/v1.3.0-harness) · [发布说明](发布说明.md) · [Harness 使用说明](references/harness-help.md) · [数据格式与迁移](harness/README.md)
 
 ## 能做什么
 
