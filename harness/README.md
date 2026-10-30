@@ -92,7 +92,7 @@ user_preferences 包含独立 learning/apply 设置和 feedback/preferences/cons
 
 完整包包含 manifest.json、user_preferences.json、learned_overrides.json、candidates.json、experiments/*.json、evolution_log.jsonl。Harness 历史包不含偏好原始库，但日志与实验可能有创作内容，仍属私人文件。独立偏好导出为 JSON。三类导出都不含配置位置、会话、核心代码或环境变量。输入反馈不得保存凭据/API 密钥；导出之前检查原始文本并按用户意图去敏，程序不承诺识别所有自由文本秘密。
 
-manifest 含来源、版本、格式、时间、类别、计数和 SHA256。只接收 1.2.0-harness、1.2.1-harness、1.22、1.3.0-harness 对应身份的数据格式 1；显式 `migrate_format` 接口识别 v1，未来格式在添加适配器前拒绝，不猜测兼容性。检查文件白名单、大小、重复条目，不解压执行代码。导入前备份；同 ID 去重、内容不同保留本地并报告；矛盾规则挂起；候选不晋级；配置不从包导入。preferences 导入保留本地引擎、授权、会话、健康时间及 learning/apply；harness/full 导入关闭 enabled 与 authorized_overrides、重置 sessions，并重新检测；保留本地门槛和 learning/apply。日志纯数据。
+manifest 含来源、版本、格式、时间、类别、计数和 SHA256。只接收 1.2.0-harness、1.2.1-harness、1.22、1.3.0-harness、1.4.0-harness 对应身份的数据格式 1；显式 `migrate_format` 接口识别 v1，未来格式在添加适配器前拒绝，不猜测兼容性。检查文件白名单、大小、重复条目，不解压执行代码。导入前备份；同 ID 去重、内容不同保留本地并报告；矛盾规则挂起；候选不晋级；配置不从包导入。preferences 导入保留本地引擎、授权、会话、健康时间及 learning/apply；harness/full 导入关闭 enabled 与 authorized_overrides、重置 sessions，并重新检测；保留本地门槛和 learning/apply。日志纯数据。
 
 在新版本中使用相同 DATA 可保留数据；也可用完整包迁移。VIP 自由格式 Markdown 仍可由用户指定为只读迁移来源；先逐条核对、转为 v1 JSON、校验并导入，再切换唯一数据源，不同时维护两个库。
 
@@ -101,9 +101,9 @@ forget 需有效 --id 和 --confirm，只移除当前目标及关联记录，共
 结构检查运行 `python scripts/validate_harness.py`；自动测试运行 `python scripts/run_tests.py`；发行打包运行 `python scripts/build_release.py --output <外部路径.zip>`。
 
 
-## 1.3.0-harness 修复版
+## V1.4.0-harness
 
-当前版本身份为 `1.3.0-harness`，技能名为 `prompt-assistant-online-v1-3-0-harness`。接受 1.2.0-harness、1.2.1-harness 、1.22 和 1.3.0-harness 各自匹配技能名的数据包；数据格式仍为 1。实验记录的写后核验按唯一 ID 对齐，其他内容和日志顺序仍严格检查。旧数据可继续使用，不需要清空或转换。
+当前版本身份为 `1.4.0-harness`，技能名为 `prompt-assistant-online-v1-4-0-harness`。接受 1.2.0-harness、1.2.1-harness 、1.22 、1.3.0-harness 和 1.4.0-harness 各自匹配技能名的数据包；数据格式仍为 1。实验记录的写后核验按唯一 ID 对齐，其他内容和日志顺序仍严格检查。旧数据可继续使用，不需要清空或转换。
 
 同范围同内容的正负偏好均标记 conflict 并在查询中暴露，不同时生效；相同方向、来源和类别的重复偏好合并证据。弱推测继续保留弱权重，不因合并自动成为明确事实或硬约束。
 

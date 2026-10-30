@@ -137,7 +137,7 @@ class HarnessTests(unittest.TestCase):
 
     def test_B01_start_order_and_question(self):
         lines = self.store.start("chat-1")["text"].splitlines()
-        self.assertEqual(lines[0], "正在调用提示词助手 V1.3.0 Harness")
+        self.assertEqual(lines[0], "正在调用提示词助手 V1.4.0 Harness")
         self.assertEqual(lines[1], "[递归优化 --关]")
         self.assertIn("是否开启", lines[-1])
 

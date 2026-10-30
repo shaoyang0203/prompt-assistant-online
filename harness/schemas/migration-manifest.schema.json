@@ -7,7 +7,8 @@
         "prompt-assistant-online-v1-2-0-harness",
         "prompt-assistant-online-v1-2-1-harness",
         "prompt-assistant-online-v1-22-harness",
-        "prompt-assistant-online-v1-3-0-harness"
+        "prompt-assistant-online-v1-3-0-harness",
+        "prompt-assistant-online-v1-4-0-harness"
       ]
     },
     "source_version": {
@@ -15,7 +16,8 @@
         "1.2.0-harness",
         "1.2.1-harness",
         "1.22",
-        "1.3.0-harness"
+        "1.3.0-harness",
+        "1.4.0-harness"
       ]
     },
     "data_version": {

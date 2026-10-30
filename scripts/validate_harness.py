@@ -20,7 +20,7 @@ def validate_package(root=PACKAGE, source=None):
                 "harness/schemas/user-preferences.schema.json", "harness/schemas/learned-overrides.schema.json",
                 "harness/schemas/migration-manifest.schema.json")
     required += ("references/design-contract.md", "tests/design-cases.json",
-                 "harness/design-protocol-integrity.json")
+                 "harness/design-protocol-integrity.json", "references/风格推荐库.md")
     for name in required:
         if not (root / name).is_file():
             errors.append("缺少文件: " + name)
@@ -57,12 +57,30 @@ def validate_package(root=PACKAGE, source=None):
                       "references/design-contract.md", "tests/design-cases.json",
                       "references/Qwen-Image-2.1-T2I.md", "references/VIP偏好学习.md",
                       "references/harness-help.md", "references/harness-protocol.md"}
+    revision_files |= {"references/视觉设计系统/04-构图与空间.md", "references/风格推荐库.md"}
     if set(revision.get("files", {})) != revision_files:
         errors.append("设计协议修订清单不完整")
     for name in revision_files:
         path = root / name
         if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest() != revision.get("files", {}).get(name):
             errors.append("设计协议文件与本次修订清单不符: " + name)
+
+    def before_upgrade(text, name):
+        patch = revision.get("v14_edits", {}).get(name, {})
+        for edit in reversed(patch.get("edits", [])):
+            if not edit["new"] or text.count(edit["new"]) != 1:
+                errors.append("V1.4 修订无法唯一还原: " + name)
+                return text
+            text = text.replace(edit["new"], edit["old"], 1)
+        if hashlib.sha256(text.encode("utf-8")).hexdigest() != patch.get("base_sha256"):
+            errors.append("V1.4 修订的 V1.3.0 来源正文不符: " + name)
+        return text
+
+    upgrade_files = revision_files - {"references/风格推荐库.md"}
+    if set(revision.get("v14_edits", {})) != upgrade_files:
+        errors.append("V1.4 修订清单不完整")
+    prior13 = {name: before_upgrade((root / name).read_text(encoding="utf-8"), name)
+               for name in upgrade_files if (root / name).is_file()}
 
     def before_release(text, name):
         patch = revision.get("release_edits", {}).get(name, {})
@@ -81,7 +99,7 @@ def validate_package(root=PACKAGE, source=None):
                      "references/harness-help.md", "references/harness-protocol.md"}
     if set(revision.get("release_edits", {})) != release_files:
         errors.append("发行文档修订清单不完整")
-    prior = {name: before_release((root / name).read_text(encoding="utf-8"), name)
+    prior = {name: before_release(prior13[name], name)
              for name in release_files if (root / name).is_file()}
 
     def design_revision(text, name):
@@ -103,6 +121,11 @@ def validate_package(root=PACKAGE, source=None):
     # Newlines are normalized by the integration; compare original bytes for untouched resources.
     for name in preserved:
         raw = (root / name).read_bytes()
+        if name in prior13:
+            prior_text = prior13[name]
+            if revision.get("v14_edits", {}).get(name, {}).get("base_newlines") == "CRLF":
+                prior_text = prior_text.replace("\n", "\r\n")
+            raw = prior_text.encode("utf-8")
         if name in additions:
             insertion = additions[name].encode("utf-8")
             if not insertion or raw.count(insertion) != 1:
