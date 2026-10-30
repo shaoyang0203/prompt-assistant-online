@@ -20,8 +20,8 @@ from uuid import uuid4
 import zipfile
 from contextlib import contextmanager
 
-VERSION = "1.3.0-harness"
-SKILL = "prompt-assistant-online-v1-3-0-harness"
+VERSION = "1.4.0-harness"
+SKILL = "prompt-assistant-online-v1-4-0-harness"
 PACKAGE = Path(__file__).resolve().parents[1]
 FORMAT = 1
 RATINGS = ("特别喜欢", "喜欢", "一般", "厌恶")
@@ -421,7 +421,7 @@ class Store:
                 if first:
                     data["sessions"][session] = {"started": now(), "asked": True}
             self.change(action)
-        lines = (["正在调用提示词助手 V1.3.0 Harness"] if first else [])
+        lines = (["正在调用提示词助手 V1.4.0 Harness"] if first else [])
         lines.append("[递归优化 --" + status["status"] + "]")
         if first:
             lines.append("递归优化会收集反馈，经对照与跨题材验证后更新独立经验；个人偏好与核心设计分离。")
@@ -756,6 +756,7 @@ def load_archive(path):
         supported_sources = {"1.2.0-harness": "prompt-assistant-online-v1-2-0-harness",
                              "1.2.1-harness": "prompt-assistant-online-v1-2-1-harness",
                              "1.22": "prompt-assistant-online-v1-22-harness",
+                             "1.3.0-harness": "prompt-assistant-online-v1-3-0-harness",
                              VERSION: SKILL}
         require(isinstance(m["source_version"], str) and
                 m["source_version"] in supported_sources and
