@@ -1,0 +1,3511 @@
+{
+  "version": "1.0.0",
+  "entries": [
+    {
+      "id": "CA-01",
+      "title": "景别：信息预算与裁切",
+      "domain": "camera-composition",
+      "path": "camera/design.md",
+      "anchor": "ca-01",
+      "model_execution": "untested",
+      "sha256": "36c1006e858e84d9507a6068b5b5c2017644327fcd4e369fafd2a827c93960c0",
+      "keywords": [
+        "景别",
+        "大远景",
+        "远景",
+        "全景",
+        "中景",
+        "近景",
+        "特写",
+        "全身",
+        "shot size",
+        "close up"
+      ],
+      "related": [
+        "CA-02",
+        "CA-07",
+        "CH-03",
+        "SC-01"
+      ],
+      "sources": [
+        "S13"
+      ],
+      "evidence": [
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "CA-02",
+      "title": "焦距、距离、透视与边缘拉伸",
+      "domain": "camera-composition",
+      "path": "camera/design.md",
+      "anchor": "ca-02",
+      "model_execution": "untested",
+      "sha256": "f1b3945914e5faa14ecd8b07f21c7a3a7dbb587033c820bacd010b7812ce5960",
+      "keywords": [
+        "焦距",
+        "焦段",
+        "拍摄距离",
+        "广角",
+        "长焦",
+        "透视",
+        "空间压缩",
+        "边缘畸变",
+        "perspective",
+        "compression",
+        "wide angle"
+      ],
+      "related": [
+        "CA-01",
+        "CA-03",
+        "SC-01"
+      ],
+      "sources": [
+        "S09",
+        "S26"
+      ],
+      "evidence": [
+        "T",
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "CA-03",
+      "title": "机位高度与俯仰",
+      "domain": "camera-composition",
+      "path": "camera/design.md",
+      "anchor": "ca-03",
+      "model_execution": "untested",
+      "sha256": "a3ee664d887cc64368d8031892c9214862ade02d636a2914c8158fb66bf31560",
+      "keywords": [
+        "平视",
+        "俯拍",
+        "仰拍",
+        "高机位",
+        "低机位",
+        "eye level",
+        "high angle",
+        "low angle"
+      ],
+      "related": [
+        "CA-02",
+        "CA-04",
+        "SC-01",
+        "LC-03"
+      ],
+      "sources": [
+        "S12"
+      ],
+      "evidence": [
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "CA-04",
+      "title": "方位、过肩与主观视角",
+      "domain": "camera-composition",
+      "path": "camera/design.md",
+      "anchor": "ca-04",
+      "model_execution": "untested",
+      "sha256": "443403ed4fb76c2ba524b4d5dd8d8a5972dbf60cf515ddf1b6de601e452f36b4",
+      "keywords": [
+        "正面",
+        "侧面",
+        "侧前方",
+        "背面",
+        "过肩",
+        "主观视角",
+        "POV",
+        "over shoulder"
+      ],
+      "related": [
+        "CA-03",
+        "CA-05",
+        "CH-04",
+        "SC-04"
+      ],
+      "sources": [
+        "S13",
+        "S12"
+      ],
+      "evidence": [
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "CA-05",
+      "title": "中心、对称与三分：选择组织方式",
+      "domain": "camera-composition",
+      "path": "camera/design.md",
+      "anchor": "ca-05",
+      "model_execution": "untested",
+      "sha256": "79faee0edb8b6542e09031dcbf88649997c3755f2099efc99cef244d703db2b0",
+      "keywords": [
+        "中心构图",
+        "对称",
+        "非对称",
+        "三分法",
+        "centered",
+        "symmetry",
+        "thirds"
+      ],
+      "related": [
+        "CA-06",
+        "CA-08",
+        "SC-01"
+      ],
+      "sources": [
+        "S10",
+        "S27"
+      ],
+      "evidence": [
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "CA-06",
+      "title": "框景、前景、引导线与负空间",
+      "domain": "camera-composition",
+      "path": "camera/design.md",
+      "anchor": "ca-06",
+      "model_execution": "untested",
+      "sha256": "4787370170af6a3f4c80df2e84e0fc7dfda49806ee91a26c209e1b3556aa6a2f",
+      "keywords": [
+        "框架构图",
+        "前景遮挡",
+        "留白",
+        "负空间",
+        "引导线",
+        "framing",
+        "foreground",
+        "negative space",
+        "leading lines"
+      ],
+      "related": [
+        "CA-05",
+        "CA-08",
+        "SC-01",
+        "SC-04"
+      ],
+      "sources": [
+        "S10",
+        "S11"
+      ],
+      "evidence": [
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "CA-07",
+      "title": "景深与焦点：清楚什么，舍弃什么",
+      "domain": "camera-composition",
+      "path": "camera/design.md",
+      "anchor": "ca-07",
+      "model_execution": "untested",
+      "sha256": "ce255a5fa781b21e3c270ff7f94149d260fe0a400cc5db6fc1efa3693cef3c29",
+      "keywords": [
+        "景深",
+        "焦点",
+        "浅景深",
+        "深焦",
+        "虚化",
+        "depth of field",
+        "focus"
+      ],
+      "related": [
+        "CA-01",
+        "CA-02",
+        "SC-04"
+      ],
+      "sources": [
+        "S28",
+        "S29",
+        "S26",
+        "S27"
+      ],
+      "evidence": [
+        "T",
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "CA-08",
+      "title": "视觉重心、疏密与设计密度",
+      "domain": "camera-composition",
+      "path": "camera/design.md",
+      "anchor": "ca-08",
+      "model_execution": "untested",
+      "sha256": "1aa49569a30778dc238ebf1f6ce3e7dd939ef5b5596bf4c7ddb303ae82d9fc58",
+      "keywords": [
+        "视觉重心",
+        "疏密",
+        "设计密度",
+        "层级",
+        "注意力",
+        "hierarchy",
+        "density"
+      ],
+      "related": [
+        "LC-06",
+        "LC-19",
+        "CH-03",
+        "SC-02"
+      ],
+      "sources": [
+        "S27",
+        "S10"
+      ],
+      "evidence": [
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "CA-09",
+      "title": "选择依据、参考图职责及画幅变更",
+      "domain": "camera-composition",
+      "path": "camera/aspect-ratios.md",
+      "anchor": "ca-09",
+      "model_execution": "untested",
+      "sha256": "983dd23bac3fe67fbf434e823ac213911c856df93685110d4db1a3adb8082d65",
+      "keywords": [
+        "画幅",
+        "比例选择",
+        "宽高比",
+        "aspect ratio",
+        "参考图比例",
+        "画幅修改",
+        "横竖选择"
+      ],
+      "related": [
+        "CA-01",
+        "CA-08",
+        "DR-03",
+        "DR-04",
+        "DR-08",
+        "DR-09",
+        "CA-10",
+        "CA-18"
+      ],
+      "sources": [
+        "S33",
+        "S27",
+        "S32"
+      ],
+      "evidence": [
+        "T",
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "CA-10",
+      "title": "横向4:3：兼顾高度与侧向关系",
+      "domain": "camera-composition",
+      "path": "camera/aspect-ratios.md",
+      "anchor": "ca-10",
+      "model_execution": "untested",
+      "sha256": "f5d8cb08e818ae07606f02a0f3ffaa1c0df0adc4839df4dba790e7d8f3b5dd64",
+      "keywords": [
+        "4:3",
+        "横向4:3",
+        "适度横幅",
+        "桌面关系"
+      ],
+      "related": [
+        "CA-09",
+        "CA-11",
+        "CA-14",
+        "DR-04"
+      ],
+      "sources": [
+        "S33",
+        "S27"
+      ],
+      "evidence": [
+        "T",
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "CA-11",
+      "title": "横向3:2：中等横向展开",
+      "domain": "camera-composition",
+      "path": "camera/aspect-ratios.md",
+      "anchor": "ca-11",
+      "model_execution": "untested",
+      "sha256": "27c8df770b86245da4cdafa1bd6629bdb604be57710c4d9c0fe2b8060b78eb2e",
+      "keywords": [
+        "3:2",
+        "横向3:2",
+        "人物环境并置",
+        "侧向空间"
+      ],
+      "related": [
+        "CA-09",
+        "CA-10",
+        "CA-12",
+        "CA-16"
+      ],
+      "sources": [
+        "S33",
+        "S27"
+      ],
+      "evidence": [
+        "T",
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "CA-12",
+      "title": "横向16:9：强调横向关系的宽幅",
+      "domain": "camera-composition",
+      "path": "camera/aspect-ratios.md",
+      "anchor": "ca-12",
+      "model_execution": "untested",
+      "sha256": "6e1ee83c08d6d05582da1d1f7856876486feb5f85bedf7293bbe4512bcf85b23",
+      "keywords": [
+        "16:9",
+        "横向16:9",
+        "横向距离",
+        "宽屏",
+        "横向动作"
+      ],
+      "related": [
+        "CA-09",
+        "CA-11",
+        "CA-13",
+        "CA-17"
+      ],
+      "sources": [
+        "S33",
+        "S27"
+      ],
+      "evidence": [
+        "T",
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "CA-13",
+      "title": "横向21:9：强横向跨度与分散组织",
+      "domain": "camera-composition",
+      "path": "camera/aspect-ratios.md",
+      "anchor": "ca-13",
+      "model_execution": "untested",
+      "sha256": "96d5b6a7aa1d28ff8c8edfbe9b8b963ecc2a6f0949f4b029b0c4ef42820cda54",
+      "keywords": [
+        "21:9",
+        "横向21:9",
+        "超宽幅",
+        "横向跨度",
+        "多组关系"
+      ],
+      "related": [
+        "CA-09",
+        "CA-12",
+        "DR-04",
+        "DR-05"
+      ],
+      "sources": [
+        "S33",
+        "S27",
+        "S32"
+      ],
+      "evidence": [
+        "T",
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "CA-14",
+      "title": "纵向4:5：较宽松的竖向组织",
+      "domain": "camera-composition",
+      "path": "camera/aspect-ratios.md",
+      "anchor": "ca-14",
+      "model_execution": "untested",
+      "sha256": "15da8a75f4229e3a7561b878a1b2d06856a7d83174c0f14c14215f38786e32ae",
+      "keywords": [
+        "4:5",
+        "纵向4:5",
+        "宽竖幅",
+        "手臂余量"
+      ],
+      "related": [
+        "CA-09",
+        "CA-15",
+        "CA-18",
+        "CA-01"
+      ],
+      "sources": [
+        "S33",
+        "S27"
+      ],
+      "evidence": [
+        "T",
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "CA-15",
+      "title": "纵向3:4：身体与垂直环境并置",
+      "domain": "camera-composition",
+      "path": "camera/aspect-ratios.md",
+      "anchor": "ca-15",
+      "model_execution": "untested",
+      "sha256": "787b19c32d693bfe3671df9dc88186dcfaed230c5a3af09ffa0db85acf9b785d",
+      "keywords": [
+        "3:4",
+        "纵向3:4",
+        "垂直环境",
+        "拱顶",
+        "上下关系"
+      ],
+      "related": [
+        "CA-09",
+        "CA-14",
+        "CA-16",
+        "SC-01"
+      ],
+      "sources": [
+        "S33",
+        "S27"
+      ],
+      "evidence": [
+        "T",
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "CA-16",
+      "title": "纵向2:3：较长的身体与竖向延伸",
+      "domain": "camera-composition",
+      "path": "camera/aspect-ratios.md",
+      "anchor": "ca-16",
+      "model_execution": "untested",
+      "sha256": "94fa69aaf65db8fbfd380b28eb0554c857472b820f77aa0b0e88e55c774b8249",
+      "keywords": [
+        "2:3",
+        "纵向2:3",
+        "长裙",
+        "全身支撑",
+        "纵向动作"
+      ],
+      "related": [
+        "CA-09",
+        "CA-15",
+        "CA-17",
+        "CH-02"
+      ],
+      "sources": [
+        "S33",
+        "S27"
+      ],
+      "evidence": [
+        "T",
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "CA-17",
+      "title": "纵向9:16：显著上下跨度与窄侧向空间",
+      "domain": "camera-composition",
+      "path": "camera/aspect-ratios.md",
+      "anchor": "ca-17",
+      "model_execution": "untested",
+      "sha256": "40c7e6b13e589587112517e233c3d089bba5e5f4529d2b8687a8bdad8cf4108a",
+      "keywords": [
+        "9:16",
+        "纵向9:16",
+        "长竖幅",
+        "竖屏",
+        "上下跨度",
+        "瀑布"
+      ],
+      "related": [
+        "CA-09",
+        "CA-15",
+        "CA-16",
+        "DR-04"
+      ],
+      "sources": [
+        "S33",
+        "S27"
+      ],
+      "evidence": [
+        "T",
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "CA-18",
+      "title": "正方形1:1：双轴均衡与集中组织",
+      "domain": "camera-composition",
+      "path": "camera/aspect-ratios.md",
+      "anchor": "ca-18",
+      "model_execution": "untested",
+      "sha256": "0d4e9b40c21d8cf5f4e3e8c4d1fcfb9e6155a2b3b87790367f12c90c0e20544d",
+      "keywords": [
+        "1:1",
+        "正方形",
+        "方幅",
+        "均衡",
+        "集中构图",
+        "旋转对称"
+      ],
+      "related": [
+        "CA-09",
+        "CA-05",
+        "CA-14",
+        "DR-05"
+      ],
+      "sources": [
+        "S33",
+        "S32"
+      ],
+      "evidence": [
+        "T",
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "CA-19",
+      "title": "景别与拍摄距离：先确定必见范围",
+      "domain": "camera-composition",
+      "path": "camera/shot-planning.md",
+      "anchor": "ca-19",
+      "model_execution": "untested",
+      "sha256": "eb48e12a590c26bf0d594c6f69d2aa7ebceefaabfe38fa077329a5e2c5b7d899",
+      "keywords": [
+        "景别距离",
+        "裁切边界",
+        "必见信息",
+        "中景全身",
+        "脚印",
+        "手部入镜",
+        "拍摄距离"
+      ],
+      "related": [
+        "CA-01",
+        "CA-02",
+        "CA-09",
+        "DR-12",
+        "CH-09"
+      ],
+      "sources": [
+        "S13",
+        "S36",
+        "S27"
+      ],
+      "evidence": [
+        "T",
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "CA-20",
+      "title": "机位、消失线与边缘关系",
+      "domain": "camera-composition",
+      "path": "camera/shot-planning.md",
+      "anchor": "ca-20",
+      "model_execution": "untested",
+      "sha256": "211baa2553a470930ed1d7a417252655d1d9e9d4a19c21c24ab73280d3ff75d1",
+      "keywords": [
+        "地平线",
+        "机位高度",
+        "俯仰角",
+        "垂直线",
+        "切线",
+        "边缘截断",
+        "透视线",
+        "建筑摄影"
+      ],
+      "related": [
+        "CA-03",
+        "CA-05",
+        "CA-06",
+        "SC-05",
+        "SC-06",
+        "DR-14"
+      ],
+      "sources": [
+        "S12",
+        "S26",
+        "S27"
+      ],
+      "evidence": [
+        "T",
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "CA-21",
+      "title": "人物与环境尺度：分离不只靠虚化",
+      "domain": "camera-composition",
+      "path": "camera/shot-planning.md",
+      "anchor": "ca-21",
+      "model_execution": "untested",
+      "sha256": "04a90ef24e3cff30d1af34e48cb0b61606d69f55ec098b7f488d5ea07795606d",
+      "keywords": [
+        "环境人像",
+        "人物占比",
+        "尺度参照",
+        "主体分离",
+        "负空间用途",
+        "框景遮挡",
+        "多主体构图"
+      ],
+      "related": [
+        "CA-06",
+        "CA-08",
+        "CA-09",
+        "DR-04",
+        "DR-13",
+        "SC-07"
+      ],
+      "sources": [
+        "S27",
+        "S32",
+        "S11"
+      ],
+      "evidence": [
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "CA-22",
+      "title": "广角、标准与长焦：按比较条件选择",
+      "domain": "camera-composition",
+      "path": "camera/shot-planning.md",
+      "anchor": "ca-22",
+      "model_execution": "untested",
+      "sha256": "fe0c96c199035ca2983be9d59f449c12edc3c3a8846cd904565dce6682d32794",
+      "keywords": [
+        "广角效果",
+        "标准镜头",
+        "长焦效果",
+        "焦段选择",
+        "距离比较",
+        "空间压缩",
+        "环境展示"
+      ],
+      "related": [
+        "CA-02",
+        "CA-03",
+        "CA-19",
+        "CA-21",
+        "CA-23"
+      ],
+      "sources": [
+        "S36",
+        "S09",
+        "S26"
+      ],
+      "evidence": [
+        "T",
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "CA-23",
+      "title": "焦点、景深与背景虚化的分工",
+      "domain": "camera-composition",
+      "path": "camera/shot-planning.md",
+      "anchor": "ca-23",
+      "model_execution": "untested",
+      "sha256": "5b79f813efec6d48e515124f8597868aa8366ea0922bb715ec107b8d6d8267aa",
+      "keywords": [
+        "焦点位置",
+        "清晰范围",
+        "背景虚化",
+        "焦外",
+        "bokeh",
+        "多主体清晰",
+        "深度分层"
+      ],
+      "related": [
+        "CA-07",
+        "CA-19",
+        "CA-22",
+        "DR-12",
+        "LC-07",
+        "MA-08"
+      ],
+      "sources": [
+        "S28",
+        "S29",
+        "S36"
+      ],
+      "evidence": [
+        "T",
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "CH-01",
+      "title": "廓形、剪裁、比例与层次",
+      "domain": "character-art",
+      "path": "character/design.md",
+      "anchor": "ch-01",
+      "model_execution": "untested",
+      "sha256": "b5a83954978362f9d5be4ec666a09a937f751b5684323c317b8fe7333840da79",
+      "keywords": [
+        "廓形",
+        "剪裁",
+        "比例",
+        "层次",
+        "服装设计",
+        "silhouette",
+        "cut",
+        "costume"
+      ],
+      "related": [
+        "CH-02",
+        "CH-03",
+        "MA-01",
+        "CA-01"
+      ],
+      "sources": [
+        "S16",
+        "S15"
+      ],
+      "evidence": [
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "CH-02",
+      "title": "布料垂坠、褶皱与动作受力",
+      "domain": "character-art",
+      "path": "character/design.md",
+      "anchor": "ch-02",
+      "model_execution": "untested",
+      "sha256": "81f1d7d49d46436d5ac2d3c7a079cf7cb3a45672ae169c4a1f24aa8326bc83eb",
+      "keywords": [
+        "垂坠",
+        "褶皱",
+        "运动",
+        "衣服人体",
+        "风",
+        "湿衣",
+        "drape",
+        "folds",
+        "motion"
+      ],
+      "related": [
+        "MA-01",
+        "MA-02",
+        "SC-03",
+        "CA-01"
+      ],
+      "sources": [
+        "S14",
+        "S16"
+      ],
+      "evidence": [
+        "T",
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "CH-03",
+      "title": "首饰、装饰与一两个记忆点",
+      "domain": "character-art",
+      "path": "character/design.md",
+      "anchor": "ch-03",
+      "model_execution": "untested",
+      "sha256": "c16cea98b6aa2282b394803a0cd9bb688078b3dc023f47252b0ab0127983ff6b",
+      "keywords": [
+        "首饰",
+        "配饰",
+        "珠链",
+        "刺绣",
+        "流苏",
+        "记忆点",
+        "装饰层级",
+        "jewellery",
+        "accessories"
+      ],
+      "related": [
+        "MA-03",
+        "CH-01",
+        "CA-08",
+        "LC-07"
+      ],
+      "sources": [
+        "S18",
+        "S16"
+      ],
+      "evidence": [
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "CH-04",
+      "title": "发型结构、脸部轮廓与头饰",
+      "domain": "character-art",
+      "path": "character/design.md",
+      "anchor": "ch-04",
+      "model_execution": "untested",
+      "sha256": "e19af8ed44551c953e77876322ca27539a7292de72fa2e1dc899f74aa1249d51",
+      "keywords": [
+        "发型",
+        "发髻",
+        "刘海",
+        "头饰",
+        "脸型",
+        "发片",
+        "hair",
+        "hairstyle",
+        "wig"
+      ],
+      "related": [
+        "CH-01",
+        "CH-03",
+        "LC-03",
+        "CA-04"
+      ],
+      "sources": [
+        "S17",
+        "S15"
+      ],
+      "evidence": [
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "CH-05",
+      "title": "妆容结构与照明下的变化",
+      "domain": "character-art",
+      "path": "character/design.md",
+      "anchor": "ch-05",
+      "model_execution": "untested",
+      "sha256": "ffebf1fdbdcc79973281cd0c5ddd09b1dbcae1098b746820b94f7fe638b3e0b0",
+      "keywords": [
+        "妆容",
+        "妆面",
+        "眼妆",
+        "唇妆",
+        "腮红",
+        "肤色",
+        "makeup",
+        "cosmetics"
+      ],
+      "related": [
+        "LC-08",
+        "LC-10",
+        "LC-13",
+        "MA-06"
+      ],
+      "sources": [
+        "S15",
+        "S17",
+        "S06",
+        "S21"
+      ],
+      "evidence": [
+        "P",
+        "T",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "CH-06",
+      "title": "身份、场合与历史背景",
+      "domain": "character-art",
+      "path": "character/design.md",
+      "anchor": "ch-06",
+      "model_execution": "untested",
+      "sha256": "a4e9f54c4323773ac8dd4d6264af5d738bdcaa6c2b41cf6c1e4a197e27d01c71",
+      "keywords": [
+        "身份",
+        "社会地位",
+        "场合",
+        "完整造型",
+        "历史",
+        "朝代",
+        "虚构古风",
+        "character identity",
+        "history"
+      ],
+      "related": [
+        "CH-01",
+        "CH-03",
+        "CH-04",
+        "SC-02"
+      ],
+      "sources": [
+        "S15",
+        "S16",
+        "S18"
+      ],
+      "evidence": [
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "CH-07",
+      "title": "服装连接：衣片、开口、门襟与系结",
+      "domain": "character-art",
+      "path": "character/construction-styling.md",
+      "anchor": "ch-07",
+      "model_execution": "untested",
+      "sha256": "47c2424c70ba2b90634ac6cf4426a63bf3f8f68cea13d7d7df5ba709b5822d49",
+      "keywords": [
+        "衣片",
+        "门襟",
+        "领口",
+        "袖窿",
+        "剪裁结构",
+        "扣合",
+        "系带",
+        "衣层连接",
+        "服装连续性"
+      ],
+      "related": [
+        "CH-01",
+        "CH-02",
+        "CH-08",
+        "MA-07",
+        "DR-12"
+      ],
+      "sources": [
+        "S37",
+        "S16"
+      ],
+      "evidence": [
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "CH-08",
+      "title": "廓形与层次：硬挺、合体与垂挂的区分",
+      "domain": "character-art",
+      "path": "character/construction-styling.md",
+      "anchor": "ch-08",
+      "model_execution": "untested",
+      "sha256": "bfe0114cdc7f06dacba1e5e5a7e3421f0d3c1af8790d411dfffe5c391670fafe",
+      "keywords": [
+        "硬挺廓形",
+        "合体剪裁",
+        "宽松垂挂",
+        "服装比例",
+        "肩线",
+        "腰线",
+        "外搭层次"
+      ],
+      "related": [
+        "CH-01",
+        "CH-07",
+        "CH-09",
+        "MA-01",
+        "MA-07"
+      ],
+      "sources": [
+        "S37",
+        "S16",
+        "S42"
+      ],
+      "evidence": [
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "CH-09",
+      "title": "姿态、承重与服装受力的对应",
+      "domain": "character-art",
+      "path": "character/construction-styling.md",
+      "anchor": "ch-09",
+      "model_execution": "untested",
+      "sha256": "30e7b489468c8710a14b93500845f8ba56ec82e216ae491c53668be0a8b4d20a",
+      "keywords": [
+        "坐姿褶皱",
+        "体态服装",
+        "承重脚",
+        "受力点",
+        "抬臂",
+        "握衣",
+        "手部接触",
+        "衣摆支撑"
+      ],
+      "related": [
+        "CH-02",
+        "CH-07",
+        "DR-03",
+        "DR-12",
+        "CA-19",
+        "SC-07"
+      ],
+      "sources": [
+        "S16",
+        "S37"
+      ],
+      "evidence": [
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "CH-10",
+      "title": "发妆与头饰：体积、遮挡和固定点",
+      "domain": "character-art",
+      "path": "character/construction-styling.md",
+      "anchor": "ch-10",
+      "model_execution": "untested",
+      "sha256": "df6ba8d25aef56401d292dc16b0ace6339d1e01f1c94129ce2873a67fcb8a210",
+      "keywords": [
+        "发型体积",
+        "头饰支撑",
+        "妆容可见",
+        "耳饰遮挡",
+        "眉眼唇",
+        "发际线",
+        "造型记忆点"
+      ],
+      "related": [
+        "CH-03",
+        "CH-04",
+        "CH-05",
+        "CA-04",
+        "LC-25",
+        "MA-10"
+      ],
+      "sources": [
+        "S17",
+        "S15",
+        "S18"
+      ],
+      "evidence": [
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "CH-11",
+      "title": "身份与场合：功能线索而非刻板制服",
+      "domain": "character-art",
+      "path": "character/construction-styling.md",
+      "anchor": "ch-11",
+      "model_execution": "untested",
+      "sha256": "281591977b9ac58f02d4562cccf2163d3774f184e1d95df9a95743561d7c33f6",
+      "keywords": [
+        "场合造型",
+        "工作服",
+        "礼服",
+        "旅行造型",
+        "人物身份线索",
+        "服装维护",
+        "造型完整性"
+      ],
+      "related": [
+        "CH-06",
+        "CH-03",
+        "CH-08",
+        "SC-08",
+        "DR-13"
+      ],
+      "sources": [
+        "S16",
+        "S15",
+        "S37"
+      ],
+      "evidence": [
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "CH-12",
+      "title": "鞋履、携带物与全身轮廓",
+      "domain": "character-art",
+      "path": "character/construction-styling.md",
+      "anchor": "ch-12",
+      "model_execution": "untested",
+      "sha256": "470a7921032376acf0459e79fccd6007934a8f875622badb53830dfd42dfe29c",
+      "keywords": [
+        "鞋履",
+        "鞋靴",
+        "携带物",
+        "背带",
+        "长链",
+        "裙摆脚部",
+        "全身造型",
+        "行动便利"
+      ],
+      "related": [
+        "CH-01",
+        "CH-03",
+        "CH-09",
+        "CA-01",
+        "DR-03",
+        "SC-07"
+      ],
+      "sources": [
+        "S16",
+        "S18",
+        "S37"
+      ],
+      "evidence": [
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "DR-01",
+      "title": "从主题到可见的叙事瞬间",
+      "domain": "director",
+      "path": "director/narrative-staging.md",
+      "anchor": "dr-01",
+      "model_execution": "untested",
+      "sha256": "b0b41e686a16173f512ad35a9dfd39aaa5220da44d6f9ced90f2111121a3d738",
+      "keywords": [
+        "叙事瞬间",
+        "叙事",
+        "主题落地",
+        "情绪",
+        "动作阶段",
+        "前因后果",
+        "三套构思"
+      ],
+      "related": [
+        "DR-02",
+        "DR-03",
+        "CA-01",
+        "CH-06"
+      ],
+      "sources": [
+        "S27",
+        "S31"
+      ],
+      "evidence": [
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "DR-02",
+      "title": "场面调度：把各领域组织成同一个画面",
+      "domain": "director",
+      "path": "director/narrative-staging.md",
+      "anchor": "dr-02",
+      "model_execution": "untested",
+      "sha256": "5f5b1c211340456f71b80e6550f4f0bd7a83ca5334466f287dc52376e8e0029c",
+      "keywords": [
+        "场面调度",
+        "mise en scene",
+        "整体组织",
+        "五领域协同",
+        "关系设计"
+      ],
+      "related": [
+        "DR-03",
+        "DR-04",
+        "DR-08",
+        "SC-04",
+        "LC-03"
+      ],
+      "sources": [
+        "S30"
+      ],
+      "evidence": [
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "DR-03",
+      "title": "动作与空间：支撑、视线、遮挡及关系可读",
+      "domain": "director",
+      "path": "director/narrative-staging.md",
+      "anchor": "dr-03",
+      "model_execution": "untested",
+      "sha256": "3d015ab568716d6f864652d65b67c50478a32e6af9c7a7b2b6467c136fc6e7fc",
+      "keywords": [
+        "动作空间",
+        "支撑",
+        "接触",
+        "视线",
+        "遮挡",
+        "站位",
+        "关系可读",
+        "手部动作"
+      ],
+      "related": [
+        "DR-01",
+        "DR-02",
+        "SC-04",
+        "CA-02",
+        "CA-04",
+        "CA-06"
+      ],
+      "sources": [
+        "S30",
+        "S31"
+      ],
+      "evidence": [
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "DR-04",
+      "title": "视觉层级与信息预算",
+      "domain": "director",
+      "path": "director/narrative-staging.md",
+      "anchor": "dr-04",
+      "model_execution": "untested",
+      "sha256": "61b3a85f9360b47a7a17f39b06a2c23bc7d301e514401f21f4f383581a3b7fe5",
+      "keywords": [
+        "视觉层级",
+        "信息预算",
+        "注意力",
+        "抢眼",
+        "视觉重心",
+        "环境主体",
+        "主体可读"
+      ],
+      "related": [
+        "DR-02",
+        "DR-05",
+        "CA-01",
+        "CA-07",
+        "CA-08",
+        "LC-07"
+      ],
+      "sources": [
+        "S27",
+        "S32"
+      ],
+      "evidence": [
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "DR-05",
+      "title": "单幅画面的节奏：重复、变化与疏密",
+      "domain": "director",
+      "path": "director/narrative-staging.md",
+      "anchor": "dr-05",
+      "model_execution": "untested",
+      "sha256": "9c8db507e70cf4373f43fab8f1061ad8a9f5fa8900a51cf57520caf3098d559f",
+      "keywords": [
+        "节奏",
+        "视觉节奏",
+        "重复",
+        "变化",
+        "疏密",
+        "间隔",
+        "呼应",
+        "静态画面"
+      ],
+      "related": [
+        "DR-04",
+        "DR-06",
+        "CA-05",
+        "CA-06",
+        "SC-01",
+        "CH-03"
+      ],
+      "sources": [
+        "S32"
+      ],
+      "evidence": [
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "DR-06",
+      "title": "视觉张力与有意艺术反差",
+      "domain": "director",
+      "path": "director/integration-review.md",
+      "anchor": "dr-06",
+      "model_execution": "untested",
+      "sha256": "dcde37eb4f311d02c84969e24186df35bed09792b17df8eb39880a97fd8863e6",
+      "keywords": [
+        "张力",
+        "艺术反差",
+        "有意反差",
+        "不协调",
+        "纠偏",
+        "对比",
+        "超现实",
+        "情绪反衬"
+      ],
+      "related": [
+        "DR-01",
+        "DR-04",
+        "DR-05",
+        "DR-08",
+        "LC-20"
+      ],
+      "sources": [
+        "S27",
+        "S32"
+      ],
+      "evidence": [
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "DR-07",
+      "title": "整体统一与有目的的差异",
+      "domain": "director",
+      "path": "director/integration-review.md",
+      "anchor": "dr-07",
+      "model_execution": "untested",
+      "sha256": "30d9e5b3905960ff44e6891619d7b1a502e67dc314128bf201b0115b0d58e54a",
+      "keywords": [
+        "整体统一",
+        "一致性",
+        "整体复核",
+        "风格统一",
+        "视觉语法",
+        "混搭",
+        "异质材质"
+      ],
+      "related": [
+        "DR-02",
+        "DR-05",
+        "DR-08",
+        "CH-06",
+        "SC-03",
+        "MA-02"
+      ],
+      "sources": [
+        "S32",
+        "S31"
+      ],
+      "evidence": [
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "DR-08",
+      "title": "跨领域取舍与依赖链",
+      "domain": "director",
+      "path": "director/integration-review.md",
+      "anchor": "dr-08",
+      "model_execution": "untested",
+      "sha256": "52f5bc7e856de1d4fd19ef3a3e7f506ba00a788edcf9a916901e3f48808f7371",
+      "keywords": [
+        "跨域取舍",
+        "权衡",
+        "依赖链",
+        "跨领域",
+        "材质光线",
+        "机位改动",
+        "需求冲突"
+      ],
+      "related": [
+        "DR-03",
+        "DR-04",
+        "DR-09",
+        "CA-07",
+        "LC-04",
+        "LC-07",
+        "MA-02"
+      ],
+      "sources": [
+        "S27",
+        "S29",
+        "S21"
+      ],
+      "evidence": [
+        "T",
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "DR-09",
+      "title": "局部更新、全局影响与知识重新适用",
+      "domain": "director",
+      "path": "director/integration-review.md",
+      "anchor": "dr-09",
+      "model_execution": "untested",
+      "sha256": "41d1c868e0e20ed2a3b34bc8d0190f9ca91ace392ca37d82d526b13cc1b1aa8d",
+      "keywords": [
+        "局部修改",
+        "局部更新",
+        "整体复核",
+        "知识重选",
+        "材质修改",
+        "修改影响",
+        "版本"
+      ],
+      "related": [
+        "DR-07",
+        "DR-08",
+        "DR-10",
+        "LC-07",
+        "MA-02",
+        "SC-03"
+      ],
+      "sources": [
+        "S21",
+        "S27"
+      ],
+      "evidence": [
+        "T",
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "DR-10",
+      "title": "问题归因：设计、编译、适配与模型执行",
+      "domain": "director",
+      "path": "director/integration-review.md",
+      "anchor": "dr-10",
+      "model_execution": "untested",
+      "sha256": "23db26f11ab7cf7891ea0184891fe2bfb4ff204108caf3904a4d7d37431f8581",
+      "keywords": [
+        "问题归因",
+        "失败诊断",
+        "编译遗漏",
+        "模型失败",
+        "反馈映射",
+        "uncertain",
+        "完整性"
+      ],
+      "related": [
+        "DR-03",
+        "DR-04",
+        "DR-08",
+        "DR-09"
+      ],
+      "sources": [
+        "S30",
+        "S27"
+      ],
+      "evidence": [
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "DR-11",
+      "title": "Mise-en-scène的范围与单幅转化",
+      "domain": "director",
+      "path": "director/staging-decisions.md",
+      "anchor": "dr-11",
+      "model_execution": "untested",
+      "sha256": "9479f7e6b242982fa61fac309b83c84eb5d0e3858b507b5427b3291db55a39ab",
+      "keywords": [
+        "mise-en-scène",
+        "mise en scene",
+        "场面构成",
+        "场面调度",
+        "布景表演",
+        "单幅转化"
+      ],
+      "related": [
+        "DR-02",
+        "DR-03",
+        "DR-08",
+        "CA-19",
+        "SC-05"
+      ],
+      "sources": [
+        "S34",
+        "S30"
+      ],
+      "evidence": [
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "DR-12",
+      "title": "动作选择：阶段、接触与静止证据",
+      "domain": "director",
+      "path": "director/staging-decisions.md",
+      "anchor": "dr-12",
+      "model_execution": "untested",
+      "sha256": "f49c1c7a9189da7eb8d41070ea95cc386d39b1f934b2858592a771916e2f3e19",
+      "keywords": [
+        "动作选择",
+        "动作阶段",
+        "叙事瞬间",
+        "刚刚",
+        "可见证据",
+        "接触状态",
+        "半拔出",
+        "递交"
+      ],
+      "related": [
+        "DR-01",
+        "DR-03",
+        "CH-09",
+        "CA-19",
+        "MA-11"
+      ],
+      "sources": [
+        "S34",
+        "S30"
+      ],
+      "evidence": [
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "DR-13",
+      "title": "群体与道具归属：分组、例外和唯一对象",
+      "domain": "director",
+      "path": "director/staging-decisions.md",
+      "anchor": "dr-13",
+      "model_execution": "untested",
+      "sha256": "0fd21cb32db4ff5d14f436c074de63140b9c550075f95e68fbf1970ad0a9272e",
+      "keywords": [
+        "群体",
+        "多人物",
+        "分组",
+        "道具归属",
+        "身份绑定",
+        "唯一对象",
+        "视觉主体",
+        "主次关系"
+      ],
+      "related": [
+        "DR-03",
+        "DR-04",
+        "SC-07",
+        "SC-08",
+        "CA-21",
+        "CH-11"
+      ],
+      "sources": [
+        "S34",
+        "S32"
+      ],
+      "evidence": [
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "DR-14",
+      "title": "视觉引导、疏密与张力的联合选择",
+      "domain": "director",
+      "path": "director/staging-decisions.md",
+      "anchor": "dr-14",
+      "model_execution": "untested",
+      "sha256": "e37cfe0c3742064fa456acf09401175e8e5d3c794ddf189095752be38314fccd",
+      "keywords": [
+        "视觉引导",
+        "阅读路径",
+        "疏密张力",
+        "节奏中断",
+        "多中心",
+        "安静区域",
+        "轮廓分离"
+      ],
+      "related": [
+        "DR-04",
+        "DR-05",
+        "DR-06",
+        "CA-20",
+        "CA-21",
+        "LC-22"
+      ],
+      "sources": [
+        "S32",
+        "S27"
+      ],
+      "evidence": [
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "DR-15",
+      "title": "局部变更的取舍表与整体复核",
+      "domain": "director",
+      "path": "director/staging-decisions.md",
+      "anchor": "dr-15",
+      "model_execution": "untested",
+      "sha256": "d4d041ddffc500a1de502d19f84f23697064ce11cd4689e04713db811f2982c5",
+      "keywords": [
+        "修改取舍",
+        "整体协调",
+        "变更影响",
+        "局部更新",
+        "必要可见",
+        "专业建议",
+        "模型可实现性"
+      ],
+      "related": [
+        "DR-08",
+        "DR-09",
+        "DR-10",
+        "CA-09",
+        "LC-25",
+        "MA-12"
+      ],
+      "sources": [
+        "S27",
+        "S21",
+        "S34"
+      ],
+      "evidence": [
+        "P",
+        "T",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "LC-01",
+      "title": "光源类型：自然光不等于柔光",
+      "domain": "lighting-color",
+      "path": "lighting/foundations.md",
+      "anchor": "lc-01",
+      "model_execution": "untested",
+      "sha256": "6f9269c6fcea14302924b38d1330eefea4ddf7e64059be1b0665df64dc5227d4",
+      "keywords": [
+        "自然光",
+        "窗光",
+        "阳光",
+        "阴天",
+        "天空光",
+        "光源类型",
+        "daylight",
+        "window"
+      ],
+      "related": [
+        "LC-02",
+        "LC-04",
+        "LC-14",
+        "LC-17"
+      ],
+      "sources": [
+        "S01",
+        "S03"
+      ],
+      "evidence": [
+        "T",
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "LC-02",
+      "title": "人工光、实景灯、反射光",
+      "domain": "lighting-color",
+      "path": "lighting/foundations.md",
+      "anchor": "lc-02",
+      "model_execution": "untested",
+      "sha256": "9c7621f94423e90db5a15684791dc6f57b1a9ffb1957b4bcaa6c4ae87f9eba2d",
+      "keywords": [
+        "人工柔光",
+        "人工硬光",
+        "实景光源",
+        "烛光",
+        "宫灯",
+        "台灯",
+        "霓虹",
+        "舞台",
+        "反射补光",
+        "practical",
+        "neon"
+      ],
+      "related": [
+        "LC-03",
+        "LC-06",
+        "LC-08",
+        "LC-16"
+      ],
+      "sources": [
+        "S01",
+        "S03",
+        "S06"
+      ],
+      "evidence": [
+        "T",
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "LC-03",
+      "title": "方向、职责与效果是三个变量",
+      "domain": "lighting-color",
+      "path": "lighting/foundations.md",
+      "anchor": "lc-03",
+      "model_execution": "untested",
+      "sha256": "2e415634090cd51a80771937099e1e288a7a056305ff73885acce54ec811e42f",
+      "keywords": [
+        "顺光",
+        "侧光",
+        "侧逆光",
+        "逆光",
+        "顶光",
+        "底光",
+        "主光",
+        "补光",
+        "轮廓光",
+        "背景光",
+        "key",
+        "fill",
+        "rim"
+      ],
+      "related": [
+        "LC-01",
+        "LC-02",
+        "LC-07",
+        "CA-03"
+      ],
+      "sources": [
+        "S01",
+        "S03"
+      ],
+      "evidence": [
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "LC-04",
+      "title": "角尺寸、阴影边缘与柔硬",
+      "domain": "lighting-color",
+      "path": "lighting/foundations.md",
+      "anchor": "lc-04",
+      "model_execution": "untested",
+      "sha256": "5907de383ef4cf93b688af58d98ad76ce38432934ddd527aba1552729e250d51",
+      "keywords": [
+        "光源大小",
+        "角尺寸",
+        "软光",
+        "硬光",
+        "阴影边缘",
+        "扩散",
+        "soft",
+        "hard",
+        "shadow"
+      ],
+      "related": [
+        "LC-05",
+        "LC-09",
+        "MA-02"
+      ],
+      "sources": [
+        "S01",
+        "S02"
+      ],
+      "evidence": [
+        "T",
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "LC-05",
+      "title": "距离与衰减：平方反比有前提",
+      "domain": "lighting-color",
+      "path": "lighting/foundations.md",
+      "anchor": "lc-05",
+      "model_execution": "untested",
+      "sha256": "7a8ea7789b1e7041879babdd9545a4085da68fe8e9e81a5494aeaaf06563be8d",
+      "keywords": [
+        "距离",
+        "照度衰减",
+        "平方反比",
+        "inverse square",
+        "falloff"
+      ],
+      "related": [
+        "LC-04",
+        "LC-06",
+        "LC-14"
+      ],
+      "sources": [
+        "S04",
+        "S02"
+      ],
+      "evidence": [
+        "T",
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "LC-06",
+      "title": "光比与曝光：先写测量口径",
+      "domain": "lighting-color",
+      "path": "lighting/foundations.md",
+      "anchor": "lc-06",
+      "model_execution": "untested",
+      "sha256": "5bf57315d604c0e62a69947da348c5f187aa408caf9a13831e15212376261b73",
+      "keywords": [
+        "光比",
+        "曝光",
+        "档差",
+        "亮暗比",
+        "ratio",
+        "exposure",
+        "stops",
+        "high key",
+        "low key"
+      ],
+      "related": [
+        "LC-04",
+        "LC-05",
+        "LC-18",
+        "MA-06"
+      ],
+      "sources": [
+        "S05",
+        "S01"
+      ],
+      "evidence": [
+        "T",
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "LC-07",
+      "title": "漫反射、镜面高光、反射补光与分离",
+      "domain": "lighting-color",
+      "path": "lighting/foundations.md",
+      "anchor": "lc-07",
+      "model_execution": "untested",
+      "sha256": "09ff6ac266ad2c8fb89716c2af3629a402d08b0718cf3bbfe3a9f44897debafd",
+      "keywords": [
+        "漫反射",
+        "镜面反射",
+        "高光",
+        "环境反射",
+        "分离",
+        "轮廓",
+        "negative fill",
+        "bounce",
+        "specular"
+      ],
+      "related": [
+        "MA-02",
+        "MA-03",
+        "MA-04",
+        "CA-08"
+      ],
+      "sources": [
+        "S21",
+        "S22",
+        "S01"
+      ],
+      "evidence": [
+        "T",
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "LC-08",
+      "title": "色温、光谱、白平衡与肤色",
+      "domain": "lighting-color",
+      "path": "lighting/foundations.md",
+      "anchor": "lc-08",
+      "model_execution": "untested",
+      "sha256": "4aff3ee3bfc410643caf5ceccb6f1dd47243acc172f6b57628b4e7602fe47288",
+      "keywords": [
+        "色温",
+        "光谱",
+        "白平衡",
+        "肤色",
+        "显色",
+        "CCT",
+        "CRI",
+        "SSI",
+        "white balance",
+        "spectrum"
+      ],
+      "related": [
+        "LC-16",
+        "LC-19",
+        "LC-20",
+        "CH-05"
+      ],
+      "sources": [
+        "S06",
+        "S21"
+      ],
+      "evidence": [
+        "T",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "LC-09",
+      "title": "Rembrandt：暗侧颧部光三角",
+      "domain": "lighting-color",
+      "path": "lighting/portrait-patterns.md",
+      "anchor": "lc-09",
+      "model_execution": "untested",
+      "sha256": "66b7b2e452ac4967d176ac58ae37fe006e4b52426264939a7555e2dbc54efa91",
+      "keywords": [
+        "伦勃朗",
+        "Rembrandt",
+        "三角光",
+        "鼻影连接"
+      ],
+      "related": [
+        "LC-04",
+        "LC-06",
+        "LC-12"
+      ],
+      "sources": [
+        "S02",
+        "S03"
+      ],
+      "evidence": [
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "LC-10",
+      "title": "Butterfly：鼻下居中蝶影",
+      "domain": "lighting-color",
+      "path": "lighting/portrait-patterns.md",
+      "anchor": "lc-10",
+      "model_execution": "untested",
+      "sha256": "629c70b5033bc4d81c4a14fd8519f95660981cdcc65646f8fd34ea4d4c623096",
+      "keywords": [
+        "蝴蝶光",
+        "Butterfly",
+        "Paramount",
+        "鼻下阴影",
+        "美妆"
+      ],
+      "related": [
+        "LC-13",
+        "CH-05",
+        "CA-03"
+      ],
+      "sources": [
+        "S02",
+        "S03"
+      ],
+      "evidence": [
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "LC-11",
+      "title": "Split：脸的左右明暗分割",
+      "domain": "lighting-color",
+      "path": "lighting/portrait-patterns.md",
+      "anchor": "lc-11",
+      "model_execution": "untested",
+      "sha256": "a0d73427e80b8ddca6c893fe8a838dec122459ea547486cadfe63c36649b5cd9",
+      "keywords": [
+        "分割光",
+        "Split",
+        "半脸",
+        "侧面主光"
+      ],
+      "related": [
+        "LC-03",
+        "LC-06",
+        "LC-18"
+      ],
+      "sources": [
+        "S02",
+        "S03"
+      ],
+      "evidence": [
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "LC-12",
+      "title": "Loop：鼻旁短影，不是环形灯",
+      "domain": "lighting-color",
+      "path": "lighting/portrait-patterns.md",
+      "anchor": "lc-12",
+      "model_execution": "untested",
+      "sha256": "ec264df644bdec798659e89124f836f2586c84d06a20446fca3875b4af74fb9e",
+      "keywords": [
+        "Loop",
+        "环形光",
+        "环状光",
+        "短鼻影",
+        "环形灯",
+        "ring light"
+      ],
+      "related": [
+        "LC-09",
+        "LC-10",
+        "LC-13"
+      ],
+      "sources": [
+        "S02",
+        "S03"
+      ],
+      "evidence": [
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "LC-13",
+      "title": "Clamshell：上主下补的包围",
+      "domain": "lighting-color",
+      "path": "lighting/portrait-patterns.md",
+      "anchor": "lc-13",
+      "model_execution": "untested",
+      "sha256": "e223b4c24f884966520a6062359ff23801842d09f61975e290759347a32cae74",
+      "keywords": [
+        "蛤壳光",
+        "Clamshell",
+        "上下布光",
+        "反光板",
+        "beauty"
+      ],
+      "related": [
+        "LC-10",
+        "LC-06",
+        "CH-05"
+      ],
+      "sources": [
+        "S02"
+      ],
+      "evidence": [
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "LC-14",
+      "title": "古代宫廷夜宴：亮点、脸与大空间分工",
+      "domain": "lighting-color",
+      "path": "lighting/scenarios.md",
+      "anchor": "lc-14",
+      "model_execution": "untested",
+      "sha256": "08a7ccf115be4e631132090f2920d711dcf7b1a59bf40eb0318f9f0dcdd29c65",
+      "keywords": [
+        "夜宴",
+        "古代宫廷",
+        "宫灯",
+        "烛火",
+        "宴席",
+        "banquet"
+      ],
+      "related": [
+        "LC-02",
+        "LC-05",
+        "LC-06",
+        "SC-02",
+        "CH-06"
+      ],
+      "sources": [
+        "S01",
+        "S04",
+        "S19"
+      ],
+      "evidence": [
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "LC-15",
+      "title": "雨夜宫廷回廊：檐下、雨区、湿面分开",
+      "domain": "lighting-color",
+      "path": "lighting/scenarios.md",
+      "anchor": "lc-15",
+      "model_execution": "untested",
+      "sha256": "c111b2f00650aaff878686012c758996c70eb3dedd5c1818ec2bd058db46adce",
+      "keywords": [
+        "雨夜",
+        "宫廷回廊",
+        "舞姬",
+        "湿地",
+        "檐下",
+        "rainy corridor",
+        "rain"
+      ],
+      "related": [
+        "SC-03",
+        "MA-05",
+        "MA-02",
+        "CA-02",
+        "CH-02"
+      ],
+      "sources": [
+        "S01",
+        "S20",
+        "S23"
+      ],
+      "evidence": [
+        "T",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "LC-16",
+      "title": "都市夜间人像：彩光有位置，肤色有选择",
+      "domain": "lighting-color",
+      "path": "lighting/scenarios.md",
+      "anchor": "lc-16",
+      "model_execution": "untested",
+      "sha256": "59e536ca0a1bdd9213ba442575073e5c94e0c384a9db2dd72caaccb4931dc9ad",
+      "keywords": [
+        "都市夜景",
+        "霓虹人像",
+        "混合光",
+        "neon portrait",
+        "night city"
+      ],
+      "related": [
+        "LC-08",
+        "LC-20",
+        "MA-03",
+        "CA-06"
+      ],
+      "sources": [
+        "S06",
+        "S21",
+        "S01"
+      ],
+      "evidence": [
+        "T",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "LC-17",
+      "title": "明亮室内人像：高调仍有结构",
+      "domain": "lighting-color",
+      "path": "lighting/scenarios.md",
+      "anchor": "lc-17",
+      "model_execution": "untested",
+      "sha256": "fa1307173ebf26a0efa200024f619823cf8afb7cf699742c3fe652b137f2be0a",
+      "keywords": [
+        "明亮室内",
+        "窗边人像",
+        "高调",
+        "bright interior",
+        "high key"
+      ],
+      "related": [
+        "LC-01",
+        "LC-04",
+        "LC-06",
+        "MA-06"
+      ],
+      "sources": [
+        "S01",
+        "S02"
+      ],
+      "evidence": [
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "LC-18",
+      "title": "黑暗戏剧场景：有选择的可见性",
+      "domain": "lighting-color",
+      "path": "lighting/scenarios.md",
+      "anchor": "lc-18",
+      "model_execution": "untested",
+      "sha256": "a7db32b786fedd6371428ca4fb9a6a4f0067e87915891eb536d0652e8e4a03fa",
+      "keywords": [
+        "暗场",
+        "戏剧性",
+        "黑暗",
+        "局部照明",
+        "low key",
+        "dark dramatic"
+      ],
+      "related": [
+        "LC-11",
+        "LC-06",
+        "LC-07",
+        "CA-08"
+      ],
+      "sources": [
+        "S01",
+        "S02",
+        "S05"
+      ],
+      "evidence": [
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "LC-19",
+      "title": "色相、明度、饱和度与冷暖",
+      "domain": "lighting-color",
+      "path": "lighting/color.md",
+      "anchor": "lc-19",
+      "model_execution": "untested",
+      "sha256": "736115a931d415ad8c50a817792e26d9888c7652197abf6cba2b8e756b8c7fcc",
+      "keywords": [
+        "色相",
+        "明度",
+        "饱和度",
+        "冷暖",
+        "电影感",
+        "高级感",
+        "hue",
+        "value",
+        "saturation"
+      ],
+      "related": [
+        "LC-08",
+        "LC-20",
+        "CA-08"
+      ],
+      "sources": [
+        "S07",
+        "S08",
+        "S21"
+      ],
+      "evidence": [
+        "T",
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "LC-20",
+      "title": "配色关系、面积与肤色环境",
+      "domain": "lighting-color",
+      "path": "lighting/color.md",
+      "anchor": "lc-20",
+      "model_execution": "untested",
+      "sha256": "c5a021f382a30d421aa59e122eda300511a6e00b767193b9607ab09acd06c4ac",
+      "keywords": [
+        "互补色",
+        "类似色",
+        "分裂互补色",
+        "主色",
+        "辅色",
+        "点缀色",
+        "肤色环境",
+        "complementary",
+        "analogous",
+        "palette"
+      ],
+      "related": [
+        "LC-19",
+        "LC-08",
+        "CH-03",
+        "MA-03"
+      ],
+      "sources": [
+        "S08",
+        "S07",
+        "S21"
+      ],
+      "evidence": [
+        "T",
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "LC-21",
+      "title": "色相、明度、饱和度的独立诊断",
+      "domain": "lighting-color",
+      "path": "lighting/color-organization.md",
+      "anchor": "lc-21",
+      "model_execution": "untested",
+      "sha256": "049cae656d2c0dc47da777ebd4e3284cbde292b6879198f34464845192613c44",
+      "keywords": [
+        "色彩诊断",
+        "明度分组",
+        "明暗分离",
+        "色相相同",
+        "饱和度调整",
+        "灰度检查",
+        "亮暗结构"
+      ],
+      "related": [
+        "LC-19",
+        "LC-20",
+        "CA-08",
+        "LC-22"
+      ],
+      "sources": [
+        "S35",
+        "S40",
+        "S07"
+      ],
+      "evidence": [
+        "T",
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "LC-22",
+      "title": "主色、辅助色、点缀色：面积与位置一起设计",
+      "domain": "lighting-color",
+      "path": "lighting/color-organization.md",
+      "anchor": "lc-22",
+      "model_execution": "untested",
+      "sha256": "f5a9d9b9e16a2dc06d83ce4772125cea52ccddb6ad150f3fe75d3969603763b3",
+      "keywords": [
+        "色彩面积",
+        "点缀色抢眼",
+        "主辅色",
+        "视觉重心",
+        "色锚",
+        "背景亮牌",
+        "局部饱和"
+      ],
+      "related": [
+        "LC-20",
+        "LC-21",
+        "DR-13",
+        "DR-14",
+        "CH-03"
+      ],
+      "sources": [
+        "S40",
+        "S32",
+        "S08"
+      ],
+      "evidence": [
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "LC-23",
+      "title": "类似色、单色与冷暖对照的层次",
+      "domain": "lighting-color",
+      "path": "lighting/color-organization.md",
+      "anchor": "lc-23",
+      "model_execution": "untested",
+      "sha256": "2e0bc68adde9fd8ae3d497d059f135f5c872284b77f4f94df783ba8572ee35d1",
+      "keywords": [
+        "类似色层次",
+        "单色画面",
+        "冷暖对照",
+        "互补色谨慎",
+        "同色系",
+        "高饱和配色"
+      ],
+      "related": [
+        "LC-19",
+        "LC-20",
+        "LC-21",
+        "LC-25",
+        "MA-02"
+      ],
+      "sources": [
+        "S08",
+        "S40",
+        "S07"
+      ],
+      "evidence": [
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "LC-24",
+      "title": "同时对比与环境反射染色的区别",
+      "domain": "lighting-color",
+      "path": "lighting/color-organization.md",
+      "anchor": "lc-24",
+      "model_execution": "untested",
+      "sha256": "b826064272be4c1544e8483c0adf16178e07e7b2784893b73cf656c33fb4a280",
+      "keywords": [
+        "同时对比",
+        "环境染色",
+        "色彩感知",
+        "肤色环境",
+        "背景影响",
+        "反射补光",
+        "simultaneous contrast"
+      ],
+      "related": [
+        "LC-08",
+        "LC-19",
+        "LC-20",
+        "MA-06",
+        "CH-05"
+      ],
+      "sources": [
+        "S41",
+        "S21",
+        "S40"
+      ],
+      "evidence": [
+        "T",
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "LC-25",
+      "title": "混合光源：空间分区与肤色目标",
+      "domain": "lighting-color",
+      "path": "lighting/color-organization.md",
+      "anchor": "lc-25",
+      "model_execution": "untested",
+      "sha256": "499438721d9a0bcb1393d3e2f76e45d35bbfcd3d5a50731a28311d974cde2645",
+      "keywords": [
+        "混合色温",
+        "窗光灯光",
+        "混合光协调",
+        "肤色保真",
+        "局部彩光",
+        "白平衡限制",
+        "光源归属"
+      ],
+      "related": [
+        "LC-08",
+        "LC-16",
+        "LC-24",
+        "LC-26",
+        "CH-05",
+        "MA-10"
+      ],
+      "sources": [
+        "S06",
+        "S21",
+        "S01"
+      ],
+      "evidence": [
+        "T",
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "LC-26",
+      "title": "色彩呼应、局部例外与叙事重心",
+      "domain": "lighting-color",
+      "path": "lighting/color-organization.md",
+      "anchor": "lc-26",
+      "model_execution": "untested",
+      "sha256": "1650b660e78f781c548e0951130a7b2b67bcc1020797f5f78c0b4d2106836337",
+      "keywords": [
+        "色彩呼应",
+        "叙事色彩",
+        "局部例外",
+        "色彩节奏",
+        "造型环境协调",
+        "色块分布"
+      ],
+      "related": [
+        "LC-22",
+        "LC-23",
+        "DR-05",
+        "DR-06",
+        "CH-03",
+        "SC-08"
+      ],
+      "sources": [
+        "S32",
+        "S40",
+        "S34"
+      ],
+      "evidence": [
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "LC-27",
+      "title": "物体色、光色与媒介：避免混色承诺",
+      "domain": "lighting-color",
+      "path": "lighting/color-organization.md",
+      "anchor": "lc-27",
+      "model_execution": "untested",
+      "sha256": "71e473dff5b40115730739f1334655ef99660085300ff2ef377939028b73f794",
+      "keywords": [
+        "物体色",
+        "光色",
+        "加色减色",
+        "颜料混色",
+        "数字色彩",
+        "媒介色彩",
+        "RGB色轮",
+        "RYB色轮"
+      ],
+      "related": [
+        "LC-08",
+        "LC-19",
+        "LC-20",
+        "LC-25",
+        "MA-03"
+      ],
+      "sources": [
+        "S21",
+        "S07",
+        "S08"
+      ],
+      "evidence": [
+        "T",
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "LC-28",
+      "title": "场景布光选择与投影图案",
+      "domain": "lighting-color",
+      "path": "lighting/color-organization.md",
+      "anchor": "lc-28",
+      "model_execution": "untested",
+      "sha256": "ed5ff131a360a4683d452a7102a17776895c61b70b5e87063b922f47c9739574",
+      "keywords": [
+        "布光选择",
+        "叶隙碎斑",
+        "窗框影",
+        "檐影",
+        "光斑落点",
+        "阴晴照明",
+        "投影图案",
+        "光束可见"
+      ],
+      "related": [
+        "LC-01",
+        "LC-04",
+        "LC-14",
+        "LC-15",
+        "LC-17",
+        "SC-06",
+        "SC-10"
+      ],
+      "sources": [
+        "S03",
+        "S01",
+        "S20"
+      ],
+      "evidence": [
+        "T",
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "MA-01",
+      "title": "纤维、组织与整理：丝绸不等于缎",
+      "domain": "material-appearance",
+      "path": "materials/appearance.md",
+      "anchor": "ma-01",
+      "model_execution": "untested",
+      "sha256": "29c0e37b97976ad7155e27737b69d7cdee33950587c34ce07093aee87ee00d53",
+      "keywords": [
+        "丝绸",
+        "缎面",
+        "缎纹",
+        "纤维",
+        "组织",
+        "垂坠",
+        "silk",
+        "satin",
+        "weave",
+        "fiber"
+      ],
+      "related": [
+        "CH-01",
+        "CH-02",
+        "MA-02"
+      ],
+      "sources": [
+        "S14",
+        "S25"
+      ],
+      "evidence": [
+        "T",
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "MA-02",
+      "title": "织物在光下：对比表与黑布案例",
+      "domain": "material-appearance",
+      "path": "materials/appearance.md",
+      "anchor": "ma-02",
+      "model_execution": "untested",
+      "sha256": "128475912f4509dacce8746a39421c9b2036a881f792b95fa0650aad3f540a1c",
+      "keywords": [
+        "黑丝",
+        "黑棉",
+        "薄纱",
+        "蕾丝",
+        "棉麻",
+        "皮革",
+        "天鹅绒",
+        "湿纱",
+        "textile",
+        "gauze",
+        "lace",
+        "cotton",
+        "linen",
+        "leather",
+        "velvet"
+      ],
+      "related": [
+        "MA-01",
+        "LC-04",
+        "LC-07",
+        "CH-02",
+        "LC-15"
+      ],
+      "sources": [
+        "S14",
+        "S21",
+        "S22"
+      ],
+      "evidence": [
+        "T",
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "MA-03",
+      "title": "金属、宝石与玻璃：反射和透射分开",
+      "domain": "material-appearance",
+      "path": "materials/appearance.md",
+      "anchor": "ma-03",
+      "model_execution": "untested",
+      "sha256": "0861942780908d1e64badd51b661cbdcf314d11063506f2f8ccd7e8d0ad480af",
+      "keywords": [
+        "金属",
+        "金",
+        "银",
+        "宝石",
+        "玻璃",
+        "粗糙度",
+        "镜面",
+        "折射",
+        "metal",
+        "gem",
+        "glass",
+        "roughness"
+      ],
+      "related": [
+        "LC-07",
+        "CH-03",
+        "LC-08",
+        "MA-05"
+      ],
+      "sources": [
+        "S23",
+        "S22",
+        "S18"
+      ],
+      "evidence": [
+        "T",
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "MA-04",
+      "title": "木材与石材：纹理不等于浮雕",
+      "domain": "material-appearance",
+      "path": "materials/appearance.md",
+      "anchor": "ma-04",
+      "model_execution": "untested",
+      "sha256": "e7acf6b48cc9752299ceee688238f71b86ff59c85621d385dd998c9c3769f7bc",
+      "keywords": [
+        "木材",
+        "石材",
+        "木纹",
+        "石纹",
+        "抛光",
+        "磨损",
+        "wood",
+        "stone",
+        "texture"
+      ],
+      "related": [
+        "SC-02",
+        "LC-07",
+        "MA-05"
+      ],
+      "sources": [
+        "S21",
+        "S22",
+        "S19"
+      ],
+      "evidence": [
+        "T",
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "MA-05",
+      "title": "水面与湿表面：倒影有位置",
+      "domain": "material-appearance",
+      "path": "materials/appearance.md",
+      "anchor": "ma-05",
+      "model_execution": "untested",
+      "sha256": "5c081b1ecfc59c3f0054e8de677dcab587013c74e7b3c190e4873dfea6fcc210",
+      "keywords": [
+        "水面",
+        "湿地",
+        "倒影",
+        "积水",
+        "涟漪",
+        "折射",
+        "water",
+        "wet",
+        "reflection",
+        "ripples"
+      ],
+      "related": [
+        "SC-03",
+        "LC-15",
+        "MA-03",
+        "CA-03"
+      ],
+      "sources": [
+        "S23",
+        "S22",
+        "S20"
+      ],
+      "evidence": [
+        "T",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "MA-06",
+      "title": "皮肤与次表面散射",
+      "domain": "material-appearance",
+      "path": "materials/appearance.md",
+      "anchor": "ma-06",
+      "model_execution": "untested",
+      "sha256": "0b65a9fc70f140d3b1f12de3ea58e59e7ccf422cb89a712cfbaaaecfd921f317",
+      "keywords": [
+        "皮肤",
+        "次表面散射",
+        "透光",
+        "肤质",
+        "毛孔",
+        "skin",
+        "subsurface",
+        "SSS"
+      ],
+      "related": [
+        "LC-08",
+        "LC-06",
+        "CH-05"
+      ],
+      "sources": [
+        "S21",
+        "S24"
+      ],
+      "evidence": [
+        "T",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "MA-07",
+      "title": "平纹、斜纹、缎纹与衣料外观",
+      "domain": "material-appearance",
+      "path": "materials/surface-design.md",
+      "anchor": "ma-07",
+      "model_execution": "untested",
+      "sha256": "7fc43f213ffea91b0e136c364cd488f8fe339e8b43d6b8d1d46c0d5d60aeac9a",
+      "keywords": [
+        "平纹",
+        "斜纹",
+        "缎纹",
+        "织物组织",
+        "丝绸缎面",
+        "浮线",
+        "织纹尺度",
+        "布料表面"
+      ],
+      "related": [
+        "MA-01",
+        "MA-02",
+        "CH-07",
+        "CH-08",
+        "LC-07"
+      ],
+      "sources": [
+        "S14",
+        "S42",
+        "S25"
+      ],
+      "evidence": [
+        "T",
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "MA-08",
+      "title": "薄纱、网与蕾丝：孔隙、叠层和下层",
+      "domain": "material-appearance",
+      "path": "materials/surface-design.md",
+      "anchor": "ma-08",
+      "model_execution": "untested",
+      "sha256": "c03fe2955eeb08ce7905819d3c8d741c87b7de7ca194f3c6be1bc83ce2f2cc45",
+      "keywords": [
+        "薄纱叠层",
+        "网纱",
+        "蕾丝孔洞",
+        "衬里",
+        "透光遮盖",
+        "绣线",
+        "lace",
+        "gauze"
+      ],
+      "related": [
+        "MA-02",
+        "CH-01",
+        "CH-07",
+        "LC-04",
+        "CA-23"
+      ],
+      "sources": [
+        "S43",
+        "S21",
+        "S23"
+      ],
+      "evidence": [
+        "T",
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "MA-09",
+      "title": "绒面与皮革：方向性、粒纹和涂层",
+      "domain": "material-appearance",
+      "path": "materials/surface-design.md",
+      "anchor": "ma-09",
+      "model_execution": "untested",
+      "sha256": "30967fdcd867ee909de6e7d15123f795d70568d84cbe16a395d0008398f024a1",
+      "keywords": [
+        "天鹅绒",
+        "绒毛方向",
+        "皮革粒纹",
+        "麂皮",
+        "磨砂皮",
+        "漆皮",
+        "涂层",
+        "材质识别"
+      ],
+      "related": [
+        "MA-02",
+        "MA-07",
+        "LC-07",
+        "CH-08",
+        "SC-07"
+      ],
+      "sources": [
+        "S38",
+        "S42",
+        "S22"
+      ],
+      "evidence": [
+        "T",
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "MA-10",
+      "title": "金属与宝石：环境反射、刻面与有限亮点",
+      "domain": "material-appearance",
+      "path": "materials/surface-design.md",
+      "anchor": "ma-10",
+      "model_execution": "untested",
+      "sha256": "f2c71739a5c92acfb9f60481324765bb7c39339062d69535114eaf9540cd9cc3",
+      "keywords": [
+        "金属反射",
+        "宝石刻面",
+        "钻石火彩",
+        "拉丝金属",
+        "抛光金属",
+        "首饰亮点",
+        "facet"
+      ],
+      "related": [
+        "MA-03",
+        "CH-03",
+        "CH-10",
+        "LC-22",
+        "LC-25"
+      ],
+      "sources": [
+        "S39",
+        "S23",
+        "S22",
+        "S18"
+      ],
+      "evidence": [
+        "T",
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "MA-11",
+      "title": "玻璃、液体与界面状态",
+      "domain": "material-appearance",
+      "path": "materials/surface-design.md",
+      "anchor": "ma-11",
+      "model_execution": "untested",
+      "sha256": "b2e98d104bb49fc1dc5bd1fdf2b996e7382538b454a7568637b3fa4e17d7064a",
+      "keywords": [
+        "玻璃厚度",
+        "杯口",
+        "液面",
+        "倒杯",
+        "折射界面",
+        "透明器物",
+        "物体状态",
+        "接触阴影"
+      ],
+      "related": [
+        "MA-03",
+        "MA-05",
+        "DR-12",
+        "CA-19",
+        "LC-07"
+      ],
+      "sources": [
+        "S23",
+        "S21",
+        "S22"
+      ],
+      "evidence": [
+        "T",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "MA-12",
+      "title": "木石干湿与表面层次：颜色、纹理、粗糙度分开",
+      "domain": "material-appearance",
+      "path": "materials/surface-design.md",
+      "anchor": "ma-12",
+      "model_execution": "untested",
+      "sha256": "c28f3ebff90e5ef9b9b6e44684ed191d70056edcdef94fba6a2a999c2045cedb",
+      "keywords": [
+        "干湿对照",
+        "木材表面",
+        "石材表面",
+        "吸水暗斑",
+        "水膜",
+        "积水",
+        "抛光粗凿",
+        "表面纹理"
+      ],
+      "related": [
+        "MA-04",
+        "MA-05",
+        "SC-05",
+        "SC-09",
+        "LC-07",
+        "DR-15"
+      ],
+      "sources": [
+        "S21",
+        "S22",
+        "S23",
+        "S19"
+      ],
+      "evidence": [
+        "T",
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "SC-01",
+      "title": "建筑组织、开口、构件与尺度",
+      "domain": "scene-art",
+      "path": "scene/design.md",
+      "anchor": "sc-01",
+      "model_execution": "untested",
+      "sha256": "4e7062f5fff165cc8745ed7892fcc2933b8a07cb2ed49abc19daeddfb9dbf70a",
+      "keywords": [
+        "建筑",
+        "空间",
+        "门窗",
+        "柱廊",
+        "拱门",
+        "楼梯",
+        "庭院",
+        "尺度",
+        "architecture",
+        "scale"
+      ],
+      "related": [
+        "CA-02",
+        "CA-03",
+        "LC-01",
+        "SC-04"
+      ],
+      "sources": [
+        "S19",
+        "S12"
+      ],
+      "evidence": [
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "SC-02",
+      "title": "室内布局、表面与道具用途",
+      "domain": "scene-art",
+      "path": "scene/design.md",
+      "anchor": "sc-02",
+      "model_execution": "untested",
+      "sha256": "15d6d54ad41b7e1752133b30366c7f3c01741070477ad437e1c8c2ad7579d3d4",
+      "keywords": [
+        "室内",
+        "家具",
+        "墙面",
+        "地面",
+        "天花板",
+        "屏风",
+        "帷幔",
+        "灯具",
+        "陈设",
+        "interior",
+        "props"
+      ],
+      "related": [
+        "SC-01",
+        "LC-14",
+        "MA-04",
+        "CH-06"
+      ],
+      "sources": [
+        "S19",
+        "S16"
+      ],
+      "evidence": [
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "SC-03",
+      "title": "雨雪雾风、水面与植被联动",
+      "domain": "scene-art",
+      "path": "scene/design.md",
+      "anchor": "sc-03",
+      "model_execution": "untested",
+      "sha256": "d75f994c456f9277edb57a6f545f5064025095a50ea39d33bd84597d529d3d69",
+      "keywords": [
+        "雨",
+        "雪",
+        "雾",
+        "风",
+        "水面",
+        "植被",
+        "湿润",
+        "天气",
+        "weather",
+        "fog",
+        "wind"
+      ],
+      "related": [
+        "LC-15",
+        "MA-05",
+        "CH-02",
+        "MA-02"
+      ],
+      "sources": [
+        "S20",
+        "S23",
+        "S21"
+      ],
+      "evidence": [
+        "T",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "SC-04",
+      "title": "前中后层次、通行与遮挡",
+      "domain": "scene-art",
+      "path": "scene/design.md",
+      "anchor": "sc-04",
+      "model_execution": "untested",
+      "sha256": "f83e45a0c9079ec7b4e840ea6983679d44fc9163a37f9f25c0067b3c3c8387af",
+      "keywords": [
+        "空间关系",
+        "纵深",
+        "前中后景",
+        "遮挡",
+        "支撑",
+        "通路",
+        "depth",
+        "occlusion"
+      ],
+      "related": [
+        "SC-01",
+        "SC-02",
+        "CA-06",
+        "CA-07"
+      ],
+      "sources": [
+        "S19",
+        "S27"
+      ],
+      "evidence": [
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "SC-05",
+      "title": "建筑结构的视觉连续性",
+      "domain": "scene-art",
+      "path": "scene/spatial-design.md",
+      "anchor": "sc-05",
+      "model_execution": "untested",
+      "sha256": "e0b9381301e746f7328c02e152fc9c914a9a72b95a11388929d6b2630200a02c",
+      "keywords": [
+        "建筑结构",
+        "梁柱",
+        "承接关系",
+        "墙顶地面",
+        "层高",
+        "台阶平台",
+        "建筑连续性"
+      ],
+      "related": [
+        "SC-01",
+        "SC-06",
+        "CA-20",
+        "MA-12",
+        "DR-11"
+      ],
+      "sources": [
+        "S19",
+        "S35"
+      ],
+      "evidence": [
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "SC-06",
+      "title": "门窗、柱廊、拱门和庭院的空间职责",
+      "domain": "scene-art",
+      "path": "scene/spatial-design.md",
+      "anchor": "sc-06",
+      "model_execution": "untested",
+      "sha256": "02894b8d4d3dcb73a8af567ef8bab1b3f8e02016d86af7581268efca13dc4d2c",
+      "keywords": [
+        "门窗关系",
+        "柱廊",
+        "拱门",
+        "庭院",
+        "内外界面",
+        "门槛",
+        "窗洞",
+        "侧向入口"
+      ],
+      "related": [
+        "SC-01",
+        "SC-05",
+        "CA-06",
+        "CA-20",
+        "LC-28",
+        "DR-12"
+      ],
+      "sources": [
+        "S19",
+        "S34"
+      ],
+      "evidence": [
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "SC-07",
+      "title": "室内布局：任务面、座位与通行",
+      "domain": "scene-art",
+      "path": "scene/spatial-design.md",
+      "anchor": "sc-07",
+      "model_execution": "untested",
+      "sha256": "59a325ded81edfa099a8221fddf043732dc30cb449769a2daff798d17f78291a",
+      "keywords": [
+        "家具布局",
+        "室内动线",
+        "工作台",
+        "座位朝向",
+        "桌椅距离",
+        "活动空间",
+        "人与家具"
+      ],
+      "related": [
+        "SC-02",
+        "SC-04",
+        "CH-09",
+        "CA-19",
+        "DR-13"
+      ],
+      "sources": [
+        "S19",
+        "S34"
+      ],
+      "evidence": [
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "SC-08",
+      "title": "道具组：使用关系、维护痕迹与身份线索",
+      "domain": "scene-art",
+      "path": "scene/spatial-design.md",
+      "anchor": "sc-08",
+      "model_execution": "untested",
+      "sha256": "18ed06d06553ca1537c8d0be3fddcf9ab1212a1d466f9831d05631069a3d157e",
+      "keywords": [
+        "环境道具",
+        "道具成组",
+        "使用痕迹",
+        "维护",
+        "身份关系",
+        "物件归属",
+        "叙事道具"
+      ],
+      "related": [
+        "SC-02",
+        "DR-12",
+        "DR-13",
+        "CH-11",
+        "MA-12"
+      ],
+      "sources": [
+        "S19",
+        "S34",
+        "S16"
+      ],
+      "evidence": [
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "SC-09",
+      "title": "雨、雪与风：暴露范围和落地后果",
+      "domain": "scene-art",
+      "path": "scene/spatial-design.md",
+      "anchor": "sc-09",
+      "model_execution": "untested",
+      "sha256": "250995543389014f5ff64900540acb68c6f73a3c72da021c2bd7d4116a394f5b",
+      "keywords": [
+        "雨区",
+        "檐下干湿",
+        "积雪",
+        "踩踏",
+        "融雪",
+        "风雨方向",
+        "环境状态",
+        "遮蔽区"
+      ],
+      "related": [
+        "SC-03",
+        "SC-06",
+        "CH-02",
+        "LC-15",
+        "MA-05",
+        "MA-12"
+      ],
+      "sources": [
+        "S20",
+        "S23",
+        "S19"
+      ],
+      "evidence": [
+        "T",
+        "P",
+        "C",
+        "M"
+      ]
+    },
+    {
+      "id": "SC-10",
+      "title": "雾、水岸与植被：层次而非统一滤镜",
+      "domain": "scene-art",
+      "path": "scene/spatial-design.md",
+      "anchor": "sc-10",
+      "model_execution": "untested",
+      "sha256": "b1e53b641834d1df882fb80142315587eba850f09668126b386743f560fed39b",
+      "keywords": [
+        "雾层",
+        "水岸",
+        "植被层次",
+        "树冠",
+        "灌木",
+        "远景对比",
+        "叶片透光",
+        "景观空间"
+      ],
+      "related": [
+        "SC-03",
+        "CA-21",
+        "LC-28",
+        "MA-05",
+        "MA-08"
+      ],
+      "sources": [
+        "S20",
+        "S35",
+        "S23"
+      ],
+      "evidence": [
+        "T",
+        "P",
+        "C",
+        "M"
+      ]
+    }
+  ]
+}

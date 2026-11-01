@@ -1,0 +1,278 @@
+{
+  "version": "V1.5.0-harness",
+  "adapters": [
+    {
+      "id": "generic-natural-language-r01",
+      "target": "generic",
+      "aliases": [],
+      "implemented": true,
+      "prompt": "natural-language",
+      "aspect_ratio": "outside-prompt",
+      "ratio_format": "external-setting",
+      "external_channel": "目标工作流的画幅设置",
+      "supported_aspect_ratios": null,
+      "visual_redesign": false
+    },
+    {
+      "id": "gpt-web-aspect-r01",
+      "target": "gpt-web",
+      "aliases": [
+        "gpt"
+      ],
+      "implemented": true,
+      "prompt": "natural-language",
+      "language_policy": {
+        "default_prompt_language": "zh-CN",
+        "user_requested_language": "takes-precedence",
+        "image_text": "preserve-exact-literal-and-original-language",
+        "executor": "host-llm"
+      },
+      "aspect_ratio": "inside-prompt",
+      "ratio_format": "natural-language",
+      "external_channel": null,
+      "supported_aspect_ratios": null,
+      "visual_redesign": false
+    },
+    {
+      "id": "midjourney-aspect-r01",
+      "target": "midjourney",
+      "aliases": [
+        "mj"
+      ],
+      "implemented": true,
+      "prompt": "natural-language",
+      "aspect_ratio": "inside-prompt",
+      "ratio_format": "midjourney-ar",
+      "external_channel": null,
+      "supported_aspect_ratios": null,
+      "visual_redesign": false,
+      "language_policy": {
+        "default_prompt_language": "zh-CN",
+        "user_requested_language": "takes-precedence",
+        "image_text": "preserve-exact-literal-and-original-language",
+        "executor": "host-llm"
+      }
+    },
+    {
+      "id": "krea2-aspect-r01",
+      "target": "krea2",
+      "aliases": [
+        "krea-2"
+      ],
+      "implemented": true,
+      "prompt": "natural-language",
+      "aspect_ratio": "outside-prompt",
+      "ratio_format": "external-setting",
+      "external_channel": "Krea 2 所用工作流的外部画幅设置；像素尺寸按可靠工作流信息确定",
+      "supported_aspect_ratios": null,
+      "visual_redesign": false,
+      "language_policy": {
+        "default_prompt_language": "zh-CN",
+        "user_requested_language": "takes-precedence",
+        "image_text": "preserve-exact-literal-and-original-language",
+        "executor": "host-llm"
+      }
+    },
+    {
+      "id": "grok-web-aspect-r01",
+      "target": "grok-web",
+      "aliases": [
+        "grok"
+      ],
+      "implemented": true,
+      "prompt": "natural-language",
+      "aspect_ratio": "outside-prompt",
+      "ratio_format": "external-setting",
+      "external_channel": "Grok Imagine 网页端输入框外侧的画幅控件",
+      "supported_aspect_ratios": [
+        "2:3",
+        "3:2",
+        "1:1",
+        "9:16",
+        "16:9"
+      ],
+      "visual_redesign": false
+    },
+    {
+      "id": "qwen-image-2.1-t2i-r01",
+      "target": "qwen-image-2.1",
+      "aliases": [
+        "qwen-image-2.1-t2i",
+        "qwen-image"
+      ],
+      "implemented": true,
+      "prompt": "natural-language",
+      "aspect_ratio": "outside-prompt",
+      "ratio_format": "external-setting",
+      "external_channel": "Qwen Image 2.1本地文生图工作流的外部宽高设置；像素尺寸仅按可靠工作流信息确定",
+      "supported_aspect_ratios": null,
+      "visual_redesign": false,
+      "language_policy": {
+        "default_prompt_language": "en",
+        "image_text": "preserve-exact-literal-and-original-language",
+        "executor": "host-llm"
+      },
+      "segment_separator": " ",
+      "compiler_policy": {
+        "executor": "host-llm",
+        "task": "text-to-image-only",
+        "style": "single-paragraph-observer-description",
+        "length": "design-dependent-no-fixed-word-count",
+        "reference": "references/adapter-contract.md#qwen-image-21文生图qwen-01用户已确认"
+      }
+    },
+    {
+      "id": "z-image-natural-language-r01",
+      "target": "z-image",
+      "aliases": [
+        "zimage",
+        "z-image-turbo"
+      ],
+      "implemented": true,
+      "prompt": "natural-language",
+      "aspect_ratio": "outside-prompt",
+      "ratio_format": "external-setting",
+      "external_channel": "Z-Image本地工作流的外部宽高设置；像素尺寸仅按可靠工作流信息确定",
+      "supported_aspect_ratios": null,
+      "visual_redesign": false,
+      "language_policy": {
+        "default_prompt_language": "zh-CN",
+        "user_requested_language": "takes-precedence",
+        "image_text": "preserve-exact-literal-and-original-language",
+        "executor": "host-llm"
+      },
+      "compiler_policy": {
+        "executor": "host-llm",
+        "task": "text-to-image-only",
+        "style": "natural-language",
+        "length": "design-dependent-no-fixed-word-count",
+        "reference": "references/adapter-contract.md"
+      }
+    },
+    {
+      "id": "gemini-image-r01",
+      "target": "gemini-image",
+      "aliases": [
+        "gemini",
+        "nano-banana",
+        "nanobanana",
+        "nano-banana-pro",
+        "nano-banana-2",
+        "nano-banana-2.1",
+        "nano-banana-2-lite"
+      ],
+      "implemented": true,
+      "prompt": "natural-language",
+      "aspect_ratio": "inside-prompt",
+      "ratio_format": "natural-language",
+      "external_channel": null,
+      "supported_aspect_ratios": null,
+      "visual_redesign": false,
+      "language_policy": {
+        "default_prompt_language": "zh-CN",
+        "user_requested_language": "takes-precedence",
+        "image_text": "preserve-exact-literal-and-original-language",
+        "executor": "host-llm"
+      },
+      "compiler_policy": {
+        "executor": "host-llm",
+        "task": "text-to-image-only",
+        "reference": "references/model-routes.md"
+      }
+    },
+    {
+      "id": "seedream-r01",
+      "target": "seedream",
+      "aliases": [
+        "doubao-seedream"
+      ],
+      "implemented": true,
+      "prompt": "natural-language",
+      "aspect_ratio": "inside-prompt",
+      "ratio_format": "natural-language",
+      "external_channel": null,
+      "supported_aspect_ratios": null,
+      "visual_redesign": false,
+      "language_policy": {
+        "default_prompt_language": "zh-CN",
+        "user_requested_language": "takes-precedence",
+        "image_text": "preserve-exact-literal-and-original-language",
+        "executor": "host-llm"
+      },
+      "compiler_policy": {
+        "executor": "host-llm",
+        "task": "text-to-image-only",
+        "reference": "references/model-routes.md"
+      }
+    },
+    {
+      "id": "moss-image-r01",
+      "target": "moss-image",
+      "aliases": [
+        "moss"
+      ],
+      "implemented": true,
+      "prompt": "natural-language",
+      "aspect_ratio": "outside-prompt",
+      "ratio_format": "external-setting",
+      "external_channel": "MOSS-Image本地工作流的外部宽高设置；像素尺寸须有可靠依据",
+      "supported_aspect_ratios": null,
+      "visual_redesign": false,
+      "language_policy": {
+        "default_prompt_language": "zh-CN",
+        "user_requested_language": "takes-precedence",
+        "image_text": "preserve-exact-literal-and-original-language",
+        "executor": "host-llm"
+      },
+      "compiler_policy": {
+        "executor": "host-llm",
+        "task": "text-to-image-only",
+        "reference": "references/model-routes.md"
+      }
+    },
+    {
+      "id": "moss-image-layout-r01",
+      "target": "moss-image-layout",
+      "aliases": [
+        "moss-layout"
+      ],
+      "implemented": true,
+      "prompt": "json-layout",
+      "aspect_ratio": "outside-prompt",
+      "ratio_format": "external-setting",
+      "external_channel": "MOSS-Image本地Layout工作流；必须使用下列已校验画布尺寸",
+      "supported_aspect_ratios": null,
+      "visual_redesign": false,
+      "language_policy": {
+        "default_prompt_language": "zh-CN",
+        "user_requested_language": "takes-precedence",
+        "image_text": "preserve-exact-literal-and-original-language",
+        "executor": "host-llm"
+      },
+      "compiler_policy": {
+        "executor": "host-llm",
+        "task": "text-to-image-only",
+        "reference": "references/model-routes.md"
+      }
+    }
+  ],
+  "scope": "仅落实已确认的文生图编译与交付；Gemini/Nano Banana、Seedream、MOSS已迁入。未提供API调用、图像编辑或真实生图，排除范围见excluded_routes。",
+  "language_override_rule": "用户长期语言偏好覆盖 default_prompt_language，包括 Qwen 的英文默认；语言可换，结构（单段/分段、观察式/自然语言风格）不换。细则见 references/adapter-contract.md#语言偏好覆盖h-01用户已确认。",
+  "capability_basis": "D-035及V1.4.0-harness的SKILL.md/Adapter与交付.md；正式交付规则见references/adapter-contract.md。Grok菜单来自既有用户反馈，不宣称本轮实测。null表示未登记可选集合，不表示任意比例保证支持。",
+  "excluded_routes": {
+    "sdxl": "用户明确不纳入本版，不迁移、不回退通用路由冒充支持",
+    "pony": "用户明确不纳入本版，不迁移、不回退通用路由冒充支持",
+    "illustrious": "用户明确不纳入本版，不迁移、不回退通用路由冒充支持",
+    "anima": "用户明确不纳入本版，不迁移、不回退通用路由冒充支持",
+    "flux": "用户明确不纳入本版，不迁移、不回退通用路由冒充支持",
+    "flux.2": "用户明确不纳入本版，不迁移、不回退通用路由冒充支持",
+    "flux2": "用户明确不纳入本版，不迁移、不回退通用路由冒充支持",
+    "klein": "用户明确不纳入本版，不迁移、不回退通用路由冒充支持",
+    "flux3": "用户明确不纳入本版，不迁移、不回退通用路由冒充支持",
+    "gpt-api": "用户明确不纳入本版，不迁移、不回退通用路由冒充支持",
+    "grok-api": "用户明确不纳入本版，不迁移、不回退通用路由冒充支持",
+    "gemini-api": "用户明确不纳入本版，不迁移、不回退通用路由冒充支持",
+    "seedream-api": "用户明确不纳入本版，不迁移、不回退通用路由冒充支持",
+    "moss-api": "用户明确不纳入本版，不迁移、不回退通用路由冒充支持"
+  }
+}

@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# 本机运行数据（偏好库与任务快照一律放在源码之外）
+preferences.json
+preferences.json.bak
+.prefs.lock
+.writer.lock
+tasks/
+snapshots/
+CURRENT
+
+# 编辑器与系统
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# 发行压缩包由 GitHub Releases 管理，不进仓库
+*.zip

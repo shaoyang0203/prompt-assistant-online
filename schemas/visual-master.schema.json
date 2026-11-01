@@ -1,0 +1,343 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "VisualMasterRevision V1.5.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "master_id",
+    "revision",
+    "parent_revision",
+    "zones",
+    "globals",
+    "items",
+    "changes"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.3.0"
+    },
+    "master_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]+$"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "parent_revision": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 1
+    },
+    "zones": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "intent_constraints",
+        "creative_direction_moment",
+        "visual_subject_hierarchy",
+        "character_art",
+        "scene_art",
+        "action_spatial_relations",
+        "camera_composition",
+        "lighting_color",
+        "material_visual_expression"
+      ],
+      "properties": {
+        "intent_constraints": {
+          "$ref": "#/$defs/refs"
+        },
+        "creative_direction_moment": {
+          "$ref": "#/$defs/refs"
+        },
+        "visual_subject_hierarchy": {
+          "$ref": "#/$defs/refs"
+        },
+        "character_art": {
+          "$ref": "#/$defs/refs"
+        },
+        "scene_art": {
+          "$ref": "#/$defs/refs"
+        },
+        "action_spatial_relations": {
+          "$ref": "#/$defs/refs"
+        },
+        "camera_composition": {
+          "$ref": "#/$defs/refs"
+        },
+        "lighting_color": {
+          "$ref": "#/$defs/refs"
+        },
+        "material_visual_expression": {
+          "$ref": "#/$defs/refs"
+        }
+      }
+    },
+    "globals": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "medium",
+        "aspect_ratio",
+        "image_text"
+      ],
+      "properties": {
+        "medium": {
+          "$ref": "#/$defs/ref"
+        },
+        "aspect_ratio": {
+          "$ref": "#/$defs/ref"
+        },
+        "image_text": {
+          "$ref": "#/$defs/refs"
+        }
+      }
+    },
+    "items": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {
+        "$ref": "#/$defs/ref"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/item"
+      }
+    },
+    "changes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "item_id",
+          "operation",
+          "reason",
+          "source_ref"
+        ],
+        "properties": {
+          "item_id": {
+            "$ref": "#/$defs/ref"
+          },
+          "operation": {
+            "enum": [
+              "add",
+              "update",
+              "remove"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_ref": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "ref": {
+      "type": "string",
+      "pattern": "^di-[A-Za-z0-9_-]+$"
+    },
+    "refs": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/ref"
+      }
+    },
+    "ratio": {
+      "type": "object",
+      "description": "设计阶段确定的画幅宽高，无默认值；用户明确比例优先。参考图不自动约束比例。变更后整体复核并确认新版本；输出位置由Adapter决定。",
+      "additionalProperties": false,
+      "required": [
+        "width",
+        "height"
+      ],
+      "properties": {
+        "width": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "text": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "literal",
+        "appearance"
+      ],
+      "properties": {
+        "literal": {
+          "type": "string",
+          "minLength": 1
+        },
+        "appearance": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "dependency": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "item_id",
+        "relation"
+      ],
+      "properties": {
+        "item_id": {
+          "$ref": "#/$defs/ref"
+        },
+        "relation": {
+          "enum": [
+            "spatial",
+            "support",
+            "visibility",
+            "lighting",
+            "color",
+            "material",
+            "style"
+          ]
+        }
+      }
+    },
+    "item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "facet",
+        "value",
+        "design_source",
+        "source_refs",
+        "confirmation_status",
+        "constraint_strength",
+        "depends_on"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "intent",
+            "constraint",
+            "visual_fact",
+            "medium",
+            "aspect_ratio",
+            "image_text"
+          ]
+        },
+        "facet": {
+          "type": "string",
+          "minLength": 1
+        },
+        "value": {
+          "oneOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "$ref": "#/$defs/ratio"
+            },
+            {
+              "$ref": "#/$defs/text"
+            }
+          ]
+        },
+        "design_source": {
+          "enum": [
+            "user_specified",
+            "model_added",
+            "jointly_formed"
+          ]
+        },
+        "source_refs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "confirmation_status": {
+          "enum": [
+            "pending",
+            "confirmed",
+            "rejected"
+          ]
+        },
+        "constraint_strength": {
+          "enum": [
+            "hard_constraint",
+            "confirmed_design",
+            "adjustable_design"
+          ]
+        },
+        "depends_on": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/dependency"
+          }
+        },
+        "realized_by": {
+          "$ref": "#/$defs/refs"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "aspect_ratio"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "$ref": "#/$defs/ratio"
+              }
+            }
+          },
+          "else": {
+            "if": {
+              "properties": {
+                "kind": {
+                  "const": "image_text"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "value": {
+                  "$ref": "#/$defs/text"
+                }
+              }
+            },
+            "else": {
+              "properties": {
+                "value": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+
