@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""V1.5.1 偏好模板、存档与推断。只写外部数据目录，不写源码，不调用模型。
+"""V1.5.2 偏好模板、存档与推断。只写外部数据目录，不写源码，不调用模型。
 
 模板取自母版的设计方向，不取自提示词。提示词是母版的译本，永远在下游。
 """
@@ -19,7 +19,7 @@ from uuid import uuid4
 from contracts import validate_master
 
 PACKAGE = Path(__file__).resolve().parents[1]
-VERSION = "1.5.1"
+VERSION = "1.5.2"
 FORMAT = 1
 DIMENSIONS = ("subject", "lighting", "palette", "camera", "material")
 APPLY_MODES = ("default_fill", "prefer", "avoid")
@@ -533,7 +533,7 @@ def command_status(prefs):
 # ---------- 入口 ----------
 
 def build_parser():
-    parser = argparse.ArgumentParser(description="V1.5.1 偏好模板与存档（非自动生图程序）")
+    parser = argparse.ArgumentParser(description="视觉导演系统 V1.5.2 偏好模板与存档（非自动生图程序）")
     parser.add_argument("--data-dir", required=True, help="源码之外的本地运行数据目录")
     sub = parser.add_subparsers(dest="command", required=True)
 

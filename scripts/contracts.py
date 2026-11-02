@@ -1,4 +1,4 @@
-"""Standard-library validation of the JSON Schema subset used by V1.5.1.
+"""Standard-library validation of the JSON Schema subset used by V1.5.2.
 Not a general Draft 2020-12 validator. No remote schema resolution.
 """
 import hashlib
@@ -19,7 +19,7 @@ ZONES = {
     "material_visual_expression": "材质与视觉表现",
 }
 COMPILED_KINDS = {"visual_fact", "medium", "aspect_ratio", "image_text"}
-VERSION = "1.5.1"
+VERSION = "1.5.2"
 
 class ContractError(ValueError):
     pass

@@ -48,7 +48,7 @@ class ReleaseTests(unittest.TestCase):
             with zipfile.ZipFile(first) as archive:
                 self.assertIsNone(archive.testzip())
                 self.assertIn(release.SKILL_NAME + '/SKILL.md', archive.namelist())
-                self.assertEqual(json.loads(archive.read(release.SKILL_NAME + '/RELEASE-MANIFEST.json'))['version'], '1.5.1')
+                self.assertEqual(json.loads(archive.read(release.SKILL_NAME + '/RELEASE-MANIFEST.json'))['version'], '1.5.2')
 
 
 if __name__ == '__main__':

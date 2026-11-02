@@ -1,4 +1,4 @@
-# 权威母版 V1.5.1
+# 权威母版 V1.5.2
 
 Schema 在 [visual-master.schema.json](../schemas/visual-master.schema.json)。
 九区域固定为创作意图与用户约束、创意方向与叙事瞬间、视觉主体与层级、人物美术、场景美术、动作与空间关系、摄影与构图、光影与色彩、材质与视觉表现。

@@ -1,5 +1,7 @@
 # 本地工具
 
+知识读取不要求固定search→show：已知ID可一次`knowledge.py show CA-03 CA-20`，未知才搜索定位；既有show响应保留适用边界、来源及条目哈希，不剥离这些信息来制造表面节省。当前上下文中仍有效的正文按[总导演协议](director.md#知识使用的决策与复用)复用，本地脚本不自动判断检索需求或缓存适用性。
+
 命令的 --data-dir 使用源码之外的显式目录。Python 路径按 README，不依赖裸命令。
 交互示例：preview --case portrait / environment / correction。
 示例是预写合成数据，确认来自终端真实输入；其语义评审是作者预写自审，不是独立在线模型执行。
