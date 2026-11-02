@@ -13,7 +13,6 @@ from pathlib import Path
 
 PACKAGE = Path(__file__).resolve().parents[1]
 SCRIPT = PACKAGE / "scripts" / "prefs.py"
-SAMPLES = PACKAGE / "scripts"
 
 
 def run(data_dir, *args, expect=0):
@@ -69,9 +68,7 @@ def main():
         assert switched["displaced"] == ["T0001"], switched
 
         # 存档必须带母版与提示词原文
-        sys.path.insert(0, str(SAMPLES))
-        from preview_cases import build
-        master = build("portrait", 0)["master"]
+        master = json.loads((PACKAGE / "tests/fixtures/master.json").read_text(encoding="utf-8"))
         archive = write(folder / "a1.json", {
             "master": master, "prompt": "成品原文。", "rating": "喜欢", "target": "image"})
         saved = run(data, "archive", "add", "--input", archive)

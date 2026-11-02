@@ -1,4 +1,4 @@
-# 提示词助手 V1.5.0-harness 说明书
+# 提示词助手 V1.5.1 说明书
 
 本说明书只在用户要求时展示，不参与创作流程。想看哪一节直接说，例如“说明书：偏好怎么用”。
 
@@ -144,3 +144,10 @@ $s  = '<技能目录>\scripts'
 
 **换了模型，之前的经验还在吗？**
 带模型作用域的模板只在那个模型下生效；全局模板不受影响。
+
+
+## 完整命令查询与补充
+
+上面的列表为常用示例。完整命令及每条参数以 `prefs.py --help`、`prefs.py template --help` 和相应子命令 `--help` 为准；模板还有 `template show --id <ID>`、`template resume --id <ID>`，列表支持 `--dimension`。pending 推断不能由resume确认，须用户明确同意后用on。
+
+创作工具依次为new、concepts、select、master、coordinate、show、approve、manifest、submit、deliver；修改用change，另有status、correction、validate和合成演示preview。参数见 [本地工具](local-tools.md) 及 `pa15.py <子命令> --help`。

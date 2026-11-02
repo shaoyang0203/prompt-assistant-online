@@ -91,7 +91,12 @@ def source_catalog():
         require(re.fullmatch(r"S\d+", source["id"]) is not None and source["id"] not in seen, "来源 ID 无效或重复")
         seen.add(source["id"])
         require(source["url"].startswith("https://"), "来源 URL 无效")
-        require(source["access_status"] == "opened_primary_content", "未核实来源不能作首批主要证据")
+        require(source["access_status"] == "opened_primary_content", "历史访问声明字段无效；当前核实状态须另读latest_verification")
+        require(source.get("access_record_basis") in ("inherited_record_not_reverified", "documented_primary_access"), "来源访问记录边界缺失")
+        check = source.get("latest_verification")
+        require(type(check) is dict and set(check) == {"reviewed_on", "status", "note"}, "来源最近核实状态缺失")
+        require(check["status"] in ("not_rechecked", "previous_reopen_failed", "opened_primary_content"), "未知来源复核状态")
+        require(all(type(value) is str and value.strip() for value in check.values()), "来源复核记录不能为空")
     require(bool(rows), "来源目录为空")
     return rows
 
@@ -137,6 +142,9 @@ def audit():
         body = safe_path(item["path"]).read_text(encoding="utf-8")
         require('<a id="' + item["anchor"] + '"></a>' in body, "条目定位锚点缺失")
     return {"result": "pass", "entries": len(entries), "sources": len(source_rows),
+            "result_scope": "structure_only", "structural_result": "pass",
+            "source_verification": "uncertain" if any(source["latest_verification"]["status"] != "opened_primary_content" for source in source_rows) else "recorded_primary_access",
+            "source_warnings": [{"id": source["id"], **source["latest_verification"]} for source in source_rows if source["latest_verification"]["status"] != "opened_primary_content"],
             "domains": {domain: sum(item["domain"] == domain for item in entries) for domain in DOMAINS.values()},
             "director_entries": sum(item["domain"] == "director" for item in entries),
             "scope": "IDs, paths, references and index sync; not technical accuracy or visual quality"}
@@ -242,6 +250,7 @@ def main():
 
 
 if __name__ == "__main__":
-    if hasattr(sys.stdout, "reconfigure"):
-        sys.stdout.reconfigure(encoding="utf-8")
+    for stream in (sys.stdin, sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(encoding="utf-8", errors="strict")
     raise SystemExit(main())

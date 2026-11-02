@@ -1,4 +1,4 @@
-"""Standard-library validation of the JSON Schema subset used by V1.5.0-harness.
+"""Standard-library validation of the JSON Schema subset used by V1.5.1.
 Not a general Draft 2020-12 validator. No remote schema resolution.
 """
 import hashlib
@@ -19,7 +19,7 @@ ZONES = {
     "material_visual_expression": "材质与视觉表现",
 }
 COMPILED_KINDS = {"visual_fact", "medium", "aspect_ratio", "image_text"}
-VERSION = "1.5.0-harness"
+VERSION = "1.5.1"
 
 class ContractError(ValueError):
     pass
@@ -140,6 +140,8 @@ def validate_master(master):
         require(item["confirmation_status"] != "rejected", "拒绝的设计不能进入当前有效母版: " + key)
         if item["design_source"] == "user_specified":
             require(item["confirmation_status"] == "confirmed", "用户指定项确认状态必须为 confirmed")
+            if item["kind"] == "aspect_ratio":
+                require(item["constraint_strength"] == "hard_constraint", "用户明确指定的画幅必须是硬性约束")
         deps = [d["item_id"] for d in item["depends_on"]]
         require(key not in deps and set(deps) <= set(items), "设计依赖无效: " + key)
         links = item.get("realized_by", [])

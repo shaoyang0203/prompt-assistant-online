@@ -1,4 +1,4 @@
-"""Preview task records only; no preference learning or legacy imports."""
+"""Task snapshots only; preferences are managed separately, without legacy imports."""
 import copy
 import json
 import os

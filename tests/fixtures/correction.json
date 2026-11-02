@@ -1,0 +1,331 @@
+{
+  "schema_version": "0.3.0",
+  "master_id": "preview-correction",
+  "revision": 1,
+  "parent_revision": null,
+  "zones": {
+    "intent_constraints": [
+      "di-intent",
+      "di-requirement"
+    ],
+    "creative_direction_moment": [
+      "di-moment"
+    ],
+    "visual_subject_hierarchy": [
+      "di-focus"
+    ],
+    "character_art": [
+      "di-character",
+      "di-styling"
+    ],
+    "scene_art": [
+      "di-scene",
+      "di-scene-detail"
+    ],
+    "action_spatial_relations": [
+      "di-action"
+    ],
+    "camera_composition": [
+      "di-camera"
+    ],
+    "lighting_color": [
+      "di-light"
+    ],
+    "material_visual_expression": [
+      "di-material"
+    ]
+  },
+  "globals": {
+    "medium": "di-medium",
+    "aspect_ratio": "di-ratio",
+    "image_text": []
+  },
+  "items": {
+    "di-intent": {
+      "kind": "intent",
+      "facet": "intent",
+      "value": "以具体人物、空间和受光关系完成电影叙事摄影，不预设画面外故事。",
+      "design_source": "model_added",
+      "source_refs": [
+        "synthetic:host-llm-design"
+      ],
+      "confirmation_status": "pending",
+      "constraint_strength": "adjustable_design",
+      "depends_on": []
+    },
+    "di-requirement": {
+      "kind": "constraint",
+      "facet": "requirement",
+      "value": "采用用户选择的局部调整：放宽面部特写，保留正面和完整鞋履。",
+      "design_source": "user_specified",
+      "source_refs": [
+        "synthetic:user-selected-local-frame-adjustment"
+      ],
+      "confirmation_status": "confirmed",
+      "constraint_strength": "hard_constraint",
+      "depends_on": [],
+      "realized_by": [
+        "di-character",
+        "di-camera",
+        "di-action"
+      ]
+    },
+    "di-moment": {
+      "kind": "visual_fact",
+      "facet": "moment",
+      "value": "工作室中安静停顿的一个瞬间。",
+      "design_source": "model_added",
+      "source_refs": [
+        "synthetic:host-llm-design"
+      ],
+      "confirmation_status": "pending",
+      "constraint_strength": "adjustable_design",
+      "depends_on": []
+    },
+    "di-focus": {
+      "kind": "visual_fact",
+      "facet": "focus",
+      "value": "人物整体造型为主体，脸部和鞋履同时可辨。",
+      "design_source": "model_added",
+      "source_refs": [
+        "synthetic:host-llm-design"
+      ],
+      "confirmation_status": "pending",
+      "constraint_strength": "adjustable_design",
+      "depends_on": []
+    },
+    "di-character": {
+      "kind": "visual_fact",
+      "facet": "character",
+      "value": "一位成年男性。",
+      "design_source": "user_specified",
+      "source_refs": [
+        "synthetic:user-request"
+      ],
+      "confirmation_status": "confirmed",
+      "constraint_strength": "hard_constraint",
+      "depends_on": []
+    },
+    "di-styling": {
+      "kind": "visual_fact",
+      "facet": "styling",
+      "value": "灰衬衫、深色长裤和棕色皮鞋。",
+      "design_source": "model_added",
+      "source_refs": [
+        "synthetic:host-llm-design"
+      ],
+      "confirmation_status": "pending",
+      "constraint_strength": "adjustable_design",
+      "depends_on": []
+    },
+    "di-scene": {
+      "kind": "visual_fact",
+      "facet": "scene",
+      "value": "人物在工作室内。",
+      "design_source": "user_specified",
+      "source_refs": [
+        "synthetic:user-request"
+      ],
+      "confirmation_status": "confirmed",
+      "constraint_strength": "hard_constraint",
+      "depends_on": []
+    },
+    "di-scene-detail": {
+      "kind": "visual_fact",
+      "facet": "scene-detail",
+      "value": "深灰墙、木工作台和简洁地面。",
+      "design_source": "model_added",
+      "source_refs": [
+        "synthetic:host-llm-design"
+      ],
+      "confirmation_status": "pending",
+      "constraint_strength": "adjustable_design",
+      "depends_on": []
+    },
+    "di-action": {
+      "kind": "visual_fact",
+      "facet": "action",
+      "value": "正面站立，双脚落地，双手自然垂下。",
+      "design_source": "model_added",
+      "source_refs": [
+        "synthetic:host-llm-design"
+      ],
+      "confirmation_status": "pending",
+      "constraint_strength": "adjustable_design",
+      "depends_on": [
+        {
+          "item_id": "di-scene",
+          "relation": "spatial"
+        }
+      ]
+    },
+    "di-camera": {
+      "kind": "visual_fact",
+      "facet": "camera",
+      "value": "平视正面全身取景，头部和鞋履完整进入画面，面部占比小于特写。",
+      "design_source": "user_specified",
+      "source_refs": [
+        "synthetic:user-selected-local-frame-adjustment"
+      ],
+      "confirmation_status": "confirmed",
+      "constraint_strength": "hard_constraint",
+      "depends_on": [
+        {
+          "item_id": "di-action",
+          "relation": "spatial"
+        }
+      ]
+    },
+    "di-light": {
+      "kind": "visual_fact",
+      "facet": "light",
+      "value": "左侧大面积柔窗光照亮脸部和衣服，背景保持较暗灰色，肤色自然。",
+      "design_source": "model_added",
+      "source_refs": [
+        "synthetic:host-llm-design"
+      ],
+      "confirmation_status": "pending",
+      "constraint_strength": "adjustable_design",
+      "depends_on": [
+        {
+          "item_id": "di-character",
+          "relation": "lighting"
+        },
+        {
+          "item_id": "di-scene",
+          "relation": "lighting"
+        }
+      ]
+    },
+    "di-material": {
+      "kind": "visual_fact",
+      "facet": "material",
+      "value": "棉衬衫吸光，木台有可见木纹，皮鞋有局部柔亮高光。",
+      "design_source": "model_added",
+      "source_refs": [
+        "synthetic:host-llm-design"
+      ],
+      "confirmation_status": "pending",
+      "constraint_strength": "adjustable_design",
+      "depends_on": [
+        {
+          "item_id": "di-light",
+          "relation": "spatial"
+        }
+      ]
+    },
+    "di-medium": {
+      "kind": "medium",
+      "facet": "medium",
+      "value": "真人摄影。",
+      "design_source": "model_added",
+      "source_refs": [
+        "synthetic:host-llm-design"
+      ],
+      "confirmation_status": "pending",
+      "constraint_strength": "adjustable_design",
+      "depends_on": []
+    },
+    "di-ratio": {
+      "kind": "aspect_ratio",
+      "facet": "ratio",
+      "value": {
+        "width": 2,
+        "height": 3
+      },
+      "design_source": "model_added",
+      "source_refs": [
+        "synthetic:host-llm-design"
+      ],
+      "confirmation_status": "pending",
+      "constraint_strength": "adjustable_design",
+      "depends_on": []
+    }
+  },
+  "changes": [
+    {
+      "item_id": "di-intent",
+      "operation": "add",
+      "reason": "首轮完整设计",
+      "source_ref": "synthetic:preview-design"
+    },
+    {
+      "item_id": "di-requirement",
+      "operation": "add",
+      "reason": "首轮完整设计",
+      "source_ref": "synthetic:preview-design"
+    },
+    {
+      "item_id": "di-moment",
+      "operation": "add",
+      "reason": "首轮完整设计",
+      "source_ref": "synthetic:preview-design"
+    },
+    {
+      "item_id": "di-focus",
+      "operation": "add",
+      "reason": "首轮完整设计",
+      "source_ref": "synthetic:preview-design"
+    },
+    {
+      "item_id": "di-character",
+      "operation": "add",
+      "reason": "首轮完整设计",
+      "source_ref": "synthetic:preview-design"
+    },
+    {
+      "item_id": "di-styling",
+      "operation": "add",
+      "reason": "首轮完整设计",
+      "source_ref": "synthetic:preview-design"
+    },
+    {
+      "item_id": "di-scene",
+      "operation": "add",
+      "reason": "首轮完整设计",
+      "source_ref": "synthetic:preview-design"
+    },
+    {
+      "item_id": "di-scene-detail",
+      "operation": "add",
+      "reason": "首轮完整设计",
+      "source_ref": "synthetic:preview-design"
+    },
+    {
+      "item_id": "di-action",
+      "operation": "add",
+      "reason": "首轮完整设计",
+      "source_ref": "synthetic:preview-design"
+    },
+    {
+      "item_id": "di-camera",
+      "operation": "add",
+      "reason": "首轮完整设计",
+      "source_ref": "synthetic:preview-design"
+    },
+    {
+      "item_id": "di-light",
+      "operation": "add",
+      "reason": "首轮完整设计",
+      "source_ref": "synthetic:preview-design"
+    },
+    {
+      "item_id": "di-material",
+      "operation": "add",
+      "reason": "首轮完整设计",
+      "source_ref": "synthetic:preview-design"
+    },
+    {
+      "item_id": "di-medium",
+      "operation": "add",
+      "reason": "首轮完整设计",
+      "source_ref": "synthetic:preview-design"
+    },
+    {
+      "item_id": "di-ratio",
+      "operation": "add",
+      "reason": "正面全身及鞋履需完整纵向空间，选择2:3。",
+      "source_ref": "synthetic:preview-design"
+    }
+  ]
+}

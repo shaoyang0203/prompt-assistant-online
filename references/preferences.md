@@ -1,4 +1,4 @@
-# 偏好模板与存档协议（V1.5.0-harness）
+# 偏好模板与存档协议（V1.5.1）
 
 生成提示词时按本协议读取模板；用户表达偏好时按本协议写入。本协议不改变六步流程、九区域母版、知识库和编译门禁。
 
@@ -53,12 +53,14 @@
 
 ## 4. 生成前：怎么用模板
 
-1. 运行 `prefs query --scene <场景类型> --model <目标模型>`，取 `defaults / prefer / avoid / pending`。
+1. 运行 `prefs query --scene <场景类型> --model <目标模型>`，取 `defaults / prefer / optional / avoid / pending`。
 2. `defaults`：仅当母版该维度为空且本轮没有指定时填充。用户本轮指定了就别填。
 3. `prefer`：作为倾向参与设计，本轮要求优先；冲突时说明取舍。
 4. `avoid`：设计时避开。**不得把排除项写成否定句或 Negative Prompt**，要转成实际选用的替代方案。
-5. `pending`：不参与设计，只在用户查看时说明“有待确认的推断”。
+5. `pending`：不参与设计；查询时按当前场景、模型、维度过滤，只在用户查看时说明“有待确认的推断”。查看全部待确认项使用template list并查看pending状态；query未给场景或模型时，该维度仅匹配不限作用域的模板。
 6. 用户说“这次不要默认”，本轮抑制全部 `default_fill`，不写库。
+
+`optional` 是已启用但未设为默认的 `default_fill`／`prefer` 模板集合，不是第四种作用模式。里面的 `default_fill` 不得自动填充，仅用户选择后应用；`prefer` 仍按倾向规则处理，不能因为重复出现在此集合而重复应用。`template resume` 仅恢复已停用且已获必要确认的模板；pending 推断必须由用户明确确认后用 `template on` 激活。
 
 ## 5. 生成后：怎么记录
 

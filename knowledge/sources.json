@@ -11,7 +11,13 @@
       "support": "专业布光职责、软硬和溢光；不支持具体宫廷配方",
       "accessed_on": "2026-10-31",
       "access_status": "opened_primary_content",
-      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可"
+      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可",
+      "access_record_basis": "inherited_record_not_reverified",
+      "latest_verification": {
+        "reviewed_on": "2026-11-02",
+        "status": "previous_reopen_failed",
+        "note": "原说明存在重开失败或403记录；本次仅核对文件，未重新请求来源正文。"
+      }
     },
     {
       "id": "S02",
@@ -23,7 +29,13 @@
       "support": "五种布光位置及阴影示例；适用人物建议是本库创作判断",
       "accessed_on": "2026-10-31",
       "access_status": "opened_primary_content",
-      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可"
+      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可",
+      "access_record_basis": "inherited_record_not_reverified",
+      "latest_verification": {
+        "reviewed_on": "2026-11-02",
+        "status": "not_rechecked",
+        "note": "沿用原始访问声明；本次仅核对文件，未重新请求来源正文。"
+      }
     },
     {
       "id": "S03",
@@ -35,7 +47,13 @@
       "support": "自然/人工光及面部布光术语；简化软硬定义须结合有效光源角尺寸",
       "accessed_on": "2026-10-31",
       "access_status": "opened_primary_content",
-      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可"
+      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可",
+      "access_record_basis": "inherited_record_not_reverified",
+      "latest_verification": {
+        "reviewed_on": "2026-11-02",
+        "status": "not_rechecked",
+        "note": "沿用原始访问声明；本次仅核对文件，未重新请求来源正文。"
+      }
     },
     {
       "id": "S04",
@@ -47,7 +65,13 @@
       "support": "点光源距离平方衰减，不是近距离面光源通用公式",
       "accessed_on": "2026-10-31",
       "access_status": "opened_primary_content",
-      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可"
+      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可",
+      "access_record_basis": "inherited_record_not_reverified",
+      "latest_verification": {
+        "reviewed_on": "2026-11-02",
+        "status": "not_rechecked",
+        "note": "沿用原始访问声明；本次仅核对文件，未重新请求来源正文。"
+      }
     },
     {
       "id": "S05",
@@ -59,7 +83,13 @@
       "support": "光比测量思路；原页后部档差示例混用口径，本库不照抄其4:1/5:1算式",
       "accessed_on": "2026-10-31",
       "access_status": "opened_primary_content",
-      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可"
+      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可",
+      "access_record_basis": "inherited_record_not_reverified",
+      "latest_verification": {
+        "reviewed_on": "2026-11-02",
+        "status": "not_rechecked",
+        "note": "沿用原始访问声明；本次仅核对文件，未重新请求来源正文。"
+      }
     },
     {
       "id": "S06",
@@ -71,7 +101,13 @@
       "support": "不同光谱与相机显色；不证明指定模型理解SSI",
       "accessed_on": "2026-10-31",
       "access_status": "opened_primary_content",
-      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可"
+      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可",
+      "access_record_basis": "inherited_record_not_reverified",
+      "latest_verification": {
+        "reviewed_on": "2026-11-02",
+        "status": "not_rechecked",
+        "note": "沿用原始访问声明；本次仅核对文件，未重新请求来源正文。"
+      }
     },
     {
       "id": "S07",
@@ -83,7 +119,13 @@
       "support": "明暗/色相区分与配色关系；RYB示意不是光谱定律，饱和度不是颜料浓度的通用定义",
       "accessed_on": "2026-10-31",
       "access_status": "opened_primary_content",
-      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可"
+      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可",
+      "access_record_basis": "inherited_record_not_reverified",
+      "latest_verification": {
+        "reviewed_on": "2026-11-02",
+        "status": "not_rechecked",
+        "note": "沿用原始访问声明；本次仅核对文件，未重新请求来源正文。"
+      }
     },
     {
       "id": "S08",
@@ -95,7 +137,13 @@
       "support": "类似/互补/分裂互补与主色；审美评价非物理必然",
       "accessed_on": "2026-10-31",
       "access_status": "opened_primary_content",
-      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可"
+      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可",
+      "access_record_basis": "inherited_record_not_reverified",
+      "latest_verification": {
+        "reviewed_on": "2026-11-02",
+        "status": "not_rechecked",
+        "note": "沿用原始访问声明；本次仅核对文件，未重新请求来源正文。"
+      }
     },
     {
       "id": "S09",
@@ -107,7 +155,13 @@
       "support": "相机位置决定透视；正文一句proportional措辞与例子不符，不采该句",
       "accessed_on": "2026-10-31",
       "access_status": "opened_primary_content",
-      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可"
+      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可",
+      "access_record_basis": "inherited_record_not_reverified",
+      "latest_verification": {
+        "reviewed_on": "2026-11-02",
+        "status": "not_rechecked",
+        "note": "沿用原始访问声明；本次仅核对文件，未重新请求来源正文。"
+      }
     },
     {
       "id": "S10",
@@ -119,7 +173,13 @@
       "support": "构图方法及例外；不把中心构图判为劣等",
       "accessed_on": "2026-10-31",
       "access_status": "opened_primary_content",
-      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可"
+      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可",
+      "access_record_basis": "inherited_record_not_reverified",
+      "latest_verification": {
+        "reviewed_on": "2026-11-02",
+        "status": "not_rechecked",
+        "note": "沿用原始访问声明；本次仅核对文件，未重新请求来源正文。"
+      }
     },
     {
       "id": "S11",
@@ -131,7 +191,13 @@
       "support": "主体外空间与平衡，不支持固定面积比例",
       "accessed_on": "2026-10-31",
       "access_status": "opened_primary_content",
-      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可"
+      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可",
+      "access_record_basis": "inherited_record_not_reverified",
+      "latest_verification": {
+        "reviewed_on": "2026-11-02",
+        "status": "not_rechecked",
+        "note": "沿用原始访问声明；本次仅核对文件，未重新请求来源正文。"
+      }
     },
     {
       "id": "S12",
@@ -143,7 +209,13 @@
       "support": "机位高度及俯仰；人物心理含义非必然",
       "accessed_on": "2026-10-31",
       "access_status": "opened_primary_content",
-      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可"
+      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可",
+      "access_record_basis": "inherited_record_not_reverified",
+      "latest_verification": {
+        "reviewed_on": "2026-11-02",
+        "status": "not_rechecked",
+        "note": "沿用原始访问声明；本次仅核对文件，未重新请求来源正文。"
+      }
     },
     {
       "id": "S13",
@@ -155,7 +227,13 @@
       "support": "景别与画面范围；中文术语边界需直接描述裁切",
       "accessed_on": "2026-10-31",
       "access_status": "opened_primary_content",
-      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可"
+      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可",
+      "access_record_basis": "inherited_record_not_reverified",
+      "latest_verification": {
+        "reviewed_on": "2026-11-02",
+        "status": "not_rechecked",
+        "note": "沿用原始访问声明；本次仅核对文件，未重新请求来源正文。"
+      }
     },
     {
       "id": "S14",
@@ -167,7 +245,13 @@
       "support": "经纬/组织/缎纹与垂坠；其satin/sateen命名习惯不当作唯一国际定义",
       "accessed_on": "2026-10-31",
       "access_status": "opened_primary_content",
-      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可"
+      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可",
+      "access_record_basis": "inherited_record_not_reverified",
+      "latest_verification": {
+        "reviewed_on": "2026-11-02",
+        "status": "previous_reopen_failed",
+        "note": "原说明存在重开失败或403记录；本次仅核对文件，未重新请求来源正文。"
+      }
     },
     {
       "id": "S15",
@@ -179,7 +263,13 @@
       "support": "服装发妆依据角色与历史研究、与摄影美术协同；不是具体历史形制证据",
       "accessed_on": "2026-10-31",
       "access_status": "opened_primary_content",
-      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可"
+      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可",
+      "access_record_basis": "inherited_record_not_reverified",
+      "latest_verification": {
+        "reviewed_on": "2026-11-02",
+        "status": "not_rechecked",
+        "note": "沿用原始访问声明；本次仅核对文件，未重新请求来源正文。"
+      }
     },
     {
       "id": "S16",
@@ -191,7 +281,13 @@
       "support": "身份、形状、材料、动作对服装设计的意义",
       "accessed_on": "2026-10-31",
       "access_status": "opened_primary_content",
-      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可"
+      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可",
+      "access_record_basis": "inherited_record_not_reverified",
+      "latest_verification": {
+        "reviewed_on": "2026-11-02",
+        "status": "not_rechecked",
+        "note": "沿用原始访问声明；本次仅核对文件，未重新请求来源正文。"
+      }
     },
     {
       "id": "S17",
@@ -203,7 +299,13 @@
       "support": "角色造型协同、假发与发片；不支持脸型吉凶或固定美妆配方",
       "accessed_on": "2026-10-31",
       "access_status": "opened_primary_content",
-      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可"
+      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可",
+      "access_record_basis": "inherited_record_not_reverified",
+      "latest_verification": {
+        "reviewed_on": "2026-11-02",
+        "status": "not_rechecked",
+        "note": "沿用原始访问声明；本次仅核对文件，未重新请求来源正文。"
+      }
     },
     {
       "id": "S18",
@@ -215,7 +317,13 @@
       "support": "首饰材料、工艺与社会历史含义；不直接证明中国古代形制",
       "accessed_on": "2026-10-31",
       "access_status": "opened_primary_content",
-      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可"
+      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可",
+      "access_record_basis": "inherited_record_not_reverified",
+      "latest_verification": {
+        "reviewed_on": "2026-11-02",
+        "status": "not_rechecked",
+        "note": "沿用原始访问声明；本次仅核对文件，未重新请求来源正文。"
+      }
     },
     {
       "id": "S19",
@@ -227,7 +335,13 @@
       "support": "空间用途、尺度、材料、层次、出入与观看关系；不是结构工程规范",
       "accessed_on": "2026-10-31",
       "access_status": "opened_primary_content",
-      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可"
+      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可",
+      "access_record_basis": "inherited_record_not_reverified",
+      "latest_verification": {
+        "reviewed_on": "2026-11-02",
+        "status": "not_rechecked",
+        "note": "沿用原始访问声明；本次仅核对文件，未重新请求来源正文。"
+      }
     },
     {
       "id": "S20",
@@ -239,7 +353,13 @@
       "support": "雨雪雾类别与能见度；服装湿润和镜头选择是跨域推导",
       "accessed_on": "2026-10-31",
       "access_status": "opened_primary_content",
-      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可"
+      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可",
+      "access_record_basis": "inherited_record_not_reverified",
+      "latest_verification": {
+        "reviewed_on": "2026-11-02",
+        "status": "not_rechecked",
+        "note": "沿用原始访问声明；本次仅核对文件，未重新请求来源正文。"
+      }
     },
     {
       "id": "S21",
@@ -251,7 +371,13 @@
       "support": "光谱/方向反射、皮肤/叶片等次表面输运",
       "accessed_on": "2026-10-31",
       "access_status": "opened_primary_content",
-      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可"
+      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可",
+      "access_record_basis": "inherited_record_not_reverified",
+      "latest_verification": {
+        "reviewed_on": "2026-11-02",
+        "status": "not_rechecked",
+        "note": "沿用原始访问声明；本次仅核对文件，未重新请求来源正文。"
+      }
     },
     {
       "id": "S22",
@@ -263,7 +389,13 @@
       "support": "微表面分布与高光角分布；不把粗糙度等同漫反射",
       "accessed_on": "2026-10-31",
       "access_status": "opened_primary_content",
-      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可"
+      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可",
+      "access_record_basis": "inherited_record_not_reverified",
+      "latest_verification": {
+        "reviewed_on": "2026-11-02",
+        "status": "not_rechecked",
+        "note": "沿用原始访问声明；本次仅核对文件，未重新请求来源正文。"
+      }
     },
     {
       "id": "S23",
@@ -275,7 +407,13 @@
       "support": "导体/介质、反射折射与菲涅耳；材料创作示例另标C",
       "accessed_on": "2026-10-31",
       "access_status": "opened_primary_content",
-      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可"
+      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可",
+      "access_record_basis": "inherited_record_not_reverified",
+      "latest_verification": {
+        "reviewed_on": "2026-11-02",
+        "status": "not_rechecked",
+        "note": "沿用原始访问声明；本次仅核对文件，未重新请求来源正文。"
+      }
     },
     {
       "id": "S24",
@@ -287,7 +425,13 @@
       "support": "不同入射/出射位置的次表面散射；不是皮肤无瑕滤镜",
       "accessed_on": "2026-10-31",
       "access_status": "opened_primary_content",
-      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可"
+      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可",
+      "access_record_basis": "inherited_record_not_reverified",
+      "latest_verification": {
+        "reviewed_on": "2026-11-02",
+        "status": "not_rechecked",
+        "note": "沿用原始访问声明；本次仅核对文件，未重新请求来源正文。"
+      }
     },
     {
       "id": "S25",
@@ -299,7 +443,13 @@
       "support": "丝纤维与缎纹组织共存实物例；不迁移该物的年代到其他服装",
       "accessed_on": "2026-10-31",
       "access_status": "opened_primary_content",
-      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可"
+      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可",
+      "access_record_basis": "inherited_record_not_reverified",
+      "latest_verification": {
+        "reviewed_on": "2026-11-02",
+        "status": "not_rechecked",
+        "note": "沿用原始访问声明；本次仅核对文件，未重新请求来源正文。"
+      }
     },
     {
       "id": "S26",
@@ -311,7 +461,13 @@
       "support": "桶形/枕形光学畸变与校正；区别透视/边缘拉伸；小光圈衍射补偿说明",
       "accessed_on": "2026-10-31",
       "access_status": "opened_primary_content",
-      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可"
+      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可",
+      "access_record_basis": "inherited_record_not_reverified",
+      "latest_verification": {
+        "reviewed_on": "2026-11-02",
+        "status": "not_rechecked",
+        "note": "沿用原始访问声明；本次仅核对文件，未重新请求来源正文。"
+      }
     },
     {
       "id": "S27",
@@ -323,7 +479,13 @@
       "support": "色、光、大小、距离、焦点、位置共同引导视线",
       "accessed_on": "2026-10-31",
       "access_status": "opened_primary_content",
-      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可"
+      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可",
+      "access_record_basis": "inherited_record_not_reverified",
+      "latest_verification": {
+        "reviewed_on": "2026-11-02",
+        "status": "not_rechecked",
+        "note": "沿用原始访问声明；本次仅核对文件，未重新请求来源正文。"
+      }
     },
     {
       "id": "S28",
@@ -335,7 +497,13 @@
       "support": "光圈开口与f数、固定其他条件时光圈对景深的影响；不是精确模型参数保证",
       "accessed_on": "2026-10-31",
       "access_status": "opened_primary_content",
-      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可"
+      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可",
+      "access_record_basis": "inherited_record_not_reverified",
+      "latest_verification": {
+        "reviewed_on": "2026-11-02",
+        "status": "not_rechecked",
+        "note": "沿用原始访问声明；本次仅核对文件，未重新请求来源正文。"
+      }
     },
     {
       "id": "S29",
@@ -347,7 +515,13 @@
       "support": "景深与光圈、焦距、拍摄距离、主体背景距离的关系；单变量说明须保留固定条件，不能把改变多变量的对比当作因果证明",
       "accessed_on": "2026-10-31",
       "access_status": "opened_primary_content",
-      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可"
+      "copyright": "原站版权；本库只保存自述摘要与链接，未获得图片或全文转载许可",
+      "access_record_basis": "inherited_record_not_reverified",
+      "latest_verification": {
+        "reviewed_on": "2026-11-02",
+        "status": "not_rechecked",
+        "note": "沿用原始访问声明；本次仅核对文件，未重新请求来源正文。"
+      }
     },
     {
       "id": "S30",
@@ -359,7 +533,13 @@
       "support": "灯光、布景、表演和人物位置组织注意；固定相机视线下遮挡/显露关系。电影运动、时序和声音不直接迁移为静态图像事实；不支持本项目软件流程或普适审美定律",
       "accessed_on": "2026-10-31",
       "access_status": "opened_primary_content",
-      "copyright": "原站版权；仅原创概述与链接，不转载截图或全文"
+      "copyright": "原站版权；仅原创概述与链接，不转载截图或全文",
+      "access_record_basis": "inherited_record_not_reverified",
+      "latest_verification": {
+        "reviewed_on": "2026-11-02",
+        "status": "not_rechecked",
+        "note": "沿用原始访问声明；本次仅核对文件，未重新请求来源正文。"
+      }
     },
     {
       "id": "S31",
@@ -371,7 +551,13 @@
       "support": "遮挡与显露、目光和站位组织信息；突出行动与淡化戏剧性可服务不同叙事。文中长焦外观分析不是保持机位不变时焦距改变透视的证据；静态单幅不借后续运动补救遮挡",
       "accessed_on": "2026-10-31",
       "access_status": "opened_primary_content",
-      "copyright": "原站版权；仅原创概述与链接，不转载电影截图或全文"
+      "copyright": "原站版权；仅原创概述与链接，不转载电影截图或全文",
+      "access_record_basis": "inherited_record_not_reverified",
+      "latest_verification": {
+        "reviewed_on": "2026-11-02",
+        "status": "not_rechecked",
+        "note": "沿用原始访问声明；本次仅核对文件，未重新请求来源正文。"
+      }
     },
     {
       "id": "S32",
@@ -383,7 +569,13 @@
       "support": "视觉重量、强调、视线路径、重复变化与统一的美术实践术语。属于教学框架，不是眼动预测定律；不规定每图必须单一焦点或某种构图优越",
       "accessed_on": "2026-10-31",
       "access_status": "opened_primary_content",
-      "copyright": "©2011 J. Paul Getty Trust；仅原创概述与链接，不保存原讲义或藏品图片"
+      "copyright": "©2011 J. Paul Getty Trust；仅原创概述与链接，不保存原讲义或藏品图片",
+      "access_record_basis": "inherited_record_not_reverified",
+      "latest_verification": {
+        "reviewed_on": "2026-11-02",
+        "status": "not_rechecked",
+        "note": "沿用原始访问声明；本次仅核对文件，未重新请求来源正文。"
+      }
     },
     {
       "id": "S33",
@@ -395,7 +587,13 @@
       "support": "比例为宽与高的关系且不等于分辨率；1:1/3:2/4:3/16:9常见格式，改变比例需重定取景。九比例的具体适用案例为本项目C级推导，不是Adobe题材分配表，也不证明模型支持任意比例；不沿用页面中的社交平台规格作保证",
       "accessed_on": "2026-10-31",
       "access_status": "opened_primary_content",
-      "copyright": "原站版权；仅原创概述与链接，不转载图片或全文"
+      "copyright": "原站版权；仅原创概述与链接，不转载图片或全文",
+      "access_record_basis": "inherited_record_not_reverified",
+      "latest_verification": {
+        "reviewed_on": "2026-11-02",
+        "status": "not_rechecked",
+        "note": "沿用原始访问声明；本次仅核对文件，未重新请求来源正文。"
+      }
     },
     {
       "id": "S34",
@@ -407,7 +605,13 @@
       "support": "布景、服装、光、道具与人物调度的概念及其与取景的关系；不支持图像模型执行保证或本产品工程架构",
       "accessed_on": "2026-10-31",
       "access_status": "opened_primary_content",
-      "copyright": "原站版权；仅保存自述概述、定位与链接，不转载图片或教材全文"
+      "copyright": "原站版权；仅保存自述概述、定位与链接，不转载图片或教材全文",
+      "access_record_basis": "inherited_record_not_reverified",
+      "latest_verification": {
+        "reviewed_on": "2026-11-02",
+        "status": "not_rechecked",
+        "note": "沿用原始访问声明；本次仅核对文件，未重新请求来源正文。"
+      }
     },
     {
       "id": "S35",
@@ -419,7 +623,13 @@
       "support": "空间、色相/明暗/强度、表面质感的基本概念；不支持颜色固定心理意义、精确灯光模拟或植物鉴定",
       "accessed_on": "2026-10-31",
       "access_status": "opened_primary_content",
-      "copyright": "原站版权；仅保存自述概述、定位与链接，不转载图片或教材全文"
+      "copyright": "原站版权；仅保存自述概述、定位与链接，不转载图片或教材全文",
+      "access_record_basis": "inherited_record_not_reverified",
+      "latest_verification": {
+        "reviewed_on": "2026-11-02",
+        "status": "not_rechecked",
+        "note": "沿用原始访问声明；本次仅核对文件，未重新请求来源正文。"
+      }
     },
     {
       "id": "S36",
@@ -431,7 +641,13 @@
       "support": "焦距与视角/放大及镜头类别；透视比较仍须结合S09的机位前提，不支持模型精确复现焦距",
       "accessed_on": "2026-10-31",
       "access_status": "opened_primary_content",
-      "copyright": "原站版权；仅保存自述概述、定位与链接，不转载图片或教材全文"
+      "copyright": "原站版权；仅保存自述概述、定位与链接，不转载图片或教材全文",
+      "access_record_basis": "inherited_record_not_reverified",
+      "latest_verification": {
+        "reviewed_on": "2026-11-02",
+        "status": "previous_reopen_failed",
+        "note": "原说明存在重开失败或403记录；本次仅核对文件，未重新请求来源正文。"
+      }
     },
     {
       "id": "S37",
@@ -443,7 +659,13 @@
       "support": "服装实物、纸样与制作结构的研究方法；不把索引页当任一具体历史服制或全部服装版型的证据",
       "accessed_on": "2026-10-31",
       "access_status": "opened_primary_content",
-      "copyright": "原站版权；仅保存自述概述、定位与链接，不转载图片或教材全文"
+      "copyright": "原站版权；仅保存自述概述、定位与链接，不转载图片或教材全文",
+      "access_record_basis": "inherited_record_not_reverified",
+      "latest_verification": {
+        "reviewed_on": "2026-11-02",
+        "status": "not_rechecked",
+        "note": "沿用原始访问声明；本次仅核对文件，未重新请求来源正文。"
+      }
     },
     {
       "id": "S38",
@@ -455,7 +677,13 @@
       "support": "皮革粒面、磨面及涂层类别的定义；不是每种表面的定量光学参数或价格、质量排名",
       "accessed_on": "2026-10-31",
       "access_status": "opened_primary_content",
-      "copyright": "原站版权；仅保存自述概述、定位与链接，不转载图片或教材全文"
+      "copyright": "原站版权；仅保存自述概述、定位与链接，不转载图片或教材全文",
+      "access_record_basis": "inherited_record_not_reverified",
+      "latest_verification": {
+        "reviewed_on": "2026-11-02",
+        "status": "not_rechecked",
+        "note": "沿用原始访问声明；本次仅核对文件，未重新请求来源正文。"
+      }
     },
     {
       "id": "S39",
@@ -467,7 +695,13 @@
       "support": "钻石刻面与光的相互作用，以及白光亮度、火彩、闪烁/明暗图案的区分；不推广到所有宝石，不声称静帧验证动态闪烁",
       "accessed_on": "2026-10-31",
       "access_status": "opened_primary_content",
-      "copyright": "原站版权；仅保存自述概述、定位与链接，不转载图片或教材全文"
+      "copyright": "原站版权；仅保存自述概述、定位与链接，不转载图片或教材全文",
+      "access_record_basis": "inherited_record_not_reverified",
+      "latest_verification": {
+        "reviewed_on": "2026-11-02",
+        "status": "not_rechecked",
+        "note": "沿用原始访问声明；本次仅核对文件，未重新请求来源正文。"
+      }
     },
     {
       "id": "S40",
@@ -479,7 +713,13 @@
       "support": "色彩对比与面积、强度的实践组织；本库不采用其暖色必前进等建议为定律，不将网页可访问性数值套到艺术图像",
       "accessed_on": "2026-10-31",
       "access_status": "opened_primary_content",
-      "copyright": "原站版权；仅保存自述概述、定位与链接，不转载图片或教材全文"
+      "copyright": "原站版权；仅保存自述概述、定位与链接，不转载图片或教材全文",
+      "access_record_basis": "inherited_record_not_reverified",
+      "latest_verification": {
+        "reviewed_on": "2026-11-02",
+        "status": "not_rechecked",
+        "note": "沿用原始访问声明；本次仅核对文件，未重新请求来源正文。"
+      }
     },
     {
       "id": "S41",
@@ -491,7 +731,13 @@
       "support": "周围颜色影响同色感知的定义；不等于真实环境反射染色，也不是光谱或像素数值测量",
       "accessed_on": "2026-10-31",
       "access_status": "opened_primary_content",
-      "copyright": "原站版权；仅保存自述概述、定位与链接，不转载图片或教材全文"
+      "copyright": "原站版权；仅保存自述概述、定位与链接，不转载图片或教材全文",
+      "access_record_basis": "inherited_record_not_reverified",
+      "latest_verification": {
+        "reviewed_on": "2026-11-02",
+        "status": "not_rechecked",
+        "note": "沿用原始访问声明；本次仅核对文件，未重新请求来源正文。"
+      }
     },
     {
       "id": "S42",
@@ -503,7 +749,13 @@
       "support": "纺织品组织、纱线及特定丝绒绒经的实物观察；不把历史丝绒样本推广为所有纤维的统一垂坠或显色性能",
       "accessed_on": "2026-10-31",
       "access_status": "opened_primary_content",
-      "copyright": "原站版权；仅保存自述概述、定位与链接，不转载图片或教材全文"
+      "copyright": "原站版权；仅保存自述概述、定位与链接，不转载图片或教材全文",
+      "access_record_basis": "inherited_record_not_reverified",
+      "latest_verification": {
+        "reviewed_on": "2026-11-02",
+        "status": "not_rechecked",
+        "note": "沿用原始访问声明；本次仅核对文件，未重新请求来源正文。"
+      }
     },
     {
       "id": "S43",
@@ -515,7 +767,18 @@
       "support": "特定针制蕾丝实物的凸起纹样、连接和开孔外观；不代表全部蕾丝的工艺、年代、身份或价格",
       "accessed_on": "2026-10-31",
       "access_status": "opened_primary_content",
-      "copyright": "原站版权；仅保存自述概述、定位与链接，不转载图片或教材全文"
+      "copyright": "原站版权；仅保存自述概述、定位与链接，不转载图片或教材全文",
+      "access_record_basis": "inherited_record_not_reverified",
+      "latest_verification": {
+        "reviewed_on": "2026-11-02",
+        "status": "not_rechecked",
+        "note": "沿用原始访问声明；本次仅核对文件，未重新请求来源正文。"
+      }
     }
-  ]
+  ],
+  "field_semantics": {
+    "access_status": "Historical access declaration only; not current verification.",
+    "accessed_on": "Historical access date; not the latest review date.",
+    "latest_verification": "Use for current recorded verification status; this is not a live network probe."
+  }
 }

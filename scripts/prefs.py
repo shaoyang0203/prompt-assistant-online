@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""V1.5.0-harness 偏好模板、存档与推断。只写外部数据目录，不写源码，不调用模型。
+"""V1.5.1 偏好模板、存档与推断。只写外部数据目录，不写源码，不调用模型。
 
 模板取自母版的设计方向，不取自提示词。提示词是母版的译本，永远在下游。
 """
@@ -19,7 +19,7 @@ from uuid import uuid4
 from contracts import validate_master
 
 PACKAGE = Path(__file__).resolve().parents[1]
-VERSION = "1.5.0-harness"
+VERSION = "1.5.1"
 FORMAT = 1
 DIMENSIONS = ("subject", "lighting", "palette", "camera", "material")
 APPLY_MODES = ("default_fill", "prefer", "avoid")
@@ -267,11 +267,24 @@ def query_view(data, scene=None, model=None, dimension=None):
         "optional": [t for t in scoped if t["apply_mode"] in ("default_fill", "prefer")
                      and not t["default_on"]],
         "avoid": [t for t in scoped if t["apply_mode"] == "avoid"],
-        "pending": [t for t in data["templates"] if t["status"] == "pending"],
+        "pending": [t for t in data["templates"] if t["status"] == "pending"
+                    and (not dimension or t["dimension"] == dimension) and scope_match(t, scene, model)],
     }
 
 
 # ---------- 命令 ----------
+
+def validate_input_types(payload):
+    attributes = payload.get("attributes")
+    require(type(attributes) is list and bool(attributes) and
+            all(type(value) is str and value.strip() for value in attributes),
+            "attributes 必须是非空字符串数组，不接受字符串或其他类型强转")
+    require(type(payload.get("default_on", False)) is bool, "default_on 必须是布尔值")
+    require(type(payload.get("source_items", [])) is list, "source_items 必须是数组")
+    evidence = payload.get("evidence", [])
+    require(type(evidence) is list and all(type(value) is str and value.strip() for value in evidence),
+            "evidence 必须是字符串数组")
+
 
 def command_add(prefs, payload):
     require(type(payload) is dict, "模板输入必须是对象")
@@ -281,6 +294,7 @@ def command_add(prefs, payload):
     require(not unknown, "模板输入包含未知字段: " + ",".join(sorted(unknown)))
     for key in ("name", "dimension", "attributes", "apply_mode"):
         require(key in payload, "模板输入缺少 " + key)
+    validate_input_types(payload)
 
     def action(data):
         require(data["settings"]["record"], "记录开关已关闭；先 `set --key record --value on`")
@@ -288,14 +302,14 @@ def command_add(prefs, payload):
             "id": next_id("T", data["templates"]),
             "name": payload["name"],
             "dimension": payload["dimension"],
-            "attributes": list(payload["attributes"]),
+            "attributes": copy.deepcopy(payload["attributes"]),
             "apply_mode": payload["apply_mode"],
             "scope": payload.get("scope", {"scene": "*", "model": "*"}),
-            "default_on": bool(payload.get("default_on", False)),
+            "default_on": payload.get("default_on", False),
             "status": "active",
             "source": payload.get("source", "user_specified"),
-            "source_items": list(payload.get("source_items", [])),
-            "evidence": list(payload.get("evidence", [])),
+            "source_items": copy.deepcopy(payload.get("source_items", [])),
+            "evidence": copy.deepcopy(payload.get("evidence", [])),
             "note": payload.get("note", ""),
             "created": now(),
             "updated": now(),
@@ -373,6 +387,9 @@ def command_stop(prefs, template_id, reason):
 def command_resume(prefs, template_id):
     def action(data):
         template = find(data, template_id)
+        require(template["status"] == "disabled", "resume 仅恢复已停用模板；pending 推断须用 template on 经用户明确确认")
+        require(template["source"] != "inferred" or bool(template.get("confirmed_by")),
+                "尚未确认的推断不能恢复生效；请用 template on 确认")
         template["status"] = "active"
         template["updated"] = now()
         journal(data, "template.resume", template["id"], template["name"] + " 恢复可用")
@@ -443,17 +460,18 @@ def command_infer(prefs, payload):
             require(type(candidate) is dict, "候选必须是对象")
             for key in ("name", "dimension", "attributes", "apply_mode"):
                 require(key in candidate, "候选缺少 " + key)
+            validate_input_types(candidate)
             template = {
                 "id": next_id("T", data["templates"] + created),
                 "name": candidate["name"],
                 "dimension": candidate["dimension"],
-                "attributes": list(candidate["attributes"]),
+                "attributes": copy.deepcopy(candidate["attributes"]),
                 "apply_mode": candidate["apply_mode"],
                 "scope": candidate.get("scope", {"scene": "*", "model": "*"}),
                 "default_on": False,
                 "status": "pending",
                 "source": "inferred",
-                "source_items": list(candidate.get("source_items", [])),
+                "source_items": copy.deepcopy(candidate.get("source_items", [])),
                 "evidence": list(payload["basis"]),
                 "note": "用户要求推断：" + payload["request"],
                 "created": now(),
@@ -515,7 +533,7 @@ def command_status(prefs):
 # ---------- 入口 ----------
 
 def build_parser():
-    parser = argparse.ArgumentParser(description="V1.5.0-harness 偏好模板与存档（非自动生图程序）")
+    parser = argparse.ArgumentParser(description="V1.5.1 偏好模板与存档（非自动生图程序）")
     parser.add_argument("--data-dir", required=True, help="源码之外的本地运行数据目录")
     sub = parser.add_subparsers(dest="command", required=True)
 

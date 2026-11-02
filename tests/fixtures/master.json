@@ -1,0 +1,363 @@
+{
+  "schema_version": "0.3.0",
+  "master_id": "preview-portrait",
+  "revision": 1,
+  "parent_revision": null,
+  "zones": {
+    "intent_constraints": [
+      "di-intent",
+      "di-requirement"
+    ],
+    "creative_direction_moment": [
+      "di-moment"
+    ],
+    "visual_subject_hierarchy": [
+      "di-focus"
+    ],
+    "character_art": [
+      "di-character",
+      "di-styling"
+    ],
+    "scene_art": [
+      "di-scene",
+      "di-scene-detail"
+    ],
+    "action_spatial_relations": [
+      "di-action",
+      "di-pose"
+    ],
+    "camera_composition": [
+      "di-camera"
+    ],
+    "lighting_color": [
+      "di-light"
+    ],
+    "material_visual_expression": [
+      "di-material"
+    ]
+  },
+  "globals": {
+    "medium": "di-medium",
+    "aspect_ratio": "di-ratio",
+    "image_text": []
+  },
+  "items": {
+    "di-intent": {
+      "kind": "intent",
+      "facet": "intent",
+      "value": "以具体人物、空间和受光关系完成电影叙事摄影，不预设画面外故事。",
+      "design_source": "model_added",
+      "source_refs": [
+        "synthetic:host-llm-design"
+      ],
+      "confirmation_status": "pending",
+      "constraint_strength": "adjustable_design",
+      "depends_on": []
+    },
+    "di-requirement": {
+      "kind": "constraint",
+      "facet": "requirement",
+      "value": "成年中国女性、红外套、旧书店和阅读动作保持。",
+      "design_source": "user_specified",
+      "source_refs": [
+        "synthetic:user-request"
+      ],
+      "confirmation_status": "confirmed",
+      "constraint_strength": "hard_constraint",
+      "depends_on": [],
+      "realized_by": [
+        "di-character",
+        "di-scene",
+        "di-action"
+      ]
+    },
+    "di-moment": {
+      "kind": "visual_fact",
+      "facet": "moment",
+      "value": "低头阅读书页的一个停顿。",
+      "design_source": "model_added",
+      "source_refs": [
+        "synthetic:host-llm-design"
+      ],
+      "confirmation_status": "pending",
+      "constraint_strength": "adjustable_design",
+      "depends_on": []
+    },
+    "di-focus": {
+      "kind": "visual_fact",
+      "facet": "focus",
+      "value": "人物脸部和书页是主要焦点，书架为次要空间信息。",
+      "design_source": "model_added",
+      "source_refs": [
+        "synthetic:host-llm-design"
+      ],
+      "confirmation_status": "pending",
+      "constraint_strength": "adjustable_design",
+      "depends_on": []
+    },
+    "di-character": {
+      "kind": "visual_fact",
+      "facet": "character",
+      "value": "一位成年中国女性，穿红色外套。",
+      "design_source": "user_specified",
+      "source_refs": [
+        "synthetic:user-request"
+      ],
+      "confirmation_status": "confirmed",
+      "constraint_strength": "hard_constraint",
+      "depends_on": []
+    },
+    "di-styling": {
+      "kind": "visual_fact",
+      "facet": "styling",
+      "value": "黑色短发，外套衣领整齐。",
+      "design_source": "model_added",
+      "source_refs": [
+        "synthetic:host-llm-design"
+      ],
+      "confirmation_status": "pending",
+      "constraint_strength": "adjustable_design",
+      "depends_on": []
+    },
+    "di-scene": {
+      "kind": "visual_fact",
+      "facet": "scene",
+      "value": "人物在旧书店内。",
+      "design_source": "user_specified",
+      "source_refs": [
+        "synthetic:user-request"
+      ],
+      "confirmation_status": "confirmed",
+      "constraint_strength": "hard_constraint",
+      "depends_on": []
+    },
+    "di-scene-detail": {
+      "kind": "visual_fact",
+      "facet": "scene-detail",
+      "value": "旧书店侧窗、深色木书架与可辨认的书脊。",
+      "design_source": "model_added",
+      "source_refs": [
+        "synthetic:host-llm-design"
+      ],
+      "confirmation_status": "pending",
+      "constraint_strength": "adjustable_design",
+      "depends_on": []
+    },
+    "di-action": {
+      "kind": "visual_fact",
+      "facet": "action",
+      "value": "人物正在看书。",
+      "design_source": "user_specified",
+      "source_refs": [
+        "synthetic:user-request"
+      ],
+      "confirmation_status": "confirmed",
+      "constraint_strength": "hard_constraint",
+      "depends_on": [
+        {
+          "item_id": "di-scene",
+          "relation": "spatial"
+        }
+      ]
+    },
+    "di-pose": {
+      "kind": "visual_fact",
+      "facet": "pose",
+      "value": "她站在窗旁，双手在腰前托着摊开的书，视线落在书页。",
+      "design_source": "model_added",
+      "source_refs": [
+        "synthetic:host-llm-design"
+      ],
+      "confirmation_status": "pending",
+      "constraint_strength": "adjustable_design",
+      "depends_on": [
+        {
+          "item_id": "di-scene",
+          "relation": "spatial"
+        },
+        {
+          "item_id": "di-action",
+          "relation": "spatial"
+        }
+      ]
+    },
+    "di-camera": {
+      "kind": "visual_fact",
+      "facet": "camera",
+      "value": "平视腰上侧面构图，人物靠右，左侧保留窗和部分书架。",
+      "design_source": "model_added",
+      "source_refs": [
+        "synthetic:host-llm-design"
+      ],
+      "confirmation_status": "pending",
+      "constraint_strength": "adjustable_design",
+      "depends_on": [
+        {
+          "item_id": "di-focus",
+          "relation": "spatial"
+        },
+        {
+          "item_id": "di-action",
+          "relation": "spatial"
+        }
+      ]
+    },
+    "di-light": {
+      "kind": "visual_fact",
+      "facet": "light",
+      "value": "左侧大窗柔光照亮脸颊和书页，书架保持深色，红衣与背景分离。",
+      "design_source": "model_added",
+      "source_refs": [
+        "synthetic:host-llm-design"
+      ],
+      "confirmation_status": "pending",
+      "constraint_strength": "adjustable_design",
+      "depends_on": [
+        {
+          "item_id": "di-character",
+          "relation": "lighting"
+        },
+        {
+          "item_id": "di-scene",
+          "relation": "lighting"
+        }
+      ]
+    },
+    "di-material": {
+      "kind": "visual_fact",
+      "facet": "material",
+      "value": "外套为哑光织物，纸页形成柔亮受光面，木材保留暗色纹理。",
+      "design_source": "model_added",
+      "source_refs": [
+        "synthetic:host-llm-design"
+      ],
+      "confirmation_status": "pending",
+      "constraint_strength": "adjustable_design",
+      "depends_on": [
+        {
+          "item_id": "di-light",
+          "relation": "spatial"
+        }
+      ]
+    },
+    "di-medium": {
+      "kind": "medium",
+      "facet": "medium",
+      "value": "真人摄影。",
+      "design_source": "model_added",
+      "source_refs": [
+        "synthetic:host-llm-design"
+      ],
+      "confirmation_status": "pending",
+      "constraint_strength": "adjustable_design",
+      "depends_on": []
+    },
+    "di-ratio": {
+      "kind": "aspect_ratio",
+      "facet": "ratio",
+      "value": {
+        "width": 4,
+        "height": 5
+      },
+      "design_source": "model_added",
+      "source_refs": [
+        "synthetic:host-llm-design"
+      ],
+      "confirmation_status": "pending",
+      "constraint_strength": "adjustable_design",
+      "depends_on": []
+    }
+  },
+  "changes": [
+    {
+      "item_id": "di-intent",
+      "operation": "add",
+      "reason": "首轮完整设计",
+      "source_ref": "synthetic:preview-design"
+    },
+    {
+      "item_id": "di-requirement",
+      "operation": "add",
+      "reason": "首轮完整设计",
+      "source_ref": "synthetic:preview-design"
+    },
+    {
+      "item_id": "di-moment",
+      "operation": "add",
+      "reason": "首轮完整设计",
+      "source_ref": "synthetic:preview-design"
+    },
+    {
+      "item_id": "di-focus",
+      "operation": "add",
+      "reason": "首轮完整设计",
+      "source_ref": "synthetic:preview-design"
+    },
+    {
+      "item_id": "di-character",
+      "operation": "add",
+      "reason": "首轮完整设计",
+      "source_ref": "synthetic:preview-design"
+    },
+    {
+      "item_id": "di-styling",
+      "operation": "add",
+      "reason": "首轮完整设计",
+      "source_ref": "synthetic:preview-design"
+    },
+    {
+      "item_id": "di-scene",
+      "operation": "add",
+      "reason": "首轮完整设计",
+      "source_ref": "synthetic:preview-design"
+    },
+    {
+      "item_id": "di-scene-detail",
+      "operation": "add",
+      "reason": "首轮完整设计",
+      "source_ref": "synthetic:preview-design"
+    },
+    {
+      "item_id": "di-action",
+      "operation": "add",
+      "reason": "首轮完整设计",
+      "source_ref": "synthetic:preview-design"
+    },
+    {
+      "item_id": "di-pose",
+      "operation": "add",
+      "reason": "首轮完整设计",
+      "source_ref": "synthetic:preview-design"
+    },
+    {
+      "item_id": "di-camera",
+      "operation": "add",
+      "reason": "首轮完整设计",
+      "source_ref": "synthetic:preview-design"
+    },
+    {
+      "item_id": "di-light",
+      "operation": "add",
+      "reason": "首轮完整设计",
+      "source_ref": "synthetic:preview-design"
+    },
+    {
+      "item_id": "di-material",
+      "operation": "add",
+      "reason": "首轮完整设计",
+      "source_ref": "synthetic:preview-design"
+    },
+    {
+      "item_id": "di-medium",
+      "operation": "add",
+      "reason": "首轮完整设计",
+      "source_ref": "synthetic:preview-design"
+    },
+    {
+      "item_id": "di-ratio",
+      "operation": "add",
+      "reason": "腰上阅读与书页手势需要一定侧向余量，选择较宽竖幅4:5。",
+      "source_ref": "synthetic:preview-design"
+    }
+  ]
+}

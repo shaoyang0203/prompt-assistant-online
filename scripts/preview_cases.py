@@ -192,10 +192,12 @@ def candidate_for(state, translations):
         covered = group + (["di-scene"] if "di-scene-detail" in group else [])
         segments.append({"text":" ".join(translations[key] for key in group),"item_ids":covered})
     return {"master_hash":manifest["master_hash"],"segments":segments,
+            "target":manifest["aspect_ratio_delivery"]["target"],
             "parameters":{"aspect_ratio":copy.deepcopy(master["items"]["di-ratio"]["value"])}}
 
 def authored_review(state, candidate):
     """Example author's review attestation, NEVER an independent live-model test."""
+    require(latest_demo(state), "预写复核仅用于合成演示；真实任务必须由宿主实际逐项复核")
     facts = prepare(state)["manifest"]["facts"]
     notes = {
         "omissions":"逐项对照本示例最终英文段落及路由画幅交付；结构比例参数不代替最终输出检查。",
@@ -210,28 +212,9 @@ def authored_review(state, candidate):
             "item_results":{key:{"result":"pass","note":"对应英文片段保留："+str(item["value"])}
                             for key,item in facts.items()}}
 
-def revision_blue(state, translations, light_knowledge_refs=None):
-    old = state["masters"][-1]
-    old_kb = [ref for ref in old["items"]["di-light"]["source_refs"] if ref.startswith("KB:")]
-    require(not old_kb or light_knowledge_refs is not None, "修改合成示例光线时须明确复核并重选知识依据，不能静默丢弃")
-    if light_knowledge_refs is not None:
-        require(type(light_knowledge_refs) is list and all(type(ref) is str and ref.startswith("KB:") for ref in light_knowledge_refs), "知识依据列表无效")
-        from knowledge import validate_refs
-        validate_refs(light_knowledge_refs)
-    m = copy.deepcopy(old)
-    m["revision"] += 1
-    m["parent_revision"] = old["revision"]
-    m["items"]["di-character"]["value"] = "一位成年中国女性，穿深蓝色外套。"
-    m["items"]["di-character"]["source_refs"] = ["synthetic:user-change-blue-coat"]
-    m["items"]["di-requirement"]["value"] = "成年中国女性、深蓝外套、旧书店和阅读动作保持。"
-    m["items"]["di-requirement"]["source_refs"] = ["synthetic:user-change-blue-coat"]
-    m["items"]["di-light"]["value"] = "左侧大窗柔光照亮脸颊和书页，右侧浅色墙反射柔光照亮深蓝外套，后方木书架保持更暗。"
-    m["items"]["di-light"]["source_refs"] = ["synthetic:dependency-adjustment"] + (light_knowledge_refs or [])
-    m["items"]["di-light"]["confirmation_status"] = "pending"
-    m["changes"] = [{"item_id":key,"operation":"update","reason":reason,"source_ref":"synthetic:user-change-blue-coat"}
-        for key,reason in (("di-character","用户将红外套改成深蓝"),("di-requirement","当前约束同步更新，旧红衣要求保留在历史"),("di-light","同步修复深蓝外套与暗书架的分离"))]
-    t = copy.deepcopy(translations)
-    t["di-character"] = "A single adult Chinese woman wears a dark blue coat."
-    t["di-light"] = "Soft light from the large window on the left illuminates her cheek and the pages; reflected light from a pale wall on the right lifts the dark blue coat against darker wooden shelves."
-    return m,t
 
+def latest_demo(state):
+    master = state["masters"][-1]
+    return master["master_id"] in {"preview-portrait", "preview-environment", "preview-correction"} and all(
+        item["source_refs"] and all(ref.startswith(("synthetic:", "KB:")) for ref in item["source_refs"])
+        for item in master["items"].values())

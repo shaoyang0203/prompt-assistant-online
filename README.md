@@ -1,4 +1,4 @@
-# 提示词助手 V1.5.0-harness
+# 提示词助手 V1.5.1
 
 把素材设计成画面，再把画面编译成提示词。
 
@@ -25,8 +25,9 @@
 
 ```powershell
 $py = '<你的 Python 解释器绝对路径>'
-& $py -B -X utf8 scripts\prefs.py --data-dir <数据目录> init
-& $py -B -X utf8 scripts\prefs.py --data-dir <数据目录> status
+$skillDir = '<技能目录绝对路径>'
+& $py -B -X utf8 "$skillDir\scripts\prefs.py" --data-dir <数据目录> init
+& $py -B -X utf8 "$skillDir\scripts\prefs.py" --data-dir <数据目录> status
 ```
 
 没有 Python 也能正常创作，只是偏好、存档和任务记录不可用——此时系统会明确说明，不会假装保存过。
@@ -44,9 +45,9 @@ $py = '<你的 Python 解释器绝对路径>'
 `knowledge/` 下是 100 条分级条目，43 项来源。每条标注 `T`（资料支持的技术关系）、`P`（专业实践方法）、`C`（针对当前画面的推导）、`M`（图像模型执行假设，未验证）——四者不能互相冒充。
 
 ```powershell
-& $py -B -X utf8 scripts\knowledge.py search '雨夜 湿地 反射' --limit 3
-& $py -B -X utf8 scripts\knowledge.py show LC-15 MA-05
-& $py -B -X utf8 scripts\knowledge.py audit
+& $py -B -X utf8 "$skillDir\scripts\knowledge.py" search '雨夜 湿地 反射' --limit 3
+& $py -B -X utf8 "$skillDir\scripts\knowledge.py" show LC-15 MA-05
+& $py -B -X utf8 "$skillDir\scripts\knowledge.py" audit
 ```
 
 没有 Python 时按 `knowledge/README.md` 的索引直接读文件。
@@ -96,12 +97,12 @@ $py = '<你的 Python 解释器绝对路径>'
 | `scripts/knowledge.py` | 知识检索与索引审计 |
 
 ```powershell
-$previewProduct = (Get-Location).Path
-& $py -B -X utf8 "$previewProduct\scripts\pa15.py" --help
-& $py -B -X utf8 "$previewProduct\scripts\pa15.py" --data-dir <数据目录> --task t1 new --request '<需求>'
+$skillProduct = $skillDir # 上文设置的技能目录绝对路径，不依赖当前工作目录
+& $py -B -X utf8 "$skillProduct\scripts\pa15.py" --help
+& $py -B -X utf8 "$skillProduct\scripts\pa15.py" --data-dir <数据目录> --task t1 new --request '<需求>'
 ```
 
-命令全表见 [说明书](references/manual.md)。
+常用操作见 [说明书](references/manual.md)，完整命令与参数以各脚本及子命令 `--help` 为准；创作工具字段见 [本地工具](references/local-tools.md)。
 
 ## 数据与隐私
 
@@ -133,4 +134,16 @@ RELEASE-MANIFEST.json 逐文件 SHA256
 
 ## 许可
 
-许可证尚未确定。补充前，默认保留所有权利。
+沿用仓库现有 [LICENSE](LICENSE)，本次未改变授权条款。专业资料保留其原机构版权，本库提供自述摘要和来源链接，不附原文教材或资料图片。
+
+
+## 本地发行校验
+
+使用上文已设置的解释器与技能目录绝对路径：
+
+```powershell
+& $py -B -X utf8 "$skillDir\scripts\release.py" verify
+& $py -B -X utf8 "$skillDir\scripts\release.py" build --output '<源码之外的新ZIP绝对路径>'
+```
+
+校验版本、逐文件哈希、组件范围及常见敏感数据；这不是完整安全审计或真实图像验收。目标ZIP存在时拒绝覆盖。不联网、不调用图像模型，也不上传GitHub。

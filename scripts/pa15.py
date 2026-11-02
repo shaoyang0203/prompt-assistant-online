@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""PA15 preview local tool. The host LLM performs all free-input creative work."""
+"""Local task workflow tool. The host LLM performs all free-input creative work."""
 import argparse
 import json
 import sys
@@ -16,7 +16,7 @@ def main():
     for stream in (sys.stdin, sys.stdout, sys.stderr):
         if hasattr(stream, "reconfigure"):
             stream.reconfigure(encoding="utf-8", errors="strict")
-    parser = argparse.ArgumentParser(description="V1.5.0-harness（非自动生图程序）")
+    parser = argparse.ArgumentParser(description="V1.5.1（非自动生图程序）")
     parser.add_argument("--data-dir", help="源码之外的本地运行数据目录")
     parser.add_argument("--task", default="session")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -37,7 +37,7 @@ def main():
     args=parser.parse_args()
     if args.command=="validate":
         validate_master(read_json(args.input))
-        return {"result":"pass","scope":"V1.5.0 Schema 子集及业务约束；未证明视觉质量"},0
+        return {"result":"pass","scope":"V1.5.1 Schema 子集及业务约束；未证明视觉质量"},0
     if not args.data_dir:
         parser.error("本地记录操作需要明确 --data-dir；核心 Skill 文本创作不需要 Python")
     store=Store(args.data_dir)
@@ -92,6 +92,8 @@ def preview(store,case):
     if input("\n确认此母版 v1 后才编译。输入 确认v1，其他输入保持待确认：").strip()!="确认v1":
         return {"saved":True,"task_id":task,"status":"母版未确认，未编译"}
     store.update(task,lambda s:flow.approve(s,1,"interactive:user-confirmed-v1"))
+    state=store.load(task)
+    store.update(task,lambda s:flow.prepare_manifest(s))
     state=store.load(task)
     candidate=candidate_for(state,data["translations"])
     review=authored_review(state,candidate)

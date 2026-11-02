@@ -5,6 +5,7 @@ Compiler 是宿主 LLM，不是 Python 翻译器。仅从当前已展示且获�
 所有已确认可编译设计都应保留；只可等义合并重复表达。发现缺失设计退回总导演。
 
 工具manifest包含master_hash、facts、constraints、adapter_id及aspect_ratio_delivery（配置路由）。命令`manifest --target <已登记路由>`只选择表达方式，不选择或改变画幅。未指定目标仍可明确交付generic，不把未实现模型静默当generic。
+本地submit和deliver要求当前版本已生成manifest，改版后须重新生成。manifest绑定版本、母版哈希和路由；没有Python时宿主按同样顺序记录当前目标与版本，但须说明未执行程序门禁。
 候选格式：
 - master_hash
 - segments：每段 text、item_ids

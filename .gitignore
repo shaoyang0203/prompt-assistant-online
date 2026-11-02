@@ -23,3 +23,17 @@ desktop.ini
 
 # 发行压缩包由 GitHub Releases 管理，不进仓库
 *.zip
+
+# 发布准备：排除凭据、运行产物和研究资料
+.env
+.env.*
+*.pem
+*.key
+logs/
+reports/
+05_Reports/
+06_Archive/
+02_Visual_Dataset/
+03_Experiments/
+*.log
+*.tmp

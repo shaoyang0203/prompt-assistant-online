@@ -1,5 +1,5 @@
 {
-  "version": "V1.5.0-harness",
+  "version": "1.5.1",
   "adapters": [
     {
       "id": "generic-natural-language-r01",
@@ -63,7 +63,7 @@
       "prompt": "natural-language",
       "aspect_ratio": "outside-prompt",
       "ratio_format": "external-setting",
-      "external_channel": "Krea 2 所用工作流的外部画幅设置；像素尺寸按可靠工作流信息确定",
+      "external_channel": "Krea 2 所用工作流的外部画幅设置；普通结构化成品仅交付比例，不承载具体像素尺寸",
       "supported_aspect_ratios": null,
       "visual_redesign": false,
       "language_policy": {
@@ -91,7 +91,13 @@
         "9:16",
         "16:9"
       ],
-      "visual_redesign": false
+      "visual_redesign": false,
+      "language_policy": {
+        "default_prompt_language": "zh-CN",
+        "user_requested_language": "takes-precedence",
+        "image_text": "preserve-exact-literal-and-original-language",
+        "executor": "host-llm"
+      }
     },
     {
       "id": "qwen-image-2.1-t2i-r01",
@@ -104,13 +110,14 @@
       "prompt": "natural-language",
       "aspect_ratio": "outside-prompt",
       "ratio_format": "external-setting",
-      "external_channel": "Qwen Image 2.1本地文生图工作流的外部宽高设置；像素尺寸仅按可靠工作流信息确定",
+      "external_channel": "Qwen Image 2.1本地文生图工作流的外部宽高设置；普通结构化成品仅交付比例，不承载具体像素尺寸",
       "supported_aspect_ratios": null,
       "visual_redesign": false,
       "language_policy": {
         "default_prompt_language": "en",
         "image_text": "preserve-exact-literal-and-original-language",
-        "executor": "host-llm"
+        "executor": "host-llm",
+        "user_requested_language": "takes-precedence"
       },
       "segment_separator": " ",
       "compiler_policy": {
@@ -132,7 +139,7 @@
       "prompt": "natural-language",
       "aspect_ratio": "outside-prompt",
       "ratio_format": "external-setting",
-      "external_channel": "Z-Image本地工作流的外部宽高设置；像素尺寸仅按可靠工作流信息确定",
+      "external_channel": "Z-Image本地工作流的外部宽高设置；普通结构化成品仅交付比例，不承载具体像素尺寸",
       "supported_aspect_ratios": null,
       "visual_redesign": false,
       "language_policy": {
@@ -215,7 +222,7 @@
       "prompt": "natural-language",
       "aspect_ratio": "outside-prompt",
       "ratio_format": "external-setting",
-      "external_channel": "MOSS-Image本地工作流的外部宽高设置；像素尺寸须有可靠依据",
+      "external_channel": "MOSS-Image本地工作流的外部宽高设置；普通结构化成品仅交付比例，不承载具体像素尺寸",
       "supported_aspect_ratios": null,
       "visual_redesign": false,
       "language_policy": {

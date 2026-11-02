@@ -6,6 +6,10 @@
 
 自由创作由当前宿主 LLM 执行，工具按下列顺序接收 JSON：
 new → concepts → select → master → coordinate → show → approve → manifest → submit → deliver。
+
+`manifest` 是本地工具的必经步骤，绑定当前母版版本、内容哈希与目标路由；改版后重新执行。未生成有效 manifest 的提交与交付均拒绝。旧任务若缺少该记录，重新执行 manifest 后再提交。已有方向选择不能直接覆盖方案列表，重新探索请新建任务；预算耗尽返回结构化 fail，不增加重试次数。
+
+普通自然语言路由的结构化参数仅接受 aspect_ratio，当前不承载或交付具体像素尺寸。MOSS Layout 单独接受必需 image_size；不手工向普通成品追加未经本工具检查的尺寸并宣称已校验。
 修改：change → master（新版本）→ coordinate → show → approve → manifest → submit → deliver。
 status 显示任务和历史母版。每次业务修改发布新任务快照，CURRENT 原子切换，旧快照不删除。
 CLI 完整选项用 --help 和相应子命令 --help。
@@ -27,3 +31,5 @@ approve 必须提供当前 revision 和真实 user-ref；方向选择不会自�
 
 知识工具 `scripts/knowledge.py` 的 search/show/audit 离线只读；build-index 仅开发维护时更新源码索引。search 返回候选ID，show 每次1–5条，不调用LLM。无Python时按 [知识入口](../knowledge/README.md) 定位条目，核心创作继续。工具不代替专业适配判断和用户确认。
 
+
+区域归属或全局引用修改须在新母版structure_changes记录path/reason/source_ref，见[母版规则](visual-master.md)；程序核对路径差异并在任务事件记录前后值。无母版submit返回fail、saved=false、attempt=0，不消耗预算或写入编译记录。

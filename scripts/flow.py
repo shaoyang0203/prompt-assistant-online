@@ -34,6 +34,7 @@ def new_task(task_id, request, limits=None):
 
 def set_concepts(state, concepts):
     require(not state["masters"], "已有母版请局部修改，不重置任务")
+    require(state["selected"] is None, "已选择创意方向，不能覆盖方案列表；重新探索请建立新任务并重新选择")
     require(type(concepts) is list and len(concepts) in (3, 5), "正常创作须提供三套，必要时五套")
     for c in concepts:
         require(type(c) is dict and set(c) == {"id", "core", "focus", "feature", "scene"}, "方案字段错误")
@@ -53,6 +54,7 @@ def select(state, concept_id, user_ref):
 
 def save_master(state, master, authorization=None):
     require(state["selected"], "尚未选择创意方向")
+    require(any(c["id"] == state["selected"] for c in state["concepts"]), "已选方向不在当前方案中，须重新选择")
     change = verify_revision(state, master, authorization)
     state["masters"].append(master)
     state["phase"] = "designing"
@@ -109,12 +111,19 @@ def approve(state, revision, user_ref):
     return {"saved": True, "approval": receipt}
 
 def submit(state, candidate, review):
+    from compile_checks import prepare
+    try:
+        require_manifest(state)
+        prepare(state)
+    except (ValueError, KeyError, TypeError) as exc:
+        # Rejected preconditions do not consume attempts or overwrite a prior record.
+        attempt = state["attempts"].get(str(state["masters"][-1]["revision"]), 0) if state["masters"] else 0
+        return {"saved": False, "result": "fail", "structural": "fail", "semantic": "not_run",
+                "problems": [str(exc)], "attempt": attempt}
     try:
         report = inspect(state, candidate, review)
     except (ValueError, KeyError, TypeError) as exc:
         # Even malformed submissions consume the same bounded retry budget.
-        from compile_checks import prepare
-        prepare(state)
         report = {"result": "fail", "structural": "fail", "semantic": "not_run", "problems": [str(exc)]}
     rev = str(latest(state)["revision"])
     state["attempts"][rev] = state["attempts"].get(rev, 0) + 1
@@ -126,17 +135,29 @@ def submit(state, candidate, review):
     return {"saved": True, **report, "attempt": state["attempts"][rev]}
 
 
+def require_manifest(state):
+    master = latest(state)
+    require("compilation_target" in state, "请先执行 manifest，明确记录当前版本的编译目标")
+    selected = adapter.route(state["compilation_target"])["id"]
+    require(any(event["type"] == "adapter_selected" and
+                event.get("revision") == master["revision"] and
+                event.get("master_hash") == digest(master) and
+                adapter.route(event["target"])["id"] == selected
+                for event in state["events"]), "当前母版版本尚未生成有效 manifest，请重新执行")
+
+
 def prepare_manifest(state, target=None):
     from compile_checks import prepare
     packet = prepare(state, target)
     selected = packet["manifest"]["aspect_ratio_delivery"]["target"]
     state["compilation_target"] = selected
     state["events"].append({"type": "adapter_selected", "target": selected,
-                            "revision": latest(state)["revision"]})
+                            "revision": latest(state)["revision"], "master_hash": digest(latest(state))})
     return {**packet, "saved": True}
 
 def deliver(state):
     master = latest(state)
+    require_manifest(state)
     require(is_approved(state, master) and state["coordination"]["status"] == "pass", "当前母版未获有效确认或协调未通过")
     require(bool(state["compilations"]), "尚未完成编译")
     c = state["compilations"][-1]
@@ -153,8 +174,10 @@ def deliver(state):
 
 def correction(state, record):
     require(type(record) is dict and set(record) == {"issue", "intent", "options"}, "纠偏字段错误")
+    require(type(record["issue"]) is str and bool(record["issue"].strip()), "纠偏问题描述不能为空")
     require(record["intent"] in ("unclear", "intentional_contrast", "conflict"), "意图判断错误")
     require(type(record["options"]) is list and len(record["options"]) == 3, "纠偏固定三档")
+    require(all(type(x) is dict for x in record["options"]), "纠偏选项必须为对象")
     require([x.get("mode") for x in record["options"]] == ["strict", "local", "reconstruct"], "纠偏顺序错误")
     for option in record["options"]:
         require(set(option) == {"mode", "design", "changes", "reason", "expected"} and

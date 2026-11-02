@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "VisualMasterRevision V1.5.0",
+  "title": "VisualMasterRevision V1.5.1",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -126,6 +126,44 @@
               "add",
               "update",
               "remove"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_ref": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "structure_changes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "reason",
+          "source_ref"
+        ],
+        "properties": {
+          "path": {
+            "enum": [
+              "zones.intent_constraints",
+              "zones.creative_direction_moment",
+              "zones.visual_subject_hierarchy",
+              "zones.character_art",
+              "zones.scene_art",
+              "zones.action_spatial_relations",
+              "zones.camera_composition",
+              "zones.lighting_color",
+              "zones.material_visual_expression",
+              "globals.medium",
+              "globals.aspect_ratio",
+              "globals.image_text"
             ]
           },
           "reason": {
@@ -340,4 +378,3 @@
     }
   }
 }
-
