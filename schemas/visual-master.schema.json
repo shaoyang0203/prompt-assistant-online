@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Visual Director System Master V1.5.2",
+  "title": "Visual Director System Master V1.5.3",
   "type": "object",
   "additionalProperties": false,
   "required": [

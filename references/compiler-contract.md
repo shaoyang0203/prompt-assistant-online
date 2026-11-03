@@ -12,7 +12,7 @@ Compiler 是宿主 LLM，不是 Python 翻译器。仅从当前已展示且获�
 - parameters：aspect_ratio 的 width/height
 - target：已选路由名；省略仅为兼容既有generic候选，不代表自动识别模型
 
-Gemini／Nano Banana、Seedream及MOSS按[专用编译说明](model-routes.md)处理。只有显式MOSS Layout候选在parameters中另提供image_size的width/height，作为已确定的实际画布尺寸；其他路由不接收该字段。Layout的一个segment承载完整模型JSON及其覆盖ID，不把九区域母版原样传给模型。尺寸和JSON均绑定成品哈希，修改后必须重新复核。没有可靠尺寸时不能编造Layout，核心自然语言创作仍可继续并明确未完成Layout交付。
+每个目标均须按[目标模型加载表](model-routes.md)读取对应专属全文，不因熟悉或简单而跳过；正文有效复用条件见该表。只有显式MOSS Layout候选在parameters中另提供image_size的width/height，作为已确定的实际画布尺寸；其他路由不接收该字段。Layout的一个segment承载完整模型JSON及其覆盖ID，不把九区域母版原样传给模型。尺寸和JSON均绑定成品哈希，修改后必须重新复核。没有可靠尺寸时不能编造Layout，核心自然语言创作仍可继续并明确未完成Layout交付。
 
 段落可覆盖多项；覆盖 ID 只是声明，不证明真实等义。
 segments不预写比例控制，由Adapter从parameters生成路由规定的块内比例行/参数或块外设置。参数在结构对象中保留是校验依据，不是要求对用户重复显示。未确认比例、比例与母版不同、路由不支持或语义uncertain均不得放行。
@@ -25,4 +25,3 @@ Python 检查字段、哈希、版本、覆盖 ID、文字原文、比例和预�
 最终任一必要项 fail 或 uncertain 不放行。失败最多自动修复一次；不可通过重新准备 manifest 重置预算。
 
 文本宿主没有 Python 时仍按同一事实清单和语义合同检查；不能宣称程序强制或已永久保存。
-

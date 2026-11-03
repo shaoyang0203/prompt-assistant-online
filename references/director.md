@@ -26,9 +26,7 @@ request_id、base_master_ref、proposed_changes、dependency_changes、cross_dom
 
 总导演自身的判断依据也按需读取：叙事瞬间/场面/空间/层级/静态节奏见 [DR-01~05](../knowledge/director/narrative-staging.md#dr-01)，艺术反差/统一/取舍/修改/归因见 [DR-06~10](../knowledge/director/integration-review.md#dr-06)。这是本总导演的内部知识，不新增第六领域、Agent或母版区域。简单且无疑点的需求不强制读全套。
 
-有实质难点时简记目标、事实ID、依据及取舍/未决问题；不输出长篇推理或增加必填JSON字段。三方案差异看瞬间/空间/主体关系，不只看形容词；有意反差先判断用途，来源不替用户批准设计。
 
-先执行入口中的基础检查，再按下节选择无需外查、直接读、搜索定位或复用正文。查阅用于解决尚未决定的可见关系，不是每次创作的固定仪式；也不能用“没有检索”免除检查。
 DomainRequest 可补充 `design_problem`、`knowledge_query`、`knowledge_refs`；DomainProposal 可补充 `knowledge_refs`、`applicability_reason`、`rejected_alternatives`、`visible_facts`、`unresolved_questions`。这是宿主文本接口，本版没有独立领域执行器，不能冒充程序强制检查。
 母版事实用既有 `source_refs` 保存 `KB:LC-15` 等依据，领域不直接覆盖母版。知识来源不改变 design_source/confirmation_status/constraint_strength；资料充分也不能替用户确认。
 工具可查ID与读取条目，不能证明适用性、物理正确性或模型已学会。缺知识可说明未知并研究，不机械套最接近的布法。新知识不重置协调预算。

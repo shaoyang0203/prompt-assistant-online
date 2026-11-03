@@ -16,7 +16,7 @@ def main():
     for stream in (sys.stdin, sys.stdout, sys.stderr):
         if hasattr(stream, "reconfigure"):
             stream.reconfigure(encoding="utf-8", errors="strict")
-    parser = argparse.ArgumentParser(description="视觉导演系统 V1.5.2（非自动生图程序）")
+    parser = argparse.ArgumentParser(description="视觉导演系统 V1.5.3（非自动生图程序）")
     parser.add_argument("--data-dir", help="源码之外的本地运行数据目录")
     parser.add_argument("--task", default="session")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -37,7 +37,7 @@ def main():
     args=parser.parse_args()
     if args.command=="validate":
         validate_master(read_json(args.input))
-        return {"result":"pass","scope":"V1.5.2 Schema 子集及业务约束；未证明视觉质量"},0
+        return {"result":"pass","scope":"V1.5.3 Schema 子集及业务约束；未证明视觉质量"},0
     if not args.data_dir:
         parser.error("本地记录操作需要明确 --data-dir；核心 Skill 文本创作不需要 Python")
     store=Store(args.data_dir)

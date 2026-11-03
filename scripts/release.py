@@ -11,8 +11,8 @@ from uuid import uuid4
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = '1.5.2'
-SKILL_NAME = 'visual-director-system-v1-5-2'
+VERSION = '1.5.3'
+SKILL_NAME = 'visual-director-system-v1-5-3'
 DIRECTORIES = {'adapters', 'docs', 'knowledge', 'references', 'schemas', 'scripts', 'tests'}
 TOP_FILES = {'.gitignore', 'SKILL.md', 'README.md', 'LICENSE', 'RELEASE_NOTES.md', 'RELEASE-MANIFEST.json'}
 
@@ -44,6 +44,28 @@ def inventory(root):
     return rows
 
 
+def verify_route_references(root, registry, files):
+    """Check packaged route documents, not whether any LLM actually read them."""
+    rows = registry.get('adapters')
+    require(type(rows) is list and bool(rows), '缺少模型路由')
+    references = {}
+    for row in rows:
+        require(type(row) is dict, '模型路由格式无效')
+        policy = row.get('compiler_policy')
+        require(type(policy) is dict, '路由缺少专属编译文件: ' + str(row.get('target')))
+        ref = policy.get('reference')
+        require(type(ref) is str and ref.startswith('references/adapters/') and ref.endswith('.md')
+                and '\\' not in ref and '..' not in ref.split('/') and '#' not in ref,
+                '专属编译文件路径无效: ' + str(row.get('target')))
+        path = (root / ref).resolve()
+        require(path.is_relative_to(root) and ref in files and path.is_file(), '专属编译文件缺失: ' + ref)
+        require(bool(path.read_text(encoding='utf-8').strip()), '专属编译文件为空: ' + ref)
+        target = row.get('target')
+        require(type(target) is str and target not in references, '目标路由重复或无效')
+        references[target] = ref
+    return references
+
+
 def verify(root=ROOT):
     root = Path(root).resolve()
     files = inventory(root)
@@ -59,11 +81,12 @@ def verify(root=ROOT):
     require(re.search(r'^description: .+', header, re.M), '入口缺少description')
     registry = json.loads((root / 'adapters/registry.json').read_text(encoding='utf-8'))
     require(registry.get('version') == VERSION, 'Adapter产品版本不一致')
+    route_references = verify_route_references(root, registry, files)
     for name in ('contracts.py', 'prefs.py'):
         module = ast.parse((root / 'scripts' / name).read_text(encoding='utf-8'))
         values = [node.value.value for node in module.body if isinstance(node, ast.Assign) and any(isinstance(target, ast.Name) and target.id == 'VERSION' for target in node.targets)]
         require(values == [VERSION], '工具产品版本不一致: ' + name)
-    return {'result': 'pass', 'scope': 'local-package-structure-version-hashes-and-basic-sensitive-data-scan', 'version': VERSION, 'files': len(files), 'semantic_and_image_quality': 'not_verified'}
+    return {'result': 'pass', 'scope': 'local-package-structure-version-hashes-route-document-references-and-basic-sensitive-data-scan', 'version': VERSION, 'files': len(files), 'route_documents': len(route_references), 'llm_reading_and_semantic_and_image_quality': 'not_verified'}
 
 
 def build(root, output):
@@ -77,7 +100,7 @@ def build(root, output):
     try:
         with zipfile.ZipFile(temporary, 'x', compression=zipfile.ZIP_DEFLATED) as archive:
             for name in files:
-                info = zipfile.ZipInfo(SKILL_NAME + '/' + name, date_time=(2026, 11, 2, 0, 0, 0))
+                info = zipfile.ZipInfo(SKILL_NAME + '/' + name, date_time=(2026, 11, 3, 0, 0, 0))
                 info.compress_type = zipfile.ZIP_DEFLATED
                 info.external_attr = 0o100644 << 16
                 archive.writestr(info, (root / name).read_bytes())
@@ -100,7 +123,7 @@ def main():
     for stream in (sys.stdin, sys.stdout, sys.stderr):
         if hasattr(stream, 'reconfigure'):
             stream.reconfigure(encoding='utf-8', errors='strict')
-    parser = argparse.ArgumentParser(description='视觉导演系统 V1.5.2 本地发行校验/打包；不联网、不上传GitHub')
+    parser = argparse.ArgumentParser(description='视觉导演系统 V1.5.3 本地发行校验/打包；不联网、不上传GitHub')
     commands = parser.add_subparsers(dest='command', required=True)
     commands.add_parser('verify')
     builder = commands.add_parser('build')

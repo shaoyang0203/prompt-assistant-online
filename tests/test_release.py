@@ -1,5 +1,6 @@
 """Release integrity checks; no network, real user data, or image generation."""
 import json
+import copy
 from pathlib import Path
 import shutil
 import sys
@@ -14,6 +15,22 @@ import release
 
 
 class ReleaseTests(unittest.TestCase):
+    def test_missing_target_reference_is_rejected(self):
+        registry = json.loads((ROOT / 'adapters/registry.json').read_text(encoding='utf-8'))
+        for row in registry['adapters']:
+            broken = copy.deepcopy(registry)
+            next(item for item in broken['adapters'] if item['target'] == row['target'])['compiler_policy'].pop('reference')
+            with self.subTest(target=row['target']), self.assertRaises(ValueError):
+                release.verify_route_references(ROOT, broken, release.inventory(ROOT))
+
+    def test_missing_or_escaping_route_file_is_rejected(self):
+        registry = json.loads((ROOT / 'adapters/registry.json').read_text(encoding='utf-8'))
+        for ref in ('references/adapters/absent.md', 'references/adapters/../../../outside.md'):
+            broken = copy.deepcopy(registry)
+            broken['adapters'][0]['compiler_policy']['reference'] = ref
+            with self.subTest(reference=ref), self.assertRaises(ValueError):
+                release.verify_route_references(ROOT, broken, release.inventory(ROOT))
+
     def test_manifest_detects_tampered_file(self):
         with tempfile.TemporaryDirectory(prefix='pa-release-tamper-') as temp:
             root = Path(temp) / 'source'
@@ -48,7 +65,7 @@ class ReleaseTests(unittest.TestCase):
             with zipfile.ZipFile(first) as archive:
                 self.assertIsNone(archive.testzip())
                 self.assertIn(release.SKILL_NAME + '/SKILL.md', archive.namelist())
-                self.assertEqual(json.loads(archive.read(release.SKILL_NAME + '/RELEASE-MANIFEST.json'))['version'], '1.5.2')
+                self.assertEqual(json.loads(archive.read(release.SKILL_NAME + '/RELEASE-MANIFEST.json'))['version'], '1.5.3')
 
 
 if __name__ == '__main__':

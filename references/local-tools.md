@@ -21,7 +21,7 @@ coordinate --input：
 result、issues、summary、domains。pass 时 issues 必须为空，domains 仅五领域枚举。
 画幅相对上次通过协调的母版改变后，另填aspect_ratio_review，键为subject_scale_position、framing_crop、foreground_occlusion、background_information、spatial_relations、visual_hierarchy、negative_space_overall；各值为`{"result":"pass/fail/uncertain","note":"实际复核结论"}`。只有七项均pass才可协调通过；这些是宿主声明，Python仅检查结构与状态，不证明构图质量。无改变也可填写，不强制无关复核。内部连续改版不能绕过未完成的画幅复核。
 manifest支持`--target generic/gpt-web/midjourney/krea2/grok-web/qwen-image-2.1/z-image/gemini-image/seedream/moss-image/moss-image-layout`及配置别名。候选JSON的target须与实际目标一致；省略仅为generic兼容。deliver返回prompt、external_settings与完整formatted；宿主展示formatted，不再统一追加块外比例。没有Python时按 [Adapter契约](adapter-contract.md) 执行同一规则。
-MOSS Layout仅在明确布局需求且有可靠画布尺寸时使用，候选parameters增加image_size，text为一个完整JSON；具体结构与坐标见[路由说明](model-routes.md)。程序会检查与画幅的关系和坐标边界，失败不得手工绕过后宣称通过。无Python时可以按同一格式组织文本，但须说明未执行确定性校验。
+MOSS Layout仅在明确布局需求且有可靠画布尺寸时使用，候选parameters增加image_size，text为一个完整JSON；具体结构与坐标见[MOSS Layout规则](adapters/moss-layout.md)。程序会检查与画幅的关系和坐标边界，失败不得手工绕过后宣称通过。无Python时可以按同一格式组织文本，但须说明未执行确定性校验。
 master --authorization：
 user_ref、item_ids，仅填写真实修改授权，不能用 Agent 自己的判断冒充。
 approve 必须提供当前 revision 和真实 user-ref；方向选择不会自动产生批准。
